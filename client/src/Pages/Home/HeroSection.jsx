@@ -48,7 +48,7 @@ const HeroSection = () => {
                         </button>
                     </div>
                     <div className='flex justify-end mt-20'>
-                        <form onSubmit="return false;" className='w-[30rem] p-8 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-5 relative'>
+                        <form onSubmit="return false;" className='w-[30rem] p-8 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-6 relative'>
                             <div className='absolute -top-6 left-0 w-full flex justify-center'>
                                 <div
                                     className='px-8 py-3 text-base font-medium bg-slate-700 hover:bg-slate-800 duration-300 text-white flex items-center gap-2 rounded-md cursor-pointer shadow-md'
@@ -61,7 +61,7 @@ const HeroSection = () => {
                                 <input
                                     placeholder="" required
                                     type="email" id='email'
-                                    class="block px-3 py-2 rounded-lg w-full bg-white border-2 border-violet-300 placeholder-violet-600 shadow-md focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                    class="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                 />
                             </div>
                             <div>
@@ -69,7 +69,7 @@ const HeroSection = () => {
                                 <div className='flex items-center gap-5'>
                                     <select
                                         name="country"
-                                        className='block px-3 py-2.5 rounded-lg text-sm bg-white border-2 border-violet-300 placeholder-violet-600 shadow-md focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none'
+                                        className='block px-3 py-2.5 rounded-lg text-sm bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none'
                                     >
                                         <option value="">Select Country</option>
                                         <option value="+91">
@@ -79,7 +79,7 @@ const HeroSection = () => {
                                     <input
                                         placeholder="" required
                                         type="text" id='phone'
-                                        class="block px-3 py-2 rounded-lg w-full bg-white border-2 border-violet-300 placeholder-violet-600 shadow-md focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                        class="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                     />
                                 </div>
                             </div>
