@@ -4,15 +4,18 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ContextProvider from './Context/ContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <App />
+        <ContextProvider>
+          <App />
+        </ContextProvider>
       </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>

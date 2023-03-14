@@ -5,7 +5,6 @@ import DesktopView from './DesktopView';
 
 const Header = () => {
     const [scroll, setScroll] = useState(false);
-    const [openProfile, setOpenProfile] = useState(false);
 
     window.addEventListener('scroll', () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -19,7 +18,7 @@ const Header = () => {
 
     return (
         <header className={`w-full h-[76px] text-gray-600`}>
-            <nav className={`w-full bg-white ${scroll ? 'fixed top-0 left-0 right-0 z-40 shadow-md' : ''}`}>
+            <nav className={`w-full backdrop-blur-sm bg-white/50 ${scroll ? 'fixed top-0 left-0 right-0 z-40 shadow' : 'relative z-40'}`}>
                 <div className='2xl:w-[1200px] xl:w-full mx-auto flex items-center justify-between 2xl:px-0 lg:px-14 sm:px-6 px-3 py-2'>
 
                     {/* <== == == == Right Logo == == == ==> */}
@@ -35,7 +34,7 @@ const Header = () => {
 
                     {/* <== == == == Left Menu items == == == ==> */}
                     {/* <!-- Desktop view --> */}
-                    <DesktopView />
+                    <DesktopView/>
 
                 </div>
             </nav>

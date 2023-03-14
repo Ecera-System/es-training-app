@@ -4,6 +4,11 @@ import { HiArrowNarrowRight } from 'react-icons/hi';
 import { CiLocationArrow1 } from 'react-icons/ci';
 
 const HeroSection = () => {
+
+    const handleBrochure = (e) => {
+        e.preventDefault();
+    };
+    
     return (
         <section className='py-10 w-full h-auto flex justify-center'>
             <div className='2xl:w-[1200px] w-[90%] grid grid-cols-2 items-center'>
@@ -48,7 +53,7 @@ const HeroSection = () => {
                         </button>
                     </div>
                     <div className='flex justify-end mt-20'>
-                        <form onSubmit="return false;" className='w-[30rem] p-8 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-6 relative'>
+                        <form onSubmit={handleBrochure} className='w-[30rem] p-8 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-6 relative'>
                             <div className='absolute -top-6 left-0 w-full flex justify-center'>
                                 <div
                                     className='px-8 py-3 text-base font-medium bg-slate-700 hover:bg-slate-800 duration-300 text-white flex items-center gap-2 rounded-md cursor-pointer shadow-md'
@@ -57,15 +62,15 @@ const HeroSection = () => {
                                 </div>
                             </div>
                             <div>
-                                <label htmlFor='email' class="px-1">Email</label>
+                                <label htmlFor='email' className="px-1">Email</label>
                                 <input
                                     placeholder="" required
                                     type="email" id='email'
-                                    class="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                    className="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                 />
                             </div>
                             <div>
-                                <label htmlFor='phone' class="px-1 text-gray-500">Phone</label>
+                                <label htmlFor='phone' className="px-1 text-gray-500">Phone</label>
                                 <div className='flex items-center gap-5'>
                                     <select
                                         name="country"
@@ -79,7 +84,7 @@ const HeroSection = () => {
                                     <input
                                         placeholder="" required
                                         type="text" id='phone'
-                                        class="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                        className="block px-3 py-2 rounded-lg w-full bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                     />
                                 </div>
                             </div>
