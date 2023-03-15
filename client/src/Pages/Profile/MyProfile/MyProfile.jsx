@@ -39,7 +39,8 @@ const MyProfile = () => {
                             <div className='w-2/5 flex flex-col items-center gap-5'>
                                 <div>
                                     <img
-                                        src={avatar ? `${process.env.REACT_APP_API_V1_URL}/${avatar}` : avatarIcon} alt="Avatar"
+                                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon} 
+                                        alt="Avatar"
                                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                                         loading='lazy'
                                     />
@@ -51,7 +52,7 @@ const MyProfile = () => {
                                     Change Photo
                                 </button>
                             </div>
-                            <ul className='w-3/5 flex flex-col gap-5'>
+                            <ul className='list-none w-3/5 flex flex-col gap-5'>
                                 <li>
                                     <span className='text-sm text-gray-500'>Full Name</span>
                                     <p className='font-semibold'>
@@ -97,7 +98,7 @@ const MyProfile = () => {
                             profileData={profileData}
                             setEditAddress={setEditAddress}
                         /> :
-                        <ul className='grid grid-cols-2 gap-y-5 my-10'>
+                        <ul className='list-none grid grid-cols-2 gap-y-5 my-10'>
                             <li>
                                 <span className='text-sm text-gray-500'>Country</span>
                                 <p className='font-semibold'>

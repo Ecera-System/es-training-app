@@ -135,7 +135,7 @@ const Checkout = () => {
                         ...formData,
                         courseId: _id,
                         title: title,
-                        price: isDiscount
+                        price: isDiscount || parseFloat(courseData.price),
                     }, {
                         method: 'POST',
                         headers: {
@@ -156,7 +156,7 @@ const Checkout = () => {
                         ...formData,
                         courseId: _id,
                         title: title,
-                        price: isDiscount
+                        price: isDiscount || parseFloat(courseData.price),
                     }, {
                         method: 'POST',
                         headers: {

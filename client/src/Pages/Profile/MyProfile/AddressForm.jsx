@@ -84,7 +84,7 @@ const AddressForm = ({ profileData, setEditAddress }) => {
 
     return (<>
         <form onSubmit={handleSubmit}>
-            <ul className='grid grid-cols-2 gap-8 my-10'>
+            <ul className='list-none grid grid-cols-2 gap-8 my-10'>
                 <li>
                     <label htmlFor='country' className='text-sm text-gray-500'>Country</label>
                     <select

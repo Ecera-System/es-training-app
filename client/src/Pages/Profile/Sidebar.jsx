@@ -1,17 +1,20 @@
 import React from 'react';
 import { BsJournalCode } from 'react-icons/bs';
 import { FiLogOut, FiUser } from 'react-icons/fi';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineAssignment } from 'react-icons/md';
-import { RiCoupon2Line } from 'react-icons/ri';
-import { SlBadge } from 'react-icons/sl';
 import { Link, useNavigate } from 'react-router-dom';
-import useGetUser from '../../API/useGetUser';
-import avatar from '../../Images/Nav/avatar.png'
+import useGetProfile from '../../API/useGetProfile';
+import avatarIcon from '../../Images/Nav/avatar.png'
+import Spinner from '../Shared/Spinner/Spinner';
 
 const Sidebar = () => {
-    const [userData] = useGetUser();
+    const [profileData, loading] = useGetProfile();
     const navigate = useNavigate();
+
+    if (loading) return <Spinner />;
+
+    const { name, avatar, userId } = profileData;
+
 
     const handleSignOut = () => {
         localStorage.removeItem('auth_token');
@@ -19,19 +22,21 @@ const Sidebar = () => {
     };
 
     return (<>
-        <ul className='h-screen max-h-full overflow-y-auto scrollBar-sm p-6 text-gray-600'>
+        <ul className='list-none h-screen max-h-full overflow-y-auto scrollBar-sm p-6 text-gray-600'>
             <li className='pt-2 pb-6 border-b mb-4'>
                 <div className='flex justify-center'>
                     <img
-                        src={userData?.profile?.avatar ?
-                            `${process.env.REACT_APP_API_V1_URL}/${userData?.profile?.avatar}` : avatar
-                        }
+                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon}
                         alt="Avatar"
                         className='w-20 h-20 max-w-full object-cover rounded-full'
                     />
                 </div>
-                <h3 className='text-base font-semibold text-center mt-3'>Mostafij Mozumdar</h3>
-                <p className='text-sm text-gray-500 text-center mt-1'>Student</p>
+                <h3 className='text-base font-semibold text-center mt-3'>
+                    {name}
+                </h3>
+                <p className='text-sm text-gray-500 text-center mt-1'>
+                    {userId?.role}
+                </p>
             </li>
             <li>
                 <Link

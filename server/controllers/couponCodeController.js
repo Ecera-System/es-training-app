@@ -23,16 +23,26 @@ exports.getAllCouponCode = async (req, res, next) => {
 };
 
 
-//<!-- Get All Coupon Code -->
+//<!-- Change Coupon Code Status -->
 exports.updateCouponStatus = async (req, res, next) => {
     try {
-        const { status, id } = req.body;
         const result = await CouponCode.findByIdAndUpdate(
-            { _id: id },
-            { $set: { status: status } },
-            { new: true }
+            { _id: req.params.id },
+            { $set: { status: req.body.status } },
+            { runValidators: true }
         );
         res.status(200).json({ data: result, success: "Status update successfully!" });
+    } catch (error) {
+        next(error);
+    }
+};
+
+//<!-- Delete Coupon Code By Id -->
+exports.deleteCouponCodeById = async (req, res, next) => {
+    try {
+        const result = await CouponCode.findByIdAndDelete({ _id: req.params.id });
+
+        res.status(200).json({ data: result, success: "Coupon code delete successfully!" });
     } catch (error) {
         next(error);
     }

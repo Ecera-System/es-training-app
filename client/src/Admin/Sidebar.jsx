@@ -17,7 +17,7 @@ const Sidebar = () => {
     };
 
     return (<>
-        <ul className='h-screen max-h-full overflow-y-auto scrollBar-sm p-6 text-gray-600'>
+        <ul className='list-none h-screen max-h-full overflow-y-auto scrollBar-sm p-6 text-gray-600'>
             <li className='py-6 border-b mb-4'>
                 <h1 className='text-center text-2xl font-medium text-gray-700'>Admin</h1>
                 <div className='flex justify-center mt-6'>

@@ -8,7 +8,7 @@ const DesktopView = () => {
     );
 
     return (
-        <ul className='flex items-center justify-between gap-10 text-lg font-normal'>
+        <ul className='list-none flex items-center justify-between gap-10 text-lg font-normal'>
             <li>
                 <Link
                     to='/'

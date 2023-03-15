@@ -57,8 +57,8 @@ const AssignmentsList = () => {
                     </tbody>
                 </table>
             </div> :
-            <div className='mt-32 w-full grid place-items-center'>
-                <p className='text-4xl font-medium text-gray-400'>No Assignment has been created yet!</p>
+            <div className='mt-40 w-full grid place-items-center'>
+                <p className='md:text-3xl text-xl font-medium text-gray-400'>No Assignment has been created yet!</p>
             </div>
         }
     </>);

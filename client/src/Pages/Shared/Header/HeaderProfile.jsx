@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import avatar from '../../../Images/Nav/avatar.png';
-import useGetUser from '../../../API/useGetUser';
 import CartIcon from './CartIcon';
 import NotificationIcon from './NotificationIcon';
+import useGetProfile from '../../../API/useGetProfile';
 
 const HeaderProfile = ({ setIsAuthenticated }) => {
-    const [userData] = useGetUser();
+    const [profileData] = useGetProfile();
     const [openProfile, setOpenProfile] = useState(false);
+
 
     return (<>
         <li className='relative flex items-center justify-center gap-7 pl-5'>
@@ -25,8 +26,8 @@ const HeaderProfile = ({ setIsAuthenticated }) => {
                 className='w-10 h-10 border-2 border-violet-600 hover:border-violet-400 duration-300 rounded-full overflow-hidden'
             >
                 <img
-                    src={userData?.profile?.avatar ?
-                        `${process.env.REACT_APP_API_V1_URL}/${userData?.profile?.avatar}` : avatar
+                    src={profileData?.avatar ?
+                        (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : avatar
                     }
                     alt="avatar"
                     className='w-10 h-10 max-w-full object-cover'
@@ -34,25 +35,25 @@ const HeaderProfile = ({ setIsAuthenticated }) => {
             </button>
 
             <ul
-                className={`absolute top-12 right-0 w-72 h-auto p-5 bg-white rounded-md shadow-[0_8px_15px_-1px_rgb(0,0,0,0.3)] ${openProfile ? 'scale-100' : 'scale-0'} origin-top-right duration-300`}
+                className={`list-none absolute top-12 right-0 w-72 h-auto p-5 bg-white rounded-md shadow-[0_8px_15px_-1px_rgb(0,0,0,0.3)] ${openProfile ? 'scale-100' : 'scale-0'} origin-top-right duration-300`}
             >
                 <li className='h-auto p-5 shadow-[0_2px_10px_5px_rgb(0,0,0,0.1)] rounded-md text-center mb-5'>
                     <div className='w-20 h-20 mx-auto border-2 border-violet-600 rounded-full overflow-hidden'>
                         <img
-                            src={userData?.profile?.avatar ?
-                                `${process.env.REACT_APP_API_V1_URL}/${userData?.profile?.avatar}` : avatar
+                            src={profileData?.avatar ?
+                                (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : avatar
                             }
                             alt="avatar"
                             className='w-20 h-20 max-w-full object-cover'
                         />
                     </div>
-                    <h2 className='text-lg font-medium mt-3'>
-                        {userData?.role === 'admin' ? 'Admin' : userData?.name}
+                    <h2 className='text-lg font-medium mt-3 capitalize'>
+                        {profileData?.userId?.role === 'admin' ? 'Admin' : profileData?.userId?.name}
                     </h2>
                     {
-                        userData?.role !== 'admin' &&
+                        profileData?.userId?.role !== 'admin' &&
                         <p className='text-sm mt-1'>
-                            {userData?.role}
+                            {profileData?.userId?.role}
                         </p>
                     }
                 </li>

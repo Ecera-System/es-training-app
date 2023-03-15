@@ -2,20 +2,23 @@ const express = require('express');
 const router = express.Router();
 const instructorAuthorize = require('../../middleware/instructorAuthorize');
 const userAuthorize = require('../../middleware/userAuthorize');
-const { getCourseById, addCourse, getAllCourses } = require('../../controllers/courseController');
+const adminAuthorize = require('../../middleware/adminAuthorize');
+const { getCourseById, addCourse, getAllCourses, updateCourseStatus, deleteCourseById, getTopSalesCourse } = require('../../controllers/courseController');
 
-router.route('/:id').get(getCourseById)
+
+//<!-- Get Top Sales Course -->
+router.route('/top-sale').get(userAuthorize, adminAuthorize, getTopSalesCourse);
+
 router.route('/')
     //<!-- Get All Courses -->
     .get(getAllCourses)
     //<!-- Add Course -->
     .post(userAuthorize, instructorAuthorize, addCourse);
 
+router.route('/:id')
+    .get(getCourseById)
+    .patch(userAuthorize, adminAuthorize, updateCourseStatus)
+    .delete(userAuthorize, adminAuthorize, deleteCourseById);
 
-//<!-- Course Enroll Route -->
-// router.route('/enroll-in-usd').post(userAuthorize, enrollCourseByUSD);
-// router.route('/stripe/webhook').post(postStripeWebHook);
-// router.route('/enroll-in-inr').post(userAuthorize, enrollCourseByINR);
-// router.route('/razorpay-verify').post(userAuthorize, razorpayVerify);
 
 module.exports = router;

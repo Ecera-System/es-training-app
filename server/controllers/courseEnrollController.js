@@ -19,6 +19,20 @@ exports.getEnrolledCourse = async (req, res, next) => {
     }
 }
 
+// <!-- Get Student enrolled course -->
+exports.getRecentOrders = async (req, res, next) => {
+    try {
+        const result = await CourseEnroll.find()
+            .sort({ createdAt: -1 })
+            .limit(10)
+            .populate('courseId');
+            
+        res.status(200).json(result);
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 // <!-- Course Enroll with Stripe -->
 exports.enrollCourseByUSD = async (req, res, next) => {
@@ -89,36 +103,39 @@ exports.postStripeWebHook = async (req, res, next) => {
             const { studentId, courseId, firstName, lastName, email, contactNumber, address1, address2, country, city, zip, } = event.data.object.metadata;
 
             const course = await Course.findById(courseId);
-            const profile = await Profile.findById({ _id: studentId });
-            let profileId;
-
-            // <!-- If profile doesn't have -->
-            if (!profile) {
-                const result = await Profile.create({
-                    name: firstName + ' ' + lastName,
-                    userId: studentId,
-                    country: country,
-                    address1: address1,
-                    address2: address2,
-                    city: city,
-                    zip: zip,
-                });
-
-                await User.findByIdAndUpdate(
-                    { _id: studentId },
-                    {
-                        $set: { profile: result._id },
+            const user = await User.findById(studentId);
+            const profile = await Profile.updateOne(
+                { userId: studentId },
+                {
+                    $set: {
+                        name: firstName + ' ' + lastName,
+                        userId: studentId,
+                        country: country,
+                        address1: address1,
+                        address2: address2,
+                        city: city,
+                        zip: zip,
                     },
-                    { new: true }
-                );
-                profileId = await result._id
-            };
+                }
+            );
+
+            const role = user.role === 'admin' ? 'admin' : 'student';
+            await User.findByIdAndUpdate(
+                { _id: studentId },
+                {
+                    $set: {
+                        profile: result._id,
+                        role: role
+                    },
+                },
+                { new: true }
+            );
 
             // <!-- Create Course Enroll -->
             const courseEnroll = await CourseEnroll.create({
                 courseId: courseId,
                 studentId: studentId,
-                profileId: profileId || profile._id,
+                profileId: profile._id,
                 price: event.data.object.amount_total / 100, //divided 100 for converting cent to dollar
                 paymentMethod: "Stripe",
                 transactionId: event.data.object.payment_intent,
@@ -184,30 +201,33 @@ exports.razorpayVerify = async (req, res, next) => {
 
 
             const course = await Course.findById(courseId);
-            const profile = await Profile.findById({ _id: studentId });
-            let profileId;
-
-            // <!-- If profile doesn't have -->
-            if (!profile) {
-                const result = await Profile.create({
-                    name: firstName + ' ' + lastName,
-                    userId: studentId,
-                    country: country,
-                    address1: address1,
-                    address2: address2,
-                    city: city,
-                    zip: zip,
-                });
-
-                await User.findByIdAndUpdate(
-                    { _id: studentId },
-                    {
-                        $set: { profile: result._id },
+            const user = await User.findById(studentId);
+            const profile = await Profile.updateOne(
+                { userId: studentId },
+                {
+                    $set: {
+                        name: firstName + ' ' + lastName,
+                        userId: studentId,
+                        country: country,
+                        address1: address1,
+                        address2: address2,
+                        city: city,
+                        zip: zip,
                     },
-                    { new: true }
-                );
-                profileId = await result._id;
-            };
+                }
+            );
+
+            const role = user.role === 'admin' ? 'admin' : 'student';
+            await User.findByIdAndUpdate(
+                { _id: studentId },
+                {
+                    $set: {
+                        profile: result._id,
+                        role: role
+                    },
+                },
+                { new: true }
+            );
 
             // <!-- Create Course Enroll -->
             const courseEnroll = await CourseEnroll.create({

@@ -33,14 +33,10 @@ exports.signup = async (req, res) => {
         };
         const result = await User.create(user);
 
-        const profile = await Profile.create({
+        await Profile.create({
             userId: result._id,
             name: name
         });
-        await User.updateOne(
-            { _id: user._id },
-            { $set: { profile: profile._id } },
-        )
 
         res.status(200).json({ id: result._id, email });
 

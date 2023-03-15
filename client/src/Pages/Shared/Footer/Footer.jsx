@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className='w-full bg-white'>
             <div className='2xl:w-[1200px] w-11/12 mx-auto'>
                 <div className='w-full py-10 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-2 items-start gap-6'>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className='list-none flex flex-col gap-3'>
                         <li>
                             <h2 className='text-gray-600 text-xl font-medium mb-2'>
                                 Learning Program
@@ -39,7 +39,7 @@ const Footer = () => {
                             </a>
                         </li>
                     </ul>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className='list-none flex flex-col gap-3'>
                         <li>
                             <h2 className='text-gray-600 text-xl font-medium mb-2'>
                                 Ecera System
@@ -62,7 +62,7 @@ const Footer = () => {
                             </a>
                         </li>
                     </ul>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className='list-none flex flex-col gap-3'>
                         <li>
                             <h2 className='text-gray-600 text-xl font-medium mb-2'>
                                 Support
@@ -99,7 +99,7 @@ const Footer = () => {
                             </a>
                         </li>
                     </ul>
-                    <ul className='flex flex-col gap-3'>
+                    <ul className='list-none flex flex-col gap-3'>
                         <li>
                             <h2 className='text-gray-600 text-xl font-medium mb-2'>
                                 For Business
@@ -128,7 +128,7 @@ const Footer = () => {
                     <div>
                         <p className='text-sm text-gray-500'>&copy; {new Date().getFullYear()} Ecera System™. All Rights Reserved.</p>
                     </div>
-                    <ul className='flex items-center gap-x-6'>
+                    <ul className='list-none flex items-center gap-x-6'>
                         <li>
                             <a
                                 target={'blank'}

@@ -10,7 +10,7 @@ const Certificate = () => {
         <PageTitle title="Certificate" />
         <div className="my-5 w-full">
             <div className="mb-5 p-5 border-b bg-white text-gray-600 rounded-lg border">
-                <h3 className="font-semibold text-xl mb-3">Assignments</h3>
+                <h3 className="font-semibold text-xl mb-3">Certificate</h3>
                 <p className="text-content text-sm">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
                     mollitia, molestiae quas vel sint commodi repudiandae consequuntur

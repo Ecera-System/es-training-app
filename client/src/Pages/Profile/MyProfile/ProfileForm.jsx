@@ -14,7 +14,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
         birthday: birthday
     });
     const [formErrors, setFormErrors] = useState({});
-    const [profilePhoto, setProfilePhoto] = useState("");
+    const [profilePhoto, setProfilePhoto] = useState('');
     const [loading, setLoading] = useState(false);
 
 
@@ -66,7 +66,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
 
             await axios.patch(`${process.env.REACT_APP_API_V1_URL}/profile/${_id}`, {
                 ...formData,
-                avatar: profilePhoto,
+                avatar: profilePhoto || avatar,
                 update: 'info',
             }, {
                 method: 'PATCH',
@@ -97,7 +97,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
                 <div>
                     <img
                         src={profilePhoto || (avatar ?
-                            `${process.env.REACT_APP_API_V1_URL}/${avatar}` : avatarIcon
+                            (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon
                         )} alt="Avatar"
                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                         loading='lazy'
@@ -117,7 +117,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
                     />
                 </div>
             </div>
-            <ul className='w-3/5 flex flex-col gap-5'>
+            <ul className='list-none w-3/5 flex flex-col gap-5'>
                 <li>
                     <label htmlFor='name' className='text-sm text-gray-500'>Full Name</label>
                     <input

@@ -1,9 +1,42 @@
-import React from 'react';
-import { IoTimeOutline } from 'react-icons/io5';
-import { MdOutlinePlayLesson } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { contextProvider } from '../../Context/ContextProvider';
+import Spinner from '../../Pages/Shared/Spinner/Spinner';
 
 const TopSaleCourse = () => {
+    const { showToast } = useContext(contextProvider);
+    const navigate = useNavigate();
+    const [topSales, setTopSales] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_API_V1_URL}/course/top-sale`, {
+            method: 'GET',
+            headers: {
+                'Authorization': localStorage.getItem('auth_token')
+            }
+        })
+            .then(res => {
+                setTopSales(res.data);
+                setLoading(false)
+            })
+            .catch(err => {
+                showToast({
+                    succuss: '', error: err?.response?.data?.error,
+                });
+                setLoading(false);
+                if (err?.response?.data?.notExist) {
+                    localStorage.removeItem('auth_token');
+                    return navigate('/sign-in');
+                }
+            });
+    }, [topSales, showToast, navigate]);
+
+    if (loading) return <Spinner />;
+
+
     return (
         <div className="mt-5 bg-white text-gray-600 border rounded-lg">
             <div className="p-5 border-b">
@@ -11,59 +44,49 @@ const TopSaleCourse = () => {
                     Best Selling Courses
                 </h1>
             </div>
-            <div className="">
+            <div className="overflow-x-auto">
                 <table className="table-auto w-full">
-                    <thead className="bg-violet-50 text-left">
+                    <thead className="bg-violet-50 text-left uppercase">
                         <tr>
-                            <th className="text-sm py-3 pl-5">COURSES</th>
-                            <th className="text-sm py-3">SALES</th>
-                            <th className="text-sm py-3 pr-5">AMOUNT</th>
+                            <th className="text-sm py-3 px-5">COURSES</th>
+                            <th className="text-sm py-3 pr-5">SALES</th>
+                            <th className="text-sm py-3 pr-5">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='border-b'>
-                            <td className='py-3 pl-5'>
-                                <div className='flex items-center gap-5' >
-                                    <div>
-                                        <img
-                                            src="https://images.prismic.io/loco-blogs/79328284-f97b-489f-924c-eb3b17e34b56_image2.png?auto=compress%2Cformat&rect=0%2C0%2C1999%2C1124&w=1920&h=1080&ar=1.91%3A1"
-                                            alt="course"
-                                            className="w-20 h-auto"
-                                        />
-                                    </div>
-                                    <div>
-                                        <div className="mb-2">
+                        {topSales.map(({ _id, coverImage, title, sales, price }) =>
+                            <tr key={_id} className='border-b'>
+                                <td className='py-3 px-5'>
+                                    <div className='w-max flex items-center gap-5' >
+                                        <div className='w-20 h-auto'>
+                                            <img
+                                                src={process.env.REACT_APP_API_V1_URL + coverImage}
+                                                alt="course"
+                                                className="w-20 h-14 object-cover"
+                                            />
+                                        </div>
+                                        <div>
                                             <Link
-                                                className="text-base font-medium hover:text-violet-600 duration-300"
-                                                to={`#`}
+                                                className="inline-block text-base font-medium hover:text-violet-600 duration-300"
+                                                to={`/course/${_id}`}
                                             >
-                                                Full Stack Web Development
+                                                {title}
                                             </Link>
                                         </div>
-                                        <div className="flex items-center justify-between gap-5">
-                                            <div className="flex items-center gap-2">
-                                                <MdOutlinePlayLesson className='text-xl' />
-                                                <span className="text-sm">10+ Lessons</span>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <IoTimeOutline className='text-xl' />
-                                                <span className="text-sm">7hr 20min</span>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td className='py-3'>
-                                <span className="text-sm ">
-                                    sales
-                                </span>
-                            </td>
-                            <td className='py-3 pr-5'>
-                                <span className="inline-block text-sm">
-                                    ${10 * 10}
-                                </span>
-                            </td>
-                        </tr>
+                                </td>
+                                <td className='py-3 pr-5'>
+                                    <span className="w-32 inline-block text-sm">
+                                        {sales}
+                                    </span>
+                                </td>
+                                <td className='py-3 pr-5'>
+                                    <span className="w-32 inline-block text-sm">
+                                        ${price}
+                                    </span>
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>

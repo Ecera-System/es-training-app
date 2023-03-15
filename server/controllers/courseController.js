@@ -2,8 +2,11 @@ const Jimp = require("jimp");
 const path = require("path");
 const Course = require("../models/Course");
 const User = require("../models/User");
+const CouponCode = require("../models/CouponCode");
+const Certificate = require("../models/Certificate");
+const Assignment = require("../models/Assignment");
 
-// <!-- Add a new course -->
+// <!-- Get a course -->
 exports.getCourseById = async (req, res, next) => {
     try {
         const result = await Course.findById({ _id: req.params.id });
@@ -11,6 +14,58 @@ exports.getCourseById = async (req, res, next) => {
         if (!result) return res.status(404).json({ error: "No course was founded with this id." });
 
         res.status(200).json(result);
+    } catch (error) {
+        next(error)
+    }
+};
+
+// <!-- Change Course Status -->
+exports.updateCourseStatus = async (req, res, next) => {
+    try {
+        const result = await Course.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                $set: {
+                    status: req.body.status
+                }
+            },
+            { runValidators: true }
+        );
+
+        if (!result) return res.status(404).json({ error: "No course founded with this id." });
+
+        res.status(200).json({ success: 'Course status change successfully!', data: result });
+    } catch (error) {
+        next(error)
+    }
+}
+
+// <!-- Delete Course By Id -->
+exports.deleteCourseById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        // <!-- Remove course id from Users -->
+        await User.updateMany(
+            { courses: id },
+            {
+                $pull: {
+                    courses: id
+                }
+            }
+        );
+        // <!-- Delete Course Coupon Code -->
+        await CouponCode.deleteMany({ courseId: id });
+        // <!-- Delete Course Certificate -->
+        await Certificate.deleteMany({ courseId: id });
+        // <!-- Delete Course Assignment -->
+        await Assignment.deleteMany({ courseId: id });
+
+        // <!-- Delete Course -->
+        const result = await Course.findByIdAndDelete({ _id: id });
+
+        if (!result) return res.status(404).json({ error: "No course founded with this id." });
+
+        res.status(200).json({ success: 'Course delete successfully!', data: result });
     } catch (error) {
         next(error)
     }
@@ -86,6 +141,20 @@ exports.getAllCourses = async (req, res, next) => {
     try {
         const course = await Course.find({}).populate("creator.id");
         res.status(200).json(course);
+    } catch (error) {
+        next(error);
+    }
+};
+
+// <!-- Get all courses -->
+exports.getTopSalesCourse = async (req, res, next) => {
+    try {
+        const course = await Course.find()
+            .sort({ sales: -1 })
+            .limit(10);
+
+        res.status(200).json(course);
+        
     } catch (error) {
         next(error);
     }

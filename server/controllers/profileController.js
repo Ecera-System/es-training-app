@@ -22,7 +22,7 @@ exports.updateProfileById = async (req, res, next) => {
             let imagePath;
 
             // <!-- Image processing -->
-            if (avatar) {
+            if (avatar && avatar.startsWith('data:image')) {
                 const buffer = Buffer.from(
                     avatar.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
                     "base64"
@@ -51,7 +51,7 @@ exports.updateProfileById = async (req, res, next) => {
                     $set: {
                         name,
                         birthday,
-                        avatar: `/images/profile/${imagePath}`
+                        avatar: imagePath ? `/images/profile/${imagePath}` : avatar,
                     }
                 }
             );

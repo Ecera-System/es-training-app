@@ -51,6 +51,7 @@ const courseSchema = mongoose.Schema({
     },
     status: {
         type: String,
+        enum: ["pending", "active", "inactive"],
         default: 'pending',
     },
     creator: {

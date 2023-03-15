@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ul,ol {
+    list-style: inherit;
+  }
+}
+
 body {
   margin: 0;
   /* font-family: 'Poppins', sans-serif; */
@@ -142,4 +148,3 @@ code {
 }
 
 /* <!-- Spinner End --> */
-

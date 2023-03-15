@@ -67,8 +67,8 @@ const App = () => {
         <Route path="/admin/students" element={<Students />}></Route>
         <Route path="/admin/assignments" element={<Assignments />}></Route>
         <Route path="/admin/assignments/:id" element={<AssignmentDetails />}></Route>
-        <Route path="/admin/certificate" element={<Certificate />}></Route>
         <Route path="/admin/coupon-code" element={<CouponCode />}></Route>
+        <Route path="/admin/certificate" element={<Certificate />}></Route>
       </Route>
 
       <Route path="/*" element={<NotFound />}></Route>
