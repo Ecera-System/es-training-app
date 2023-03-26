@@ -47,67 +47,73 @@ const OrderList = () => {
                     Order Dashboard is a quick overview of all current orders.
                 </p>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table-auto w-full">
-                    <thead className="bg-violet-50 text-left uppercase">
-                        <tr>
-                            <th className="text-sm py-3 px-5">COURSES</th>
-                            <th className="text-sm py-3 pr-5">SALES</th>
-                            <th className="text-sm py-3 pr-5">Price</th>
-                            <th className="text-sm py-3 pr-5">INVOICE</th>
-                            <th className="text-sm py-3 pr-5">METHOD</th>
-                            <th className="text-sm py-3 pr-5">DATE</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map(({ _id, courseId, createdAt, paymentMethod, price, transactionId }) =>
-                            <tr key={_id} className='border-b'>
-                                <td className='py-3 px-5'>
-                                    <Link
-                                        to={`/course/${courseId._id}`}
-                                        className="w-[26rem] inline-block text-base font-medium hover:text-violet-600 duration-300"
-                                    >
-                                        {courseId.title}
-                                    </Link>
-                                </td>
-                                <td className='py-3 pr-5'>
-                                    <span className="w-max inline-block text-sm">
-                                        {courseId.sales}
-                                    </span>
-                                </td>
-                                <td className='py-3 pr-5'>
-                                    <span className="w-max inline-block text-sm font-medium">
-                                        ${price}
-                                    </span>
-                                </td>
-                                <td className='py-3 pr-5'>
-                                    <span className="w-max inline-block text-sm font-medium">
-                                        {transactionId}
-                                    </span>
-                                </td>
-                                <td className='py-3 pr-5'>
-                                    <span className="w-max inline-block text-sm">
-                                        {paymentMethod}
-                                    </span>
-                                </td>
-                                <td className='py-3 pr-5'>
-                                    <span className="w-max inline-block text-sm">
-                                        {moment(createdAt).format('DD-MM-YYYY')}
-                                    </span>
-                                </td>
+            {orders.length !== 0 ? <>
+                <div className="overflow-x-auto">
+                    <table className="table-auto w-full">
+                        <thead className="bg-violet-50 text-left uppercase">
+                            <tr>
+                                <th className="text-sm py-3 px-5">COURSES</th>
+                                <th className="text-sm py-3 pr-5">SALES</th>
+                                <th className="text-sm py-3 pr-5">Price</th>
+                                <th className="text-sm py-3 pr-5">INVOICE</th>
+                                <th className="text-sm py-3 pr-5">METHOD</th>
+                                <th className="text-sm py-3 pr-5">DATE</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
-            </div>
-            <div className="text-center py-5">
-                <Link
-                    className="inline-block py-2.5 px-6 bg-slate-800 hover:bg-slate-900 duration-300 text-white rounded"
-                    to="/dashboard/orders"
-                >
-                    View All Orders
-                </Link>
-            </div>
+                        </thead>
+                        <tbody>
+                            {orders.map(({ _id, courseId, createdAt, paymentMethod, price, transactionId }) =>
+                                <tr key={_id} className='border-b'>
+                                    <td className='py-3 px-5'>
+                                        <Link
+                                            to={`/course/${courseId._id}`}
+                                            className="w-[26rem] inline-block text-base font-medium hover:text-violet-600 duration-300"
+                                        >
+                                            {courseId.title}
+                                        </Link>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <span className="w-max inline-block text-sm">
+                                            {courseId.sales}
+                                        </span>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <span className="w-max inline-block text-sm font-medium">
+                                            ${price}
+                                        </span>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <span className="w-max inline-block text-sm font-medium">
+                                            {transactionId}
+                                        </span>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <span className="w-max inline-block text-sm">
+                                            {paymentMethod}
+                                        </span>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <span className="w-max inline-block text-sm">
+                                            {moment(createdAt).format('DD-MM-YYYY')}
+                                        </span>
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="text-center py-5">
+                    <Link
+                        className="inline-block py-2.5 px-6 bg-slate-800 hover:bg-slate-900 duration-300 text-white rounded"
+                        to="/dashboard/orders"
+                    >
+                        View All Orders
+                    </Link>
+                </div>
+            </> :
+                <div className='mt-20 w-full grid place-items-center'>
+                    <p className='md:text-3xl text-xl font-medium text-gray-400'>Here is no current orders!</p>
+                </div>
+            }
         </div>
     );
 };

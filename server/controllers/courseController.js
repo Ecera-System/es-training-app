@@ -95,11 +95,11 @@ exports.addCourse = async (req, res, next) => {
 
             imagePath = `${Date.now()}-${Math.round(Math.random() * 1e9)}.png`;
             try {
-                const cachedJpegDecoder = Jimp.decoders['image/jpeg']
-                Jimp.decoders['image/jpeg'] = (data) => {
-                    const userOpts = { maxMemoryUsageInMB: 1024 }
-                    return cachedJpegDecoder(data, userOpts)
-                }
+                // const cachedJpegDecoder = Jimp.decoders['image/jpeg']
+                // Jimp.decoders['image/jpeg'] = (data) => {
+                //     const userOpts = { maxMemoryUsageInMB: 1024 }
+                //     return cachedJpegDecoder(data, userOpts)
+                // }
                 const jimpResp = await Jimp.read(buffer);
                 jimpResp.resize(600, Jimp.AUTO)
                     .write(

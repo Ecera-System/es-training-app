@@ -2,7 +2,7 @@ import React from 'react';
 import { BsJournalCode } from 'react-icons/bs';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { MdOutlineAssignment } from 'react-icons/md';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useGetProfile from '../../API/useGetProfile';
 import avatarIcon from '../../Images/Nav/avatar.png'
 import Spinner from '../Shared/Spinner/Spinner';
@@ -39,28 +39,29 @@ const Sidebar = () => {
                 </p>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/profile'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    end
                 >
                     <FiUser className='text-lg' />My Profile
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/profile/course'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <BsJournalCode className='text-lg' />Course
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/profile/assignments'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <MdOutlineAssignment className='text-lg' />Assignments
-                </Link>
+                </NavLink>
             </li>
             {/* <li>
                 <Link

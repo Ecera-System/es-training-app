@@ -1,13 +1,13 @@
 import React from 'react';
 import { IoCartSharp } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const CartIcon = () => {
     const cartStorage = JSON.parse(localStorage.getItem('cartItem'));
 
     return (
         <div className='grid place-items-center'>
-            <Link
+            <NavLink
                 to='/cart'
                 className='inline-block hover:text-violet-500 duration-200 relative'
             >
@@ -15,7 +15,7 @@ const CartIcon = () => {
                 <p className='absolute -top-2 left-5 px-1 text-xs rounded bg-violet-600 text-white flex justify-center items-center'>
                     {cartStorage?.length}
                 </p>
-            </Link>
+            </NavLink>
         </div>
     );
 };

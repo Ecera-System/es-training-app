@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  ul,ol {
+
+  ul,
+  ol {
     list-style: inherit;
   }
 }
@@ -33,6 +35,8 @@ code {
   border-radius: 0.5rem;
 }
 
+
+
 /* <!-- Nav items hover effect Start --> */
 .hover-border::after {
   content: "";
@@ -47,6 +51,25 @@ code {
 
 .hover-border:hover::after {
   width: 100%;
+}
+
+
+.active {
+  color: #7C3AED;
+}
+
+.active.hover-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #7C3AED;
+}
+
+.active.side-nav {
+  background: #EDE9FE;
 }
 
 /* <!-- Nav items hover effect End--> */

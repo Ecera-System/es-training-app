@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HiBars3CenterLeft } from 'react-icons/hi2';
+import { VscClose } from 'react-icons/vsc';
 import navLogo from '../../../Images/ecera-system-logo.png';
 import DesktopView from './DesktopView';
+import MobileView from './MobileView';
 
 const Header = () => {
     const [scroll, setScroll] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
 
     window.addEventListener('scroll', () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -34,7 +38,27 @@ const Header = () => {
 
                     {/* <== == == == Left Menu items == == == ==> */}
                     {/* <!-- Desktop view --> */}
-                    <DesktopView/>
+                    <DesktopView />
+
+                    {/* <!-- Mobile view --> */}
+                    <div className='lg:hidden relative grid place-items-center'>
+                        <button
+                            onClick={() => setOpenMenu(!openMenu)}
+                            className='w-10 h-10 relative'
+                        >
+                            <VscClose
+                                className={`absolute inset-0 text-[40px] leading-none duration-300 ${openMenu ? 'opacity-100 visible rotate-0' : 'opacity-0 invisible rotate-90'}`}
+                            />
+                            <HiBars3CenterLeft
+                                className={`absolute inset-0 text-[40px] leading-none duration-300 ${openMenu ? 'opacity-0 invisible rotate-90' : 'opacity-100 visible rotate-0'}`}
+                            />
+                        </button>
+
+                        <MobileView
+                            openMenu={openMenu}
+                            setOpenMenu={setOpenMenu}
+                        />
+                    </div>
 
                 </div>
             </nav>

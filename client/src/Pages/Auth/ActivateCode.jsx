@@ -69,7 +69,11 @@ const ActivateCode = ({ openModal, setOpenModal }) => {
     };
 
     return (<>
-        <div className={`fixed inset-0 grid place-items-center ${openModal ? 'bg-black/60 opacity-100 visible z-50' : 'opacity-0 invisible -z-10'}`}>
+        <div
+            className={`fixed inset-0 grid place-items-center 
+                ${openModal ? 'bg-black/60 opacity-100 visible z-50' : 'opacity-0 invisible -z-10'}
+            `}
+        >
             <div className={`sm:w-[34rem] w-11/12 h-auto bg-white rounded-md ${openModal ? 'scale-100' : 'scale-0'} duration-300 relative`}>
                 <div className={`absolute inset-0 bg-white duration-200 grid place-items-center ${success ? 'scale-100' : 'scale-0'}`}>
                     <div>

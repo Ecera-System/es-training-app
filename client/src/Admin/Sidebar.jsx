@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiUsers } from 'react-icons/fi';
 import { RxDashboard } from 'react-icons/rx';
 import { MdOutlineAssignment } from 'react-icons/md';
 import { SlBadge } from 'react-icons/sl';
-import { BsJournalCode } from 'react-icons/bs';
+import { BsFillJournalBookmarkFill, BsJournalCode } from 'react-icons/bs';
 import { RiCoupon2Line } from 'react-icons/ri';
 import { IoSettingsOutline } from 'react-icons/io5';
 
@@ -30,60 +30,71 @@ const Sidebar = () => {
                 </div>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    end
                 >
                     <RxDashboard className='text-lg' />Dashboard
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin/all-courses'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <BsJournalCode className='text-lg' />All Courses
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin/students'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <FiUsers className='text-lg' />Students
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin/assignments'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <MdOutlineAssignment className='text-lg' />Assignments
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin/coupon-code'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <RiCoupon2Line className='text-lg' />Coupon Code
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
                     to='/admin/certificate'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <SlBadge className='text-lg' />Certificate
-                </Link>
+                </NavLink>
             </li>
             <li>
-                <Link
+                <NavLink
+                    to='/admin/book-counselling'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    end
+                >
+                    <BsFillJournalBookmarkFill className='text-lg' />Book Counselling
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
                     to='/admin'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    end
                 >
                     <IoSettingsOutline className='text-lg' />Settings
-                </Link>
+                </NavLink>
             </li>
             <li>
                 <button

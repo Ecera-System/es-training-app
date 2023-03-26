@@ -10,7 +10,7 @@ import Spinner from '../Shared/Spinner/Spinner';
 import PageTitle from '../Shared/PageTitle';
 
 const SignIn = () => {
-    const { showToast } = useContext(contextProvider);
+    const { showToast, setIsLoggedIn } = useContext(contextProvider);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [formErrors, setFormErrors] = useState({});
@@ -73,6 +73,7 @@ const SignIn = () => {
                         showToast({
                             succuss: res?.data?.succuss, error: '',
                         });
+                        setIsLoggedIn(true);
                         navigate(from, { replace: true });
                     };
                 })
@@ -88,7 +89,7 @@ const SignIn = () => {
     };
 
     return (<>
-        <PageTitle title="Sign In"/>
+        <PageTitle title="Sign In" />
         <div
             style={{ backgroundImage: `url(${auth_bg})` }}
             className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'

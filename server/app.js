@@ -25,6 +25,7 @@ app.use('/api/v1/course-enroll', require('./routes/v1/courseEnrollRoute'));
 app.use('/api/v1/assignment', require('./routes/v1/assignmentRoute'));
 app.use('/api/v1/certificate', require('./routes/v1/certificateRoute'));
 app.use('/api/v1/coupon-code', require('./routes/v1/couponCodeRoute'));
+app.use('/api/v1/book-counselling', require('./routes/v1/bookCounsellingRoute'));
 
 
 app.all('*', (req, res) => {

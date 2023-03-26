@@ -24,7 +24,7 @@ const Home = () => {
                     Why Join This Full Stack MERN Developer Program?
                 </h1>
                 <div className='grid grid-cols-4 gap-10 mt-16'>
-                    <div className='border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
+                    <div className='hover:-translate-y-2 border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
                         <div className='w-max mx-auto border border-violet-600 group-hover/card:border-white bg-white p-6 rounded-full'>
                             <GiTrophy className='text-5xl text-violet-700' />
                         </div>
@@ -35,7 +35,7 @@ const Home = () => {
                             2021 witnessed a 21% jump in professionals. Earn an average salary of INR 6.7 LPA.
                         </p>
                     </div>
-                    <div className='border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
+                    <div className='hover:-translate-y-2 border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
                         <div className='w-max mx-auto border border-violet-600 group-hover/card:border-white bg-white p-6 rounded-full'>
                             <GiTrophy className='text-5xl text-violet-700' />
                         </div>
@@ -46,7 +46,7 @@ const Home = () => {
                             2021 witnessed a 21% jump in professionals. Earn an average salary of INR 6.7 LPA.
                         </p>
                     </div>
-                    <div className='border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
+                    <div className='hover:-translate-y-2 border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
                         <div className='w-max mx-auto border border-violet-600 group-hover/card:border-white bg-white p-6 rounded-full'>
                             <GiTrophy className='text-5xl text-violet-700' />
                         </div>
@@ -57,7 +57,7 @@ const Home = () => {
                             2021 witnessed a 21% jump in professionals. Earn an average salary of INR 6.7 LPA.
                         </p>
                     </div>
-                    <div className='border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
+                    <div className='hover:-translate-y-2 border border-violet-600 group/card hover:bg-violet-600 duration-300 rounded-xl p-7'>
                         <div className='w-max mx-auto border border-violet-600 group-hover/card:border-white bg-white p-6 rounded-full'>
                             <GiTrophy className='text-5xl text-violet-700' />
                         </div>

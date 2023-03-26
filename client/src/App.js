@@ -22,6 +22,12 @@ import StripeCheckoutMsg from "./Pages/Course/Checkout/StripeCheckoutMsg";
 import Courses from "./Pages/Course/Courses";
 import Cart from "./Pages/Cart/Cart";
 import MyCourse from "./Pages/Profile/ProfileCourse/MyCourse";
+import FeaturedStudents from "./Pages/FeaturedStudents/FeaturedStudents";
+import Placements from "./Pages/Placements/Placements";
+import Syllabus from "./Pages/Syllabus/Syllabus";
+import Overview from "./Pages/Overview/Overview";
+import ContactUs from "./Pages/ContactUs/ContactUs";
+import BookCounselling from "./Admin/BookCounselling/BookCounselling";
 
 const App = () => {
   return (<>
@@ -31,6 +37,10 @@ const App = () => {
       <Route path="/sign-in" element={<SignIn />}></Route>
       <Route path="/sign-up" element={<SignUp />}></Route>
 
+      <Route path="/overview" element={<Overview />}></Route>
+      <Route path="/featured-students" element={<FeaturedStudents />}></Route>
+      <Route path="/placements" element={<Placements />}></Route>
+      <Route path="/syllabus" element={<Syllabus />}></Route>
       <Route path="/course" element={<Courses />}></Route>
       <Route path="/course/:id" element={<CourseDetails />}></Route>
       <Route path="/course/checkout/:id" element={
@@ -44,6 +54,7 @@ const App = () => {
           <Cart />
         </RequireAuth>
       }></Route>
+      <Route path="/contact" element={<ContactUs />}></Route>
 
       <Route path="/profile" element={
         <RequireAuth>
@@ -69,6 +80,7 @@ const App = () => {
         <Route path="/admin/assignments/:id" element={<AssignmentDetails />}></Route>
         <Route path="/admin/coupon-code" element={<CouponCode />}></Route>
         <Route path="/admin/certificate" element={<Certificate />}></Route>
+        <Route path="/admin/book-counselling" element={<BookCounselling />}></Route>
       </Route>
 
       <Route path="/*" element={<NotFound />}></Route>
