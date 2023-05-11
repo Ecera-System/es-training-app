@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
-import avatar from '../../../Images/Nav/avatar.png';
 import CartIcon from './CartIcon';
 import NotificationIcon from './NotificationIcon';
 import useGetProfile from '../../../API/useGetProfile';
@@ -31,7 +30,7 @@ const HeaderProfile = () => {
             >
                 <img
                     src={profileData?.avatar ?
-                        (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : avatar
+                        (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : '/Images/Nav/avatar.png'
                     }
                     alt="avatar"
                     className='w-10 h-10 max-w-full object-cover'
@@ -47,7 +46,7 @@ const HeaderProfile = () => {
                     <div className='w-20 h-20 mx-auto border-2 border-violet-600 rounded-full overflow-hidden'>
                         <img
                             src={profileData?.avatar ?
-                                (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : avatar
+                                (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : '/Images/Nav/avatar.png'
                             }
                             alt="avatar"
                             className='w-20 h-20 max-w-full object-cover'

@@ -4,7 +4,6 @@ import { FiLogOut, FiUser } from 'react-icons/fi';
 import { MdOutlineAssignment } from 'react-icons/md';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import useGetProfile from '../../API/useGetProfile';
-import avatarIcon from '../../Images/Nav/avatar.png'
 import Spinner from '../Shared/Spinner/Spinner';
 
 const Sidebar = () => {
@@ -26,7 +25,7 @@ const Sidebar = () => {
             <li className='pt-2 pb-6 border-b mb-4'>
                 <div className='flex justify-center'>
                     <img
-                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon}
+                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'}
                         alt="Avatar"
                         className='w-20 h-20 max-w-full object-cover rounded-full'
                     />

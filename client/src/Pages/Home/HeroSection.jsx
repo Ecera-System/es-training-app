@@ -13,8 +13,8 @@ const HeroSection = () => {
 
     return (
         <section className='py-10 w-full h-auto flex justify-center'>
-            <div className='2xl:w-[1200px] w-[90%] grid grid-cols-2 items-center'>
-                <div>
+            <div className='2xl:w-[1280px] w-[90%] grid lg:grid-cols-2 grid-cols-1 items-center lg:gap-0 gap-10'>
+                <div className='lg:text-start text-center'>
                     <h1 className='text-4xl font-semibold text-violet-600 my-5'>
                         Fullstack <span className='bg-violet-600 text-white'>MERN</span> Developer
                     </h1>
@@ -28,12 +28,12 @@ const HeroSection = () => {
                     </p>
                     <Link
                         to='/sign-up'
-                        className='w-max px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md shadow-[0_3px_15px_rgb(124,58,237,0.5)]'
+                        className='w-max lg:mx-0 mx-auto px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md shadow-[0_3px_15px_rgb(124,58,237,0.5)]'
                     >
                         Get Started
                         <HiArrowNarrowRight className='text-2xl font-bold' />
                     </Link>
-                    <div className='flex items-center gap-2 mt-10'>
+                    <div className='flex items-center lg:justify-start justify-center gap-2 lg:mt-10 mt-8'>
                         <span className='text-4xl font-semibold'>
                             5.0
                         </span>
@@ -48,11 +48,11 @@ const HeroSection = () => {
                 </div>
                 <div>
                     <BookAFreeCounselling />
-                    <div className='flex justify-end mt-20'>
-                        <form onSubmit={handleBrochure} className='w-[30rem] p-8 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-6 relative'>
+                    <div className='flex lg:justify-end justify-center lg:mt-20 mt-10'>
+                        <form onSubmit={handleBrochure} className='md:w-[30rem] w-full sm:p-8 p-6 pt-12 rounded-md bg-violet-50 text-base text-gray-500 flex flex-col gap-6 relative'>
                             <div className='absolute -top-6 left-0 w-full flex justify-center'>
                                 <div
-                                    className='px-8 py-3 text-base font-medium bg-slate-700 hover:bg-slate-800 duration-300 text-white flex items-center gap-2 rounded-md cursor-pointer shadow-md'
+                                    className='px-8 py-3 sm:text-base text-sm font-medium bg-slate-700 hover:bg-slate-800 duration-300 text-white flex items-center gap-2 rounded-md cursor-pointer shadow-md'
                                 >
                                     Download Brochure
                                 </div>
@@ -67,10 +67,10 @@ const HeroSection = () => {
                             </div>
                             <div>
                                 <label htmlFor='phone' className="px-1 text-gray-500">Phone</label>
-                                <div className='flex items-center gap-5'>
+                                <div className='flex sm:flex-row flex-col items-center gap-5'>
                                     <select
                                         name="country"
-                                        className='block px-3 py-2.5 rounded-lg text-sm bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none'
+                                        className='block sm:w-max w-full px-3 py-2.5 rounded-lg text-sm bg-white border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none'
                                     >
                                         <option value="">Select Country</option>
                                         <option value="+91">

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiBars3CenterLeft } from 'react-icons/hi2';
 import { VscClose } from 'react-icons/vsc';
-import navLogo from '../../../Images/ecera-system-logo.png';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
 
@@ -10,6 +9,7 @@ const Header = () => {
     const [scroll, setScroll] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
 
+    // <!-- Navbar Scroll Effect -->
     window.addEventListener('scroll', () => {
         let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > 48) {
@@ -22,15 +22,17 @@ const Header = () => {
 
     return (
         <header className={`w-full h-[76px] text-gray-600`}>
-            <nav className={`w-full backdrop-blur-sm bg-white/50 ${scroll ? 'fixed top-0 left-0 right-0 z-40 shadow' : 'relative z-40'}`}>
-                <div className='2xl:w-[1200px] xl:w-full mx-auto flex items-center justify-between 2xl:px-0 lg:px-14 sm:px-6 px-3 py-2'>
+            <nav
+                className={`w-full backdrop-blur-sm bg-white/70 ${scroll ? 'fixed top-0 left-0 right-0 z-40 shadow' : 'relative z-40'}`}
+            >
+                <div className='2xl:w-[1280px] xl:w-full mx-auto flex items-center justify-between 2xl:px-0 lg:px-14 sm:px-6 px-3 py-2'>
 
                     {/* <== == == == Right Logo == == == ==> */}
                     <div>
                         <Link to={'/'}>
                             <img
                                 className='w-14 h-14'
-                                src={navLogo}
+                                src="/Images/ecera-system-logo.png"
                                 alt="ecera-system-logo"
                             />
                         </Link>

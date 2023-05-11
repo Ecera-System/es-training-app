@@ -2,7 +2,6 @@ import React from 'react';
 import Header from '../Shared/Header/Header';
 import PageTitle from '../Shared/PageTitle';
 import Footer from '../Shared/Footer/Footer';
-import hpImg from '../../Images/hp-img-closer-bg.png';
 
 const ContactUs = () => {
     return (<>
@@ -10,9 +9,9 @@ const ContactUs = () => {
         <Header />
         <div
             className='pb-20 pt-44 lg:mt-10 bg-no-repeat bg-cover'
-            style={{ backgroundImage: `url(${hpImg})` }}
+            style={{ backgroundImage: `url(/Images/hp-img-closer-bg.png)` }}
         >
-            <section className='2xl:w-[1200px] xl:w-4/5 lg:w-11/12 md:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between'>
+            <section className='2xl:w-[1280px] xl:w-4/5 lg:w-11/12 md:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between'>
                 <div className='lg:w-1/2 w-full lg:text-start text-center'>
                     <h2 className='text-4xl text-blue-900'>
                         Questions? We'll put you on the right path.

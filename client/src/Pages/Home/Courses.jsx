@@ -10,16 +10,16 @@ const Courses = () => {
 
     return (
         <section className='py-20'>
-            <div className='2xl:w-[1200px] w-[90%] mx-auto text-gray-600'>
-                <div className='flex items-center justify-between'>
-                    <div>
+            <div className='2xl:w-[1280px] w-[90%] mx-auto text-gray-600'>
+                <div className='flex lg:flex-row flex-col items-center lg:justify-between justify-center gap-6 lg:gap-0'>
+                    <div className='lg:text-start text-center'>
                         <h4 className='text-lg font-medium text-violet-600'>
                             What’s New
                         </h4>
                         <h1 className='text-4xl font-semibold text-gray-700 py-3'>
                             Featured Courses
                         </h1>
-                        <p className='w-3/5 text-base text-gray-500'>
+                        <p className='lg:w-3/5 text-base text-gray-500'>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget aenean accumsan bibendum gravida maecenas augue elementum et neque. Suspendisse imperdiet.
                         </p>
                     </div>
@@ -37,7 +37,7 @@ const Courses = () => {
                         <div className="loader1 border-[#7C3AED_!important]" />
                     </div>
                     :
-                    <div className='grid grid-cols-4 gap-5 my-10'>
+                    <div className='grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5 my-10'>
                         {
                             coursesData.slice(0, 4).map(data =>
                                 <div

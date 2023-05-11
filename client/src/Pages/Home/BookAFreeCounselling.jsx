@@ -87,10 +87,10 @@ const BookAFreeCounselling = () => {
 
 
     return (<>
-        <div className='flex justify-end'>
+        <div className='flex lg:justify-end justify-center'>
             <button
                 onClick={() => setIsBooking(true)}
-                className='px-8 py-3 text-base font-medium bg-[#FFD500] text-black hover:shadow-[0_3px_15px_rgb(255,213,0.5)] duration-300 flex items-center gap-2 rounded-full'
+                className='sm:px-8 px-3 py-3 sm:text-base text-sm font-medium bg-[#FFD500] text-black hover:shadow-[0_3px_15px_rgb(255,213,0.5)] duration-300 flex items-center gap-2 rounded-full'
             >
                 Book a Free Counselling Session Now
                 <HiArrowNarrowRight className='text-2xl font-bold' />
@@ -99,7 +99,7 @@ const BookAFreeCounselling = () => {
 
         {isBooking &&
             <div className='fixed inset-0 z-50 bg-black/60 grid place-items-center overflow-y-auto py-5'>
-                <div className='w-[35rem] bg-white p-10 rounded-lg relative'>
+                <div className='md:w-[35rem] w-11/12 bg-white md:p-10 p-6 rounded-lg relative'>
 
                     {/* <!-- Close btn --> */}
                     <div

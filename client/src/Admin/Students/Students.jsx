@@ -4,7 +4,6 @@ import { GoLocation } from "react-icons/go";
 import { useNavigate } from 'react-router-dom';
 import useGetAllStudents from '../../API/useGetAllStudents';
 import PageTitle from '../../Pages/Shared/PageTitle';
-import avatar from '../../Images/Nav/avatar.png'
 import Spinner from '../../Pages/Shared/Spinner/Spinner';
 
 const Students = () => {
@@ -39,7 +38,7 @@ const Students = () => {
                                         className="w-20 h-20 max-w-full object-cover rounded-full mx-auto"
                                         src={data?.profileId?.avatar ?
                                             process.env.REACT_APP_API_V1_URL + '/' + data?.profileId?.avatar
-                                            : avatar
+                                            : '/Images/Nav/avatar.png'
                                         }
                                         alt="user"
                                     />

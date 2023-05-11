@@ -9,7 +9,6 @@ import PageTitle from '../../Shared/PageTitle';
 import Spinner from '../../Shared/Spinner/Spinner';
 import ApplyCoupon from './ApplyCoupon';
 import Summary from './Summary';
-import eceraLogo from '../../../Images/ecera-system-logo.png';
 import useGetCourseById from '../../../API/useGetCourseById';
 
 // <-- Razorpay payment API -->
@@ -169,7 +168,7 @@ const Checkout = () => {
                         amount: res.data.amount,
                         currency: res.data.currency,
                         description: title,
-                        image: eceraLogo,
+                        image: '/Images/ecera-system-logo.png',
                         order_id: res.data.id,
                         handler: async function (response) {
                             return setRazorpayRes({

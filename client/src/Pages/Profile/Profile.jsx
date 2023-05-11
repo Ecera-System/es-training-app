@@ -8,7 +8,7 @@ const Profile = () => {
     return (<>
         <Header />
         <div className="pb-20 w-full h-auto bg-violet-50">
-            <div className="2xl:w-[1200px] w-full h-full mx-auto flex items-start sm:flex-row flex-col gap-8">
+            <div className="2xl:w-[1280px] w-full h-full mx-auto flex items-start sm:flex-row flex-col gap-8">
                 <div className='lg:block hidden sticky top-[72px] left-0 w-1/5 h-full border bg-white'>
                     <Sidebar />
                 </div>

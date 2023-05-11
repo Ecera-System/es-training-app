@@ -49,7 +49,7 @@ const CourseDetails = () => {
             className='w-full h-auto bg-no-repeat bg-center bg-cover'
         >
             <div className='py-16 bg-black/60'>
-                <div className='2xl:w-[1200px] w-[90%] mx-auto text-white flex justify-between'>
+                <div className='2xl:w-[1280px] w-[90%] mx-auto text-white flex justify-between'>
                     <div className='w-3/5'>
                         <p className='text-sm font-light capitalize'>
                             {category}
@@ -113,7 +113,7 @@ const CourseDetails = () => {
             </div>
         </section>
         <section className='py-20'>
-            <div className='2xl:w-[1200px] w-[80%] mx-auto h-auto flex justify-start'>
+            <div className='2xl:w-[1280px] w-[80%] mx-auto h-auto flex justify-start'>
                 <div className='w-3/5'>
                     <h1 className='text-4xl font-semibold text-violet-600 mb-10'>
                         Overview

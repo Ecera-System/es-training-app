@@ -1,61 +1,50 @@
 import React from 'react';
 import Slider from 'react-slick';
-import html from '../../Images/tech-icon/html-5.png'
-import css from '../../Images/tech-icon/css-3.png'
-import bootstrap from '../../Images/tech-icon/bootstrap.png'
-import tailwind from '../../Images/tech-icon/tailwind.png'
-import javascript from '../../Images/tech-icon/javascript.png'
-import react from '../../Images/tech-icon/react.png'
-import nodejs from '../../Images/tech-icon/nodejs.png'
-import redux from '../../Images/tech-icon/redux.png'
-import expressjs from '../../Images/tech-icon/expressjs.png'
-import mongodb from '../../Images/tech-icon/mongodb.png'
-import git from '../../Images/tech-icon/git.png'
 
 const TechIcon = () => {
     const data = [
         {
-            img: html,
+            img: '/Images/tech-icon/html-5.png',
             title: 'HTML'
         },
         {
-            img: css,
+            img: '/Images/tech-icon/css-3.png',
             title: 'CSS'
         },
         {
-            img: bootstrap,
+            img: '/Images/tech-icon/bootstrap.png',
             title: 'Bootstrap'
         },
         {
-            img: tailwind,
+            img: '/Images/tech-icon/tailwind.png',
             title: 'TailwindCSS'
         },
         {
-            img: javascript,
+            img: '/Images/tech-icon/javascript.png',
             title: 'JavaScript'
         },
         {
-            img: react,
+            img: '/Images/tech-icon/react.png',
             title: 'React.js'
         },
         {
-            img: nodejs,
+            img: '/Images/tech-icon/nodejs.png',
             title: 'Node.js'
         },
         {
-            img: redux,
+            img: '/Images/tech-icon/redux.png',
             title: 'Redux'
         },
         {
-            img: expressjs,
+            img: '/Images/tech-icon/expressjs.png',
             title: 'Express.js'
         },
         {
-            img: mongodb,
+            img: '/Images/tech-icon/mongodb.png',
             title: 'MongoDB'
         },
         {
-            img: git,
+            img: '/Images/tech-icon/git.png',
             title: 'Git'
         },
     ];
@@ -72,9 +61,16 @@ const TechIcon = () => {
         pauseOnHover: false,
         responsive: [
             {
-                breakpoint: 1280,
+                breakpoint: 1200,
                 settings: {
-                    slidesToShow: 5,
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 1023,
+                settings: {
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                 }
             },
@@ -97,7 +93,7 @@ const TechIcon = () => {
 
     return (
         <section className='pb-16'>
-            <div className='2xl:w-[1200px] sm:w-11/12 w-4/5 mx-auto text-center'>
+            <div className='2xl:w-[1280px] sm:w-11/12 w-4/5 mx-auto text-center'>
                 <div className='w-full'>
                     <Slider {...settings}>
                         {

@@ -15,7 +15,7 @@ const Courses = () => {
     return (<>
         <PageTitle title="Courses" />
         <Header />
-        <div className='2xl:w-[1200px] w-[90%] mx-auto h-auto'>
+        <div className='2xl:w-[1280px] w-[90%] mx-auto h-auto'>
             <div className='grid grid-cols-4 gap-5 my-10'>
                 {
                     coursesData.map(data =>

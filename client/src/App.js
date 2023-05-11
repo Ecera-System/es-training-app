@@ -22,12 +22,17 @@ import StripeCheckoutMsg from "./Pages/Course/Checkout/StripeCheckoutMsg";
 import Courses from "./Pages/Course/Courses";
 import Cart from "./Pages/Cart/Cart";
 import MyCourse from "./Pages/Profile/ProfileCourse/MyCourse";
-import FeaturedStudents from "./Pages/FeaturedStudents/FeaturedStudents";
+import SuccessStories from "./Pages/SuccessStories/SuccessStories";
 import Placements from "./Pages/Placements/Placements";
-import Syllabus from "./Pages/Syllabus/Syllabus";
-import Overview from "./Pages/Overview/Overview";
+import Projects from "./Pages/Projects/Projects";
+import Programs from "./Pages/Programs/Programs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import BookCounselling from "./Admin/BookCounselling/BookCounselling";
+import MERNStackWebDevelopment from "./Pages/Programs/MERNStackWebDevelopment";
+import BackendDevelopment from "./Pages/Programs/BackendDevelopment";
+import FrontendDevelopment from "./Pages/Programs/FrontendDevelopment";
+import ReactDevelopment from "./Pages/Programs/ReactDevelopment";
+import NodeJsDevelopment from "./Pages/Programs/NodeJsDevelopment";
 
 const App = () => {
   return (<>
@@ -37,10 +42,16 @@ const App = () => {
       <Route path="/sign-in" element={<SignIn />}></Route>
       <Route path="/sign-up" element={<SignUp />}></Route>
 
-      <Route path="/overview" element={<Overview />}></Route>
-      <Route path="/featured-students" element={<FeaturedStudents />}></Route>
+      <Route path="/programs" element={<Programs />}></Route>
+      <Route path="/programs/mern-stack-web-development" element={<MERNStackWebDevelopment />}></Route>
+      {/* <Route path="/programs/backend-development" element={<BackendDevelopment />}></Route>
+      <Route path="/programs/frontend-development" element={<FrontendDevelopment />}></Route>
+      <Route path="/programs/react-development" element={<ReactDevelopment />}></Route>
+      <Route path="/programs/node-js-development" element={<NodeJsDevelopment />}></Route> */}
+
+      <Route path="/projects" element={<Projects />}></Route>
+      <Route path="/success-stories" element={<SuccessStories />}></Route>
       <Route path="/placements" element={<Placements />}></Route>
-      <Route path="/syllabus" element={<Syllabus />}></Route>
       <Route path="/course" element={<Courses />}></Route>
       <Route path="/course/:id" element={<CourseDetails />}></Route>
       <Route path="/course/checkout/:id" element={

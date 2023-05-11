@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import PageTitle from '../../Shared/PageTitle';
-import avatarIcon from '../../../Images/Nav/avatar.png';
 import useGetProfile from '../../../API/useGetProfile';
 import Spinner from '../../Shared/Spinner/Spinner';
 import ProfileForm from './ProfileForm';
@@ -39,7 +38,7 @@ const MyProfile = () => {
                             <div className='w-2/5 flex flex-col items-center gap-5'>
                                 <div>
                                     <img
-                                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon} 
+                                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'}
                                         alt="Avatar"
                                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                                         loading='lazy'

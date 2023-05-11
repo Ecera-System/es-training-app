@@ -2,9 +2,9 @@ import React from 'react';
 import Header from '../Shared/Header/Header';
 import PageTitle from '../Shared/PageTitle';
 
-const Overview = () => {
+const Programs = () => {
     return (<>
-        <PageTitle title="Overview" />
+        <PageTitle title="Programs" />
         <Header />
         <div className='w-full h-[30rem] grid place-items-center'>
             <div className='text-gray-400 text-center uppercase'>
@@ -19,4 +19,4 @@ const Overview = () => {
     </>);
 };
 
-export default Overview;
+export default Programs;

@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { contextProvider } from '../../../Context/ContextProvider';
-import avatarIcon from '../../../Images/Nav/avatar.png';
 import Spinner from '../../Shared/Spinner/Spinner';
 
 const ProfileForm = ({ profileData, setEditProfile }) => {
@@ -97,7 +96,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
                 <div>
                     <img
                         src={profilePhoto || (avatar ?
-                            (process.env.REACT_APP_API_V1_URL + avatar) : avatarIcon
+                            (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'
                         )} alt="Avatar"
                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                         loading='lazy'

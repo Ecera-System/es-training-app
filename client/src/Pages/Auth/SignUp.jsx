@@ -4,8 +4,6 @@ import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineWarning } from 'react-icons/ai';
 import { contextProvider } from '../../Context/ContextProvider';
-import auth_bg from '../../Images/Auth/auth_bg.jpg';
-import login_img from '../../Images/Auth/login-img.png';
 import ActivateCode from './ActivateCode';
 import Spinner from '../Shared/Spinner/Spinner';
 import PageTitle from '../Shared/PageTitle';
@@ -112,7 +110,7 @@ const SignUp = () => {
     return (<>
         <PageTitle title="Sign Up" />
         <div
-            style={{ backgroundImage: `url(${auth_bg})` }}
+            style={{ backgroundImage: `url(/Images/Auth/auth_bg.jpg)` }}
             className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'
         >
             <div className='absolute top-10 left-5 z-50 lg:block hidden'>
@@ -125,7 +123,7 @@ const SignUp = () => {
                 </button>
             </div>
             <div className='w-full h-auto p-16 lg:block hidden'>
-                <img src={login_img} alt="" className='' />
+                <img src="/Images/Auth/login-img.png" alt="" className='' />
             </div>
             <div className='w-full lg:h-screen h-full overflow-y-auto backdrop-blur-sm bg-violet-100/10 grid place-items-center'>
                 <form

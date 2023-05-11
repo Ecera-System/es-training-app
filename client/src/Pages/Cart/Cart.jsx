@@ -20,7 +20,7 @@ const Cart = () => {
     return (<>
         <PageTitle title="Cart" />
         <Header />
-        <div className='2xl:w-[1200px] w-[90%] mx-auto h-auto'>
+        <div className='2xl:w-[1280px] w-[90%] mx-auto h-auto'>
             {cartStorage?.length !== 0 ?
                 <div className='grid grid-cols-4 gap-5 my-10'>
                     {

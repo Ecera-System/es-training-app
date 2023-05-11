@@ -10,8 +10,6 @@ const BookCounselling = () => {
 
     if (loading) return <Spinner />
 
-    console.log(bookCData);
-
 
     return (<>
         <PageTitle title='Book Counselling' />
