@@ -3,14 +3,14 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { contextProvider } from '../Context/ContextProvider';
 
-const useGetAllStudents = () => {
+const useGetAllStudents = (inputValue) => {
     const { showToast } = useContext(contextProvider);
     const [studentsData, setStudentsData] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_V1_URL}/user`, {
+        axios.get(`${process.env.REACT_APP_API_V1_URL}/profile/students?query=${inputValue}`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('auth_token')

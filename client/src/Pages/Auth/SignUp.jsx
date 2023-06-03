@@ -7,6 +7,7 @@ import { contextProvider } from '../../Context/ContextProvider';
 import ActivateCode from './ActivateCode';
 import Spinner from '../Shared/Spinner/Spinner';
 import PageTitle from '../Shared/PageTitle';
+import GoogleSignIn from './GoogleSignIn';
 
 const SignUp = () => {
     const { showToast } = useContext(contextProvider);
@@ -110,7 +111,7 @@ const SignUp = () => {
     return (<>
         <PageTitle title="Sign Up" />
         <div
-            style={{ backgroundImage: `url(/Images/Auth/auth_bg.jpg)` }}
+            style={{ backgroundImage: `url(/images/auth/auth_bg.jpg)` }}
             className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'
         >
             <div className='absolute top-10 left-5 z-50 lg:block hidden'>
@@ -235,6 +236,7 @@ const SignUp = () => {
                             Sign In
                         </Link>
                     </p>
+                    <GoogleSignIn />
                 </form>
             </div>
         </div>

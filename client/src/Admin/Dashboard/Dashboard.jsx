@@ -6,8 +6,11 @@ import TopSaleCourse from './TopSaleCourse';
 const Dashboard = () => {
     return (<>
         <PageTitle title="Admin Dashboard" />
-        <div>
+        <div className='my-5'>
+        {/* <!-- Top Sale Courses area --> */}
             <TopSaleCourse />
+
+        {/* <!-- Recent Order list area --> */}
             <OrderList />
         </div>
     </>);

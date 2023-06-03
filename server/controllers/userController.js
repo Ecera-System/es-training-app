@@ -1,10 +1,11 @@
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { google } = require('googleapis');
+const googleClient = new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID);
 const { verifyEmail } = require('../middleware/emailSender');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
-const CourseEnroll = require('../models/CourseEnroll');
 
 exports.signup = async (req, res) => {
     try {
@@ -113,8 +114,70 @@ exports.signin = async (req, res) => {
 
         res.status(200).json({
             auth_token: 'Bearer ' + token,
-            success: "Login success!"
+            success: "Login success!",
+            redirect: user.role === 'admin' ? '/admin' : '/profile/course',
         });
+
+    } catch (err) {
+        if (err) return res.status(500).json({ error: "Something went wrong!" })
+    }
+};
+
+exports.googleSignin = async (req, res) => {
+    try {
+        const { id_token } = req.body;
+        const verify = await googleClient.verifyIdToken({
+            idToken: id_token,
+            audience: process.env.GOOGLE_CLIENT_ID
+        });
+
+        const { email_verified, email, name, picture } = verify.payload;
+
+        if (!email_verified) return res.status(401).send({ error: "Email isn't verified!" });
+
+        const password = email + process.env.GOOGLE_CLIENT_SECRET;
+        const passwordHash = await bcrypt.hash(password, 12);
+
+        const user = await User.findOne({ email });
+        if (user) {
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) return res.status(401).json({ error: "Incorrect password!" });
+
+            if (user.status === 'inactive') return res.status(403).json({ error: "Your account is currently inactive" });
+            if (user.status === 'blocked') return res.status(403).json({ error: "Your account is blocked!" });
+
+            const token = jwt.sign({ id: user._id }, process.env.ACCESS_TOKEN_SECRET);
+
+            res.status(200).json({
+                auth_token: 'Bearer ' + token,
+                success: "Login success!",
+                redirect: user.role === 'admin' ? '/admin' : '/profile/course',
+            });
+        }
+        else {
+            const user = {
+                name,
+                email,
+                password: passwordHash,
+                status: 'active',
+                verificationCode: null,
+            };
+            const result = await User.create(user);
+
+            await Profile.create({
+                userId: result._id,
+                name: name,
+                avatar: picture,
+            });
+
+            const token = jwt.sign({ id: result._id }, process.env.ACCESS_TOKEN_SECRET);
+
+            res.status(200).json({
+                auth_token: 'Bearer ' + token,
+                success: "Login success!",
+                redirect: user.role === 'admin' ? '/admin' : '/profile',
+            });
+        };
 
     } catch (err) {
         if (err) return res.status(500).json({ error: "Something went wrong!" })
@@ -127,19 +190,5 @@ exports.getSingleUser = async (req, res, next) => {
         res.status(200).json(user);
     } catch (err) {
         next(err)
-    }
-};
-
-// <!-- Admin Controller -->
-exports.getAllStudents = async (req, res, next) => {
-    try {
-        const student = await CourseEnroll.find({})
-            .populate('profileId')
-            .populate('studentId')
-            .populate('courseId');
-
-        res.status(200).json(student);
-    } catch (error) {
-        next(error)
     }
 };

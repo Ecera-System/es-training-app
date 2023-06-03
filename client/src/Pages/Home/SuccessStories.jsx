@@ -6,28 +6,28 @@ import Slider from 'react-slick';
 const reviews = [
     {
         name: 'John Doe',
-        avatar: '/images/Nav/avatar.png',
+        avatar: '/images/nav/avatar.png',
         position: 'Software Engineer',
         company: 'Microsoft',
         feedback: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique laudantium odit quo cum quis, maxime sed! Provident modi eligendi veritatis odio natus facere nulla! Voluptatibus reprehenderit corporis quos provident deserunt explicabo! Voluptatibus fugiat porro autem, qui possimus eum eius dolor magnam dicta vero incidunt doloremque alias sapiente. Nobis, veritatis minus',
     },
     {
         name: 'Daniel Henry',
-        avatar: '/images/Nav/avatar.png',
+        avatar: '/images/nav/avatar.png',
         position: 'MERN Stack Developer',
         company: 'Google',
         feedback: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique laudantium odit quo cum quis, maxime sed! Provident modi eligendi veritatis odio natus facere nulla! Voluptatibus reprehenderit corporis quos provident deserunt explicabo! Voluptatibus fugiat porro autem, qui possimus eum eius dolor magnam dicta vero incidunt doloremque alias sapiente. Nobis, veritatis minus',
     },
     {
         name: 'Jackson Mateo',
-        avatar: '/images/Nav/avatar.png',
+        avatar: '/images/nav/avatar.png',
         position: 'Web Developer',
         company: 'LinkedIn',
         feedback: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique laudantium odit quo cum quis, maxime sed! Provident modi eligendi veritatis odio natus facere nulla! Voluptatibus reprehenderit corporis quos provident deserunt explicabo! Voluptatibus fugiat porro autem, qui possimus eum eius dolor magnam dicta vero incidunt doloremque alias sapiente. Nobis, veritatis minus',
     },
     {
         name: 'David Hudson',
-        avatar: '/images/Nav/avatar.png',
+        avatar: '/images/nav/avatar.png',
         position: 'Full Stack Web Developer',
         company: 'Ubar',
         feedback: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique laudantium odit quo cum quis, maxime sed! Provident modi eligendi veritatis odio natus facere nulla! Voluptatibus reprehenderit corporis quos provident deserunt explicabo! Voluptatibus fugiat porro autem, qui possimus eum eius dolor magnam dicta vero incidunt doloremque alias sapiente. Nobis, veritatis minus',
@@ -81,8 +81,8 @@ const SuccessStories = () => {
                 <Slider {...settings} className=''>
                     {
                         reviews.map((item, index) =>
-                            <div className='w-full'>
-                                <div key={index} className='max-w-3xl mx-auto mt-10 p-8 text-center'>
+                            <div className='w-full' key={index}>
+                                <div className='max-w-3xl mx-auto mt-10 p-8 text-center'>
                                     <p className='text-base text-gray-600 relative'>
                                         <span className='absolute -top-12 -left-10 text-9xl text-gray-100 -z-10'>
                                             <RiDoubleQuotesL />

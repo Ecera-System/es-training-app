@@ -89,7 +89,7 @@ const Home = () => {
                 <div className='grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mt-10'>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.
@@ -97,7 +97,7 @@ const Home = () => {
                     </div>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.
@@ -105,7 +105,7 @@ const Home = () => {
                     </div>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.
@@ -113,7 +113,7 @@ const Home = () => {
                     </div>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.
@@ -121,7 +121,7 @@ const Home = () => {
                     </div>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.
@@ -129,7 +129,7 @@ const Home = () => {
                     </div>
                     <div className='border rounded-xl p-6 border-violet-600 flex items-center gap-5 hover:-translate-y-1 duration-300'>
                         <div>
-                            <img src="/Images/book_icon.png" alt="" className='w-32 h-auto' />
+                            <img src="/images/book_icon.png" alt="" className='w-32 h-auto' />
                         </div>
                         <p className='text-sm text-gray-500'>
                             8X higher engagement in live online classes by industry professionals.

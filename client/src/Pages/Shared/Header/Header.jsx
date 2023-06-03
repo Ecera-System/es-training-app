@@ -5,7 +5,7 @@ import { VscClose } from 'react-icons/vsc';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
 
-const Header = () => {
+const Header = ({ profile }) => {
     const [scroll, setScroll] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
 
@@ -32,7 +32,7 @@ const Header = () => {
                         <Link to={'/'}>
                             <img
                                 className='w-14 h-14'
-                                src="/Images/ecera-system-logo.png"
+                                src="/images/ecera-system-logo.png"
                                 alt="ecera-system-logo"
                             />
                         </Link>
@@ -40,7 +40,7 @@ const Header = () => {
 
                     {/* <== == == == Left Menu items == == == ==> */}
                     {/* <!-- Desktop view --> */}
-                    <DesktopView />
+                    <DesktopView profile={profile}/>
 
                     {/* <!-- Mobile view --> */}
                     <div className='lg:hidden relative grid place-items-center'>

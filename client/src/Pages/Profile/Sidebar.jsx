@@ -25,7 +25,10 @@ const Sidebar = () => {
             <li className='pt-2 pb-6 border-b mb-4'>
                 <div className='flex justify-center'>
                     <img
-                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'}
+                        src={avatar ?
+                            (avatar.includes("/images/") ? process.env.REACT_APP_API_V1_URL + avatar : avatar)
+                            : '/images/nav/avatar.png'
+                        }
                         alt="Avatar"
                         className='w-20 h-20 max-w-full object-cover rounded-full'
                     />
@@ -62,30 +65,6 @@ const Sidebar = () => {
                     <MdOutlineAssignment className='text-lg' />Assignments
                 </NavLink>
             </li>
-            {/* <li>
-                <Link
-                    to='/profile/coupon-code'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
-                >
-                    <RiCoupon2Line className='text-lg' />Coupon Code
-                </Link>
-            </li>
-            <li>
-                <Link
-                    to='/profile/certificate'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
-                >
-                    <SlBadge className='text-lg' />Certificate
-                </Link>
-            </li>
-            <li>
-                <Link
-                    to='/profile'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
-                >
-                    <IoSettingsOutline className='text-lg' />Settings
-                </Link>
-            </li> */}
             <li>
                 <button
                     onClick={handleSignOut}

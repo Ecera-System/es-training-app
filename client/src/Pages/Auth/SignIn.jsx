@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AiOutlineWarning } from 'react-icons/ai';
 import Spinner from '../Shared/Spinner/Spinner';
 import PageTitle from '../Shared/PageTitle';
+import GoogleSignIn from './GoogleSignIn';
 
 const SignIn = () => {
     const { showToast, setIsLoggedIn } = useContext(contextProvider);
@@ -72,7 +73,8 @@ const SignIn = () => {
                             succuss: res?.data?.succuss, error: '',
                         });
                         setIsLoggedIn(true);
-                        navigate(from, { replace: true });
+                        navigate(res.data.redirect)
+                        // navigate(from, { replace: true });
                     };
                 })
                 .catch(err => {
@@ -89,7 +91,7 @@ const SignIn = () => {
     return (<>
         <PageTitle title="Sign In" />
         <div
-            style={{ backgroundImage: `url(/Images/Auth/auth_bg.jpg)` }}
+            style={{ backgroundImage: `url(/images/auth/auth_bg.jpg)` }}
             className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'
         >
             <div className='absolute top-10 left-5 z-50 lg:block hidden'>
@@ -112,7 +114,7 @@ const SignIn = () => {
                 >
                     <div>
                         <h1 className='text-3xl font-semibold'>
-                            Sign in to ES Training
+                            Sign-in to ES Training
                         </h1>
                     </div>
                     <div>
@@ -160,12 +162,13 @@ const SignIn = () => {
                             Sign In
                         </button>
                     </div>
-                    <p className='text-base font-light mt-5'>
+                    <p className='text-base font-light'>
                         New user?
                         <Link to='/sign-up' className='text-yellow-400 ml-2 cursor-pointer hover:underline' >
                             Create an account
                         </Link>
                     </p>
+                    <GoogleSignIn />
                 </form>
             </div>
         </div>

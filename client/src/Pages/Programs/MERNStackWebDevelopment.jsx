@@ -13,11 +13,13 @@ import Slider from 'react-slick';
 import Footer from '../Shared/Footer/Footer';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import { IoCloseSharp } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 const MERNStackWebDevelopment = () => {
     const [indexCC, setIndexCC] = useState(0);
     const [indexFaq, setIndexFaq] = useState(0);
     const [introVideo, setIntroVideo] = useState(false);
+    const navigate = useNavigate();
 
     const settings = {
         infinite: true,
@@ -89,6 +91,7 @@ const MERNStackWebDevelopment = () => {
 
                     <div className='mt-4'>
                         <button
+                            onClick={() => navigate('/course/checkout')}
                             className='w-max lg:mx-0 mx-auto px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md hover:shadow-[0_3px_15px_rgb(124,58,237,0.6)]'
                         >
                             Enroll Now

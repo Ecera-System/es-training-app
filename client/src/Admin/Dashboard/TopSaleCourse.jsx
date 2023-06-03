@@ -2,13 +2,13 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../../Context/ContextProvider';
-import Spinner from '../../Pages/Shared/Spinner/Spinner';
+import TableLoadingSkeleton from '../../Pages/Shared/Spinner/TableLoadingSkeleton';
 
 const TopSaleCourse = () => {
     const { showToast } = useContext(contextProvider);
     const navigate = useNavigate();
     const [topSales, setTopSales] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
 
     useEffect(() => {
@@ -34,28 +34,26 @@ const TopSaleCourse = () => {
             });
     }, [topSales, showToast, navigate]);
 
-    if (loading) return <Spinner />;
-
 
     return (
-        <div className="mt-5 bg-white text-gray-600 border rounded-lg">
+        <section className="bg-white text-gray-600 border rounded-lg">
             <div className="p-5 border-b">
                 <h1 className="text-xl font-semibold">
                     Best Selling Courses
                 </h1>
             </div>
-            {topSales.length !== 0 ?
-                <div className="overflow-x-auto">
-                    <table className="table-auto w-full">
-                        <thead className="bg-violet-50 text-left uppercase">
-                            <tr>
-                                <th className="text-sm py-3 px-5">COURSES</th>
-                                <th className="text-sm py-3 pr-5">SALES</th>
-                                <th className="text-sm py-3 pr-5">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {topSales.map(({ _id, coverImage, title, sales, price }) =>
+            <div className="overflow-x-auto">
+                <table className="table-auto w-full">
+                    <thead className="bg-violet-50 text-left uppercase">
+                        <tr>
+                            <th className="text-sm py-3 px-5">COURSES</th>
+                            <th className="text-sm py-3 pr-5">SALES</th>
+                            <th className="text-sm py-3 pr-5">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? <TableLoadingSkeleton tr_count={3} td_count={3} /> :
+                            topSales?.map(({ _id, coverImage, title, sales, price }) =>
                                 <tr key={_id} className='border-b'>
                                     <td className='py-3 px-5'>
                                         <div className='w-max flex items-center gap-5' >
@@ -87,15 +85,17 @@ const TopSaleCourse = () => {
                                         </span>
                                     </td>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div> :
-                <div className='mt-20 w-full grid place-items-center'>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
+            {(!loading && topSales.length === 0) &&
+                <div className='py-20 w-full grid place-items-center'>
                     <p className='md:text-3xl text-xl font-medium text-gray-400'>No Course has been sold yet!</p>
                 </div>
             }
-        </div>
+        </section>
     );
 };
 

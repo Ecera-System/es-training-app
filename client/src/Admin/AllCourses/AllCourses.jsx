@@ -10,6 +10,7 @@ import useGetAllCourses from '../../API/useGetAllCourses';
 import { contextProvider } from '../../Context/ContextProvider';
 import PageTitle from '../../Pages/Shared/PageTitle';
 import Spinner from '../../Pages/Shared/Spinner/Spinner';
+import TableLoadingSkeleton from '../../Pages/Shared/Spinner/TableLoadingSkeleton';
 
 const AllCourses = () => {
     const { showToast } = useContext(contextProvider);
@@ -18,8 +19,6 @@ const AllCourses = () => {
     const [isDelete, setIsDelete] = useState('');
     const [dLoading, setDLoading] = useState(false);
     const navigate = useNavigate();
-
-    if (loading) return <Spinner />
 
 
     // <!-- Handle Change Status -->
@@ -84,44 +83,44 @@ const AllCourses = () => {
 
     return (<>
         <PageTitle title="All Courses" />
-        {coursesData.length !== 0 ?
-            <div className="my-5 w-full bg-white text-gray-600 rounded-lg border">
-                <div className="p-5 border-b">
-                    <h1 className="text-xl text-content-secondary font-semibold mb-3">
-                        Courses
-                    </h1>
-                    <p className="text-content text-sm">
-                        Manage your courses and its update like live, draft and insight.
-                    </p>
+        <div className="my-5 w-full bg-white text-gray-600 rounded-lg border">
+            <div className="p-5 border-b">
+                <h1 className="text-xl text-content-secondary font-semibold mb-3">
+                    Courses
+                </h1>
+                <p className="text-content text-sm">
+                    Manage your courses and its update like live, draft and insight.
+                </p>
+            </div>
+            <div className="p-5 flex flex-wrap gap-2 items-center justify-between">
+                <div className="flex items-center justify-between border rounded p-2 gap-2">
+                    <FiSearch className="text-primary text-sm" />
+                    <input
+                        className="outline-none text-sm"
+                        type="text"
+                        placeholder="Search courses..."
+                    />
                 </div>
-                <div className="p-5 flex flex-wrap gap-2 items-center justify-between">
-                    <div className="flex items-center justify-between border rounded p-2 gap-2">
-                        <FiSearch className="text-primary text-sm" />
-                        <input
-                            className="outline-none text-sm"
-                            type="text"
-                            placeholder="Search courses..."
-                        />
-                    </div>
-                    <select className="outline-none p-2 border rounded text-sm w-36">
-                        <option>Choose</option>
-                        <option value="react">React</option>
-                        <option value="angular">Angular</option>
-                        <option value="vue">Vue</option>
-                    </select>
-                </div>
-                <div className="overflow-x-auto">
-                    <table className="table-auto w-full">
-                        <thead className="bg-violet-50 text-left">
-                            <tr>
-                                <th className="text-sm py-3 px-5">COURSES</th>
-                                <th className="text-sm py-3 pr-5">STUDENTS</th>
-                                <th className="text-sm py-3 pr-5">STATUS</th>
-                                <th className="text-sm py-3 pr-5">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {coursesData.map((data) =>
+                <select className="outline-none p-2 border rounded text-sm w-36">
+                    <option>Choose</option>
+                    <option value="react">React</option>
+                    <option value="angular">Angular</option>
+                    <option value="vue">Vue</option>
+                </select>
+            </div>
+            <div className="overflow-x-auto">
+                <table className="table-auto w-full">
+                    <thead className="bg-violet-50 text-left">
+                        <tr>
+                            <th className="text-sm py-3 px-5">COURSES</th>
+                            <th className="text-sm py-3 pr-5">STUDENTS</th>
+                            <th className="text-sm py-3 pr-5">STATUS</th>
+                            <th className="text-sm py-3 pr-5">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? <TableLoadingSkeleton td_count={4} /> :
+                            coursesData.map((data) =>
                                 <tr key={data._id} className='border-b'>
                                     <td className='py-3 px-5'>
                                         <div className='w-[42rem] flex items-center gap-5'>
@@ -187,11 +186,13 @@ const AllCourses = () => {
                                     </td>
                                 </tr>
                             )
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div> :
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {
+            (!loading && coursesData.length === 0) &&
             <div className='w-full h-screen max-h-full grid place-items-center'>
                 <p className='md:text-3xl text-xl text-gray-400'>No Course has been created yet!</p>
             </div>

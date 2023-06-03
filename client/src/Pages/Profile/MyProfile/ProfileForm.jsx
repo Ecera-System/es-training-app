@@ -95,9 +95,16 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
             <div className='w-2/5 flex flex-col items-center gap-5 pt-5'>
                 <div>
                     <img
-                        src={profilePhoto || (avatar ?
-                            (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'
-                        )} alt="Avatar"
+                        src={profilePhoto || (
+                            avatar ?
+                                (
+                                    avatar.includes("/images/") ?
+                                        process.env.REACT_APP_API_V1_URL + avatar
+                                        : avatar
+                                )
+                                : '/images/nav/avatar.png'
+                        )}
+                        alt="Avatar"
                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                         loading='lazy'
                     />

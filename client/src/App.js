@@ -20,19 +20,19 @@ import Checkout from "./Pages/Course/Checkout/Checkout";
 import NotFound from "./Pages/NotFound/NotFound";
 import StripeCheckoutMsg from "./Pages/Course/Checkout/StripeCheckoutMsg";
 import Courses from "./Pages/Course/Courses";
-import Cart from "./Pages/Cart/Cart";
 import MyCourse from "./Pages/Profile/ProfileCourse/MyCourse";
-import SuccessStories from "./Pages/SuccessStories/SuccessStories";
 import Placements from "./Pages/Placements/Placements";
 import Projects from "./Pages/Projects/Projects";
 import Programs from "./Pages/Programs/Programs";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import BookCounselling from "./Admin/BookCounselling/BookCounselling";
 import MERNStackWebDevelopment from "./Pages/Programs/MERNStackWebDevelopment";
-import BackendDevelopment from "./Pages/Programs/BackendDevelopment";
-import FrontendDevelopment from "./Pages/Programs/FrontendDevelopment";
-import ReactDevelopment from "./Pages/Programs/ReactDevelopment";
-import NodeJsDevelopment from "./Pages/Programs/NodeJsDevelopment";
+import AllUsers from "./Admin/AllUsers/AllUsers";
+import MernStackDetails from "./Pages/Projects/MernStackDetails";
+import FrontendDetails from "./Pages/Projects/FrontendDetails";
+import BackendDetails from "./Pages/Projects/BackendDetails";
+import ReactJSDetails from "./Pages/Projects/ReactJSDetails";
+import NodeJSDetails from "./Pages/Projects/NodeJSDetails";
 
 const App = () => {
   return (<>
@@ -44,13 +44,14 @@ const App = () => {
 
       <Route path="/programs" element={<Programs />}></Route>
       <Route path="/programs/mern-stack-web-development" element={<MERNStackWebDevelopment />}></Route>
-      {/* <Route path="/programs/backend-development" element={<BackendDevelopment />}></Route>
-      <Route path="/programs/frontend-development" element={<FrontendDevelopment />}></Route>
-      <Route path="/programs/react-development" element={<ReactDevelopment />}></Route>
-      <Route path="/programs/node-js-development" element={<NodeJsDevelopment />}></Route> */}
 
       <Route path="/projects" element={<Projects />}></Route>
-      <Route path="/success-stories" element={<SuccessStories />}></Route>
+      <Route path="/projects/mern-stack" element={<MernStackDetails />}></Route>
+      <Route path="/projects/frontend" element={<FrontendDetails />}></Route>
+      <Route path="/projects/backend" element={<BackendDetails />}></Route>
+      <Route path="/projects/react-js" element={<ReactJSDetails />}></Route>
+      <Route path="/projects/node-js" element={<NodeJSDetails />}></Route>
+
       <Route path="/placements" element={<Placements />}></Route>
       <Route path="/course" element={<Courses />}></Route>
       <Route path="/course/:id" element={<CourseDetails />}></Route>
@@ -60,11 +61,6 @@ const App = () => {
         </RequireAuth>
       }></Route>
       <Route path="/stripe/checkout/course/:id" element={<StripeCheckoutMsg />}></Route>
-      <Route path="/cart" element={
-        <RequireAuth>
-          <Cart />
-        </RequireAuth>
-      }></Route>
       <Route path="/contact" element={<ContactUs />}></Route>
 
       <Route path="/profile" element={
@@ -92,6 +88,7 @@ const App = () => {
         <Route path="/admin/coupon-code" element={<CouponCode />}></Route>
         <Route path="/admin/certificate" element={<Certificate />}></Route>
         <Route path="/admin/book-counselling" element={<BookCounselling />}></Route>
+        <Route path="/admin/all-users" element={<AllUsers />}></Route>
       </Route>
 
       <Route path="/*" element={<NotFound />}></Route>

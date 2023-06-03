@@ -19,7 +19,7 @@ const StripeCheckoutMsg = () => {
                 queryObj?.canceled &&
                 <div className='sm:w-96 w-11/12 h-auto text-center bg-white p-8 rounded-lg'>
                     <div className='flex justify-center'>
-                        <SlClose className="text-5xl text-red-500"/>
+                        <SlClose className="text-5xl text-red-500" />
                     </div>
                     <h2 className='text-2xl font-medium text-gray-600 py-5'>Payment Cancelled</h2>
                     <p className='text-sm font-medium text-gray-600 mb-4'>
@@ -47,7 +47,7 @@ const StripeCheckoutMsg = () => {
                     </p>
                     <button
                         onClick={() => {
-                            navigate('/')
+                            navigate('/profile/course')
                         }}
                         className='w-full py-2 rounded text-center bg-emerald-500 hover:bg-emerald-600 duration-300 text-white text-lg font-medium'
                     >

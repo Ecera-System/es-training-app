@@ -1,4 +1,4 @@
-/* <!-- Spinner -->*/
+/* <!-- Spinner Start-->*/
 .loader1 {
     width: 48px;
     height: 48px;
@@ -49,8 +49,10 @@
     }
 }
 
+/* <!-- Spinner End-->*/
 
-/* <!-- Spinner BTN-->*/
+
+/* <!-- Spinner BTN Start-->*/
 .loader2 {
     height: 20px;
     text-align: center;
@@ -114,3 +116,34 @@
         -webkit-transform: scaleY(1.0);
     }
 }
+
+/* <!-- Spinner BTN End-->*/
+
+
+
+/* <!-- Table Loading Skeleton Start--> */
+.table_loading {
+    background-color: #f1eeff;
+    height: 40px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+td .table_loading {
+    background-color: #f1eeff;
+    background: linear-gradient(100deg,
+            rgba(255, 255, 255, 0) 40%,
+            rgba(255, 255, 255, .5) 50%,
+            rgba(255, 255, 255, 0) 60%) #f1eeff;
+    background-size: 200% 100%;
+    background-position-x: 180%;
+    animation: 2s loading_skeleton ease-in-out infinite;
+}
+
+@keyframes loading_skeleton {
+    to {
+        background-position-x: -30%;
+    }
+}
+
+/* <!-- Table Loading Skeleton End--> */

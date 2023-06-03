@@ -3,15 +3,18 @@ import moment from 'moment/moment';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../../Context/ContextProvider';
-import Spinner from '../../Pages/Shared/Spinner/Spinner';
+import TableLoadingSkeleton from '../../Pages/Shared/Spinner/TableLoadingSkeleton';
+import StudentDetails from '../Students/StudentDetails';
 
 const OrderList = () => {
     const { showToast } = useContext(contextProvider);
     const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [studentDetails, setStudentDetails] = useState(null);
 
 
+    // <!-- Fetch recent orders data --> 
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_V1_URL}/course-enroll/recent-orders`, {
             method: 'GET',
@@ -35,10 +38,9 @@ const OrderList = () => {
             });
     }, [orders, showToast, navigate]);
 
-    if (loading) return <Spinner />;
 
-    return (
-        <div className="mt-5 bg-white text-gray-600 border rounded-lg">
+    return (<>
+        <section className="mt-5 bg-white text-gray-600 border rounded-lg">
             <div className="p-5 border-b">
                 <h1 className="text-xl text-content-secondary font-semibold mb-2">
                     Orders
@@ -47,75 +49,96 @@ const OrderList = () => {
                     Order Dashboard is a quick overview of all current orders.
                 </p>
             </div>
-            {orders.length !== 0 ? <>
-                <div className="overflow-x-auto">
-                    <table className="table-auto w-full">
-                        <thead className="bg-violet-50 text-left uppercase">
-                            <tr>
-                                <th className="text-sm py-3 px-5">COURSES</th>
-                                <th className="text-sm py-3 pr-5">SALES</th>
-                                <th className="text-sm py-3 pr-5">Price</th>
-                                <th className="text-sm py-3 pr-5">INVOICE</th>
-                                <th className="text-sm py-3 pr-5">METHOD</th>
-                                <th className="text-sm py-3 pr-5">DATE</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {orders.map(({ _id, courseId, createdAt, paymentMethod, price, transactionId }) =>
-                                <tr key={_id} className='border-b'>
+            <div className="overflow-x-auto">
+                <table className="table-auto w-full">
+                    <thead className="bg-violet-50 text-left uppercase">
+                        <tr>
+                            <th className="text-sm py-3 px-5">
+                                <h2 className='w-max'>Student</h2>
+                            </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Email</h2>
+                            </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Course</h2>
+                            </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Price</h2>
+                            </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Payment By</h2>
+                            </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Enrolled At</h2>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {loading ? <TableLoadingSkeleton tr_count={3} td_count={6} /> :
+                            orders.map((data) =>
+                                <tr
+                                    key={data?._id}
+                                    onClick={() => setStudentDetails(data)}
+                                    className='border-b cursor-pointer hover:bg-violet-50 duration-300'
+                                >
                                     <td className='py-3 px-5'>
-                                        <Link
-                                            to={`/course/${courseId._id}`}
-                                            className="w-[26rem] inline-block text-base font-medium hover:text-violet-600 duration-300"
-                                        >
-                                            {courseId.title}
-                                        </Link>
+                                        <p className="w-40 text-base font-medium">
+                                            {data?.studentId?.name}
+                                        </p>
                                     </td>
                                     <td className='py-3 pr-5'>
-                                        <span className="w-max inline-block text-sm">
-                                            {courseId.sales}
-                                        </span>
+                                        <p className="w-max text-sm">
+                                            {data?.studentId?.email}
+                                        </p>
                                     </td>
                                     <td className='py-3 pr-5'>
-                                        <span className="w-max inline-block text-sm font-medium">
-                                            ${price}
-                                        </span>
+                                        <p className="w-60 text-sm">
+                                            {data?.courseId?.title}
+                                        </p>
                                     </td>
                                     <td className='py-3 pr-5'>
-                                        <span className="w-max inline-block text-sm font-medium">
-                                            {transactionId}
-                                        </span>
+                                        <p className="w-max text-sm">
+                                            ${data?.price}
+                                        </p>
                                     </td>
-                                    <td className='py-3 pr-5'>
-                                        <span className="w-max inline-block text-sm">
-                                            {paymentMethod}
-                                        </span>
+                                    <td className='py-3 pr-5 text-center'>
+                                        <p className="w-max text-sm capitalize">
+                                            {data?.paymentMethod}
+                                        </p>
                                     </td>
-                                    <td className='py-3 pr-5'>
-                                        <span className="w-max inline-block text-sm">
-                                            {moment(createdAt).format('DD-MM-YYYY')}
-                                        </span>
+                                    <td className='py-3 pr-5 text-center'>
+                                        <p className="w-max text-sm capitalize">
+                                            {moment(data?.updatedAt).format('DD-MMM-YYYY')}
+                                        </p>
                                     </td>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-                <div className="text-center py-5">
-                    <Link
-                        className="inline-block py-2.5 px-6 bg-slate-800 hover:bg-slate-900 duration-300 text-white rounded"
-                        to="/dashboard/orders"
-                    >
-                        View All Orders
-                    </Link>
-                </div>
-            </> :
-                <div className='mt-20 w-full grid place-items-center'>
-                    <p className='md:text-3xl text-xl font-medium text-gray-400'>Here is no current orders!</p>
-                </div>
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            {
+                (!loading && orders.length === 0) ?
+                    <div className='py-20 w-full text-center'>
+                        <h4 className='md:text-3xl text-xl font-medium text-gray-400'>No orders data found!</h4>
+                    </div>
+                    :
+                    <div className="text-center py-5">
+                        <Link
+                            className="inline-block py-2.5 px-6 bg-slate-800 hover:bg-slate-900 duration-300 text-white rounded"
+                            to="/admin/students"
+                        >
+                            View All Orders
+                        </Link>
+                    </div>
             }
-        </div>
-    );
+
+        </section>
+
+        {/* <!-- Open Student Details sidebar --> */}
+        <StudentDetails studentDetails={studentDetails} setStudentDetails={setStudentDetails} />
+    </>);
 };
 
 export default OrderList;

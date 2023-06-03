@@ -9,7 +9,7 @@ const ContactUs = () => {
         <Header />
         <div
             className='pb-20 pt-44 lg:mt-10 bg-no-repeat bg-cover'
-            style={{ backgroundImage: `url(/Images/hp-img-closer-bg.png)` }}
+            style={{ backgroundImage: `url(/images/hp-img-closer-bg.png)` }}
         >
             <section className='2xl:w-[1280px] xl:w-4/5 lg:w-11/12 md:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between'>
                 <div className='lg:w-1/2 w-full lg:text-start text-center'>

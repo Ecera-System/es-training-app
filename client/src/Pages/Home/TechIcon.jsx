@@ -4,47 +4,47 @@ import Slider from 'react-slick';
 const TechIcon = () => {
     const data = [
         {
-            img: '/Images/tech-icon/html-5.png',
+            img: '/images/tech-icon/html-5.png',
             title: 'HTML'
         },
         {
-            img: '/Images/tech-icon/css-3.png',
+            img: '/images/tech-icon/css-3.png',
             title: 'CSS'
         },
         {
-            img: '/Images/tech-icon/bootstrap.png',
+            img: '/images/tech-icon/bootstrap.png',
             title: 'Bootstrap'
         },
         {
-            img: '/Images/tech-icon/tailwind.png',
+            img: '/images/tech-icon/tailwind.png',
             title: 'TailwindCSS'
         },
         {
-            img: '/Images/tech-icon/javascript.png',
+            img: '/images/tech-icon/javascript.png',
             title: 'JavaScript'
         },
         {
-            img: '/Images/tech-icon/react.png',
+            img: '/images/tech-icon/react.png',
             title: 'React.js'
         },
         {
-            img: '/Images/tech-icon/nodejs.png',
+            img: '/images/tech-icon/nodejs.png',
             title: 'Node.js'
         },
         {
-            img: '/Images/tech-icon/redux.png',
+            img: '/images/tech-icon/redux.png',
             title: 'Redux'
         },
         {
-            img: '/Images/tech-icon/expressjs.png',
+            img: '/images/tech-icon/expressjs.png',
             title: 'Express.js'
         },
         {
-            img: '/Images/tech-icon/mongodb.png',
+            img: '/images/tech-icon/mongodb.png',
             title: 'MongoDB'
         },
         {
-            img: '/Images/tech-icon/git.png',
+            img: '/images/tech-icon/git.png',
             title: 'Git'
         },
     ];

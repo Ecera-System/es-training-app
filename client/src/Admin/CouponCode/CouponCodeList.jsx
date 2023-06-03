@@ -113,7 +113,7 @@ const CouponCodeList = () => {
                                     </p>
                                 </td>
                                 <td className="py-3 pr-5">
-                                    {discount}
+                                    {discount}<span className='text-sm'>%</span>
                                 </td>
                                 <td className="py-3 pr-5 ">
                                     <select

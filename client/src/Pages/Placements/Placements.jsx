@@ -56,11 +56,11 @@ const Placements = () => {
             className='pt-16 pb-32 bg-cover bg-no-repeat bg-top flex justify-center bg-violet-700 relative before:absolute before:bg-black/70 before:inset-0'
             style={{ backgroundImage: 'url(/images/placements/placement.png)' }}
         >
-            <div className='z-10 max-w-3xl text-center'>
-                <h1 className='text-5xl font-semibold text-white'>
+            <div className='z-10 max-w-3xl w-4/5 text-center'>
+                <h1 className='md:text-5xl text-3xl font-semibold text-white'>
                     Placement Stats
                 </h1>
-                <h4 className='text-2xl font-semibold text-yellow-400 mt-16'>
+                <h4 className='md:text-2xl text-xl font-semibold text-yellow-400 lg:mt-16 mt-10'>
                     Empowering Our Learners to Achieve Career Breakthroughs and Land Top Positions in Leading Companies
                 </h4>
                 <p className='text-lg text-gray-100 mt-6'>
@@ -69,7 +69,7 @@ const Placements = () => {
             </div>
         </section>
         <section className='flex items-center justify-center -mt-16 mb-10'>
-            <div className='max-w-5xl w-4/5 flex items-start justify-center gap-px bg-white z-10 text-center'>
+            <div className='max-w-5xl lg:w-11/12 md:w-2/5 w-4/5 flex items-start justify-center gap-px flex-wrap lg:flex-nowrap bg-white z-10 text-center'>
                 <div
                     className='w-full p-10 shadow-[0px_10px_60px_0px_rgba(124,58,237,0.1)] relative after:duration-500 after:opacity-0 hover:after:opacity-100 after:absolute after:inset-12 after:bg-violet-400 after:-z-10 after:rounded-full after:blur-2xl'
                 >

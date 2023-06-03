@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../Shared/Header/Header';
 import PageTitle from '../Shared/PageTitle';
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+// import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import Footer from '../Shared/Footer/Footer';
+import ExploreProjects from './ExploreProjects';
 
 const Projects = () => {
-    const [indexFaq, setIndexFaq] = useState(0);
 
     return (<>
         <PageTitle title="Projects" />
@@ -20,41 +20,8 @@ const Projects = () => {
                 </h1>
             </div>
         </section>
-        <section className='py-28'>
-            <div className='max-w-[68rem] w-[90%] mx-auto grid grid-cols-4 gap-5'>
-                <div
-                    className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300 cursor-pointer'
-                >
-                    <h2 className='text-2xl font-medium'>MERN Stack</h2>
-                    <h4 className='text-base uppercase mt-3'>Projects</h4>
-                </div>
-                <div
-                    className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300 cursor-pointer'
-                >
-                    <h2 className='text-2xl font-medium'>Frontend</h2>
-                    <h4 className='text-base uppercase mt-3'>Projects</h4>
-                </div>
-                <div
-                    className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300 cursor-pointer'
-                >
-                    <h2 className='text-2xl font-medium'>Backend</h2>
-                    <h4 className='text-base uppercase mt-3'>Projects</h4>
-                </div>
-                <div
-                    className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300 cursor-pointer'
-                >
-                    <h2 className='text-2xl font-medium'>React JS</h2>
-                    <h4 className='text-base uppercase mt-3'>Projects</h4>
-                </div>
-                <div
-                    className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300 cursor-pointer'
-                >
-                    <h2 className='text-2xl font-medium'>Node JS</h2>
-                    <h4 className='text-base uppercase mt-3'>Projects</h4>
-                </div>
-            </div>
-        </section>
-        <section
+        <ExploreProjects/>
+        {/* <section
             className='py-24 bg-cover bg-no-repeat bg-bottom'
             style={{ backgroundImage: 'url(/images/bg_banner1.jpg)' }}
         >
@@ -234,7 +201,7 @@ const Projects = () => {
                     </li>
                 </ul>
             </div>
-        </section>
+        </section> */}
         <Footer />
     </>);
 };

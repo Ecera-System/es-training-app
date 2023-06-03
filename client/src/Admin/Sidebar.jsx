@@ -7,6 +7,7 @@ import { SlBadge } from 'react-icons/sl';
 import { BsFillJournalBookmarkFill, BsJournalCode } from 'react-icons/bs';
 import { RiCoupon2Line } from 'react-icons/ri';
 import { IoSettingsOutline } from 'react-icons/io5';
+import { HiOutlineUserGroup } from 'react-icons/hi';
 
 const Sidebar = () => {
     const navigate = useNavigate();
@@ -89,7 +90,16 @@ const Sidebar = () => {
             </li>
             <li>
                 <NavLink
-                    to='/admin'
+                    to='/admin/all-users'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    end
+                >
+                    <HiOutlineUserGroup className='text-lg' />All Users
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to='/admin/settings'
                     className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                     end
                 >

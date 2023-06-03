@@ -74,7 +74,7 @@ const MyCourse = () => {
                         Currently no course data exists! To enroll course click on the following button
                     </p>
                     <Link
-                        to='course'
+                        to='/programs/mern-stack-web-development'
                         className='inline-block px-6 py-2.5 text-base font-medium bg-violet-600 hover:bg-violet-700 text-white duration-300 rounded'
                     >
                         See Courses

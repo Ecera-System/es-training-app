@@ -38,7 +38,14 @@ const MyProfile = () => {
                             <div className='w-2/5 flex flex-col items-center gap-5'>
                                 <div>
                                     <img
-                                        src={avatar ? (process.env.REACT_APP_API_V1_URL + avatar) : '/Images/Nav/avatar.png'}
+                                        src={avatar ?
+                                            (
+                                                avatar.includes("/images/") ?
+                                                    process.env.REACT_APP_API_V1_URL + avatar
+                                                    : avatar
+                                            )
+                                            : '/images/nav/avatar.png'
+                                        }
                                         alt="Avatar"
                                         className='w-[9.4rem] h-[9.4rem] max-w-full object-cover rounded-full'
                                         loading='lazy'

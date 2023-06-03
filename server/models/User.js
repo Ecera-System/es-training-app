@@ -12,7 +12,6 @@ const userSchema = mongoose.Schema({
     },
     contactNumber: {
         type: String,
-        required: true,
         validate: [validator.isMobilePhone, "Please provide a valid contact number."],
     },
     email: {

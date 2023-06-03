@@ -25,8 +25,10 @@ exports.getRecentOrders = async (req, res, next) => {
         const result = await CourseEnroll.find()
             .sort({ createdAt: -1 })
             .limit(10)
-            .populate('courseId');
-            
+            .populate('courseId')
+            .populate('studentId')
+            .populate('profileId');
+
         res.status(200).json(result);
     } catch (error) {
         next(error)
@@ -104,7 +106,8 @@ exports.postStripeWebHook = async (req, res, next) => {
 
             const course = await Course.findById(courseId);
             const user = await User.findById(studentId);
-            const profile = await Profile.updateOne(
+            const profile = await Profile.findOne({ userId: studentId });
+            await Profile.updateOne(
                 { userId: studentId },
                 {
                     $set: {
@@ -117,18 +120,6 @@ exports.postStripeWebHook = async (req, res, next) => {
                         zip: zip,
                     },
                 }
-            );
-
-            const role = user.role === 'admin' ? 'admin' : 'student';
-            await User.findByIdAndUpdate(
-                { _id: studentId },
-                {
-                    $set: {
-                        profile: result._id,
-                        role: role
-                    },
-                },
-                { new: true }
             );
 
             // <!-- Create Course Enroll -->
@@ -155,6 +146,21 @@ exports.postStripeWebHook = async (req, res, next) => {
                 )
             };
 
+            const role = user.role === 'admin' ? 'admin' : 'student';
+            await User.findByIdAndUpdate(
+                { _id: studentId },
+                {
+                    $set: {
+                        profile: profile._id,
+                        name: firstName + ' ' + lastName,
+                        contactNumber: contactNumber,
+                        role: role,
+                    },
+                    $push: { courses: courseEnroll._id },
+                },
+                { new: true }
+            );
+
             res.status(200).json({ success: 'Course enrolled successfully!' });
         }
         else {
@@ -168,7 +174,7 @@ exports.postStripeWebHook = async (req, res, next) => {
 // <!-- Course Enroll with Razorpay -->
 exports.enrollCourseByINR = async (req, res, next) => {
     try {
-        const { _id, email } = req.decoded
+        const { _id, email } = req.decoded;
         const order = await instance.orders.create({
             amount: req.body.price * 100,
             currency: "USD",
@@ -197,12 +203,13 @@ exports.razorpayVerify = async (req, res, next) => {
             .digest('hex');
 
         if (expectedSignature === req.body.razorpay_signature) {
-            const { studentId, courseId, price, firstName, lastName, address1, address2, country, city, zip, razorpay_payment_id, currency } = req.body;
+            const { studentId, courseId, price, firstName, lastName, contactNumber, address1, address2, country, city, zip, razorpay_payment_id, currency } = req.body;
 
 
             const course = await Course.findById(courseId);
             const user = await User.findById(studentId);
-            const profile = await Profile.updateOne(
+            const profileId = await Profile.findOne({ userId: studentId });
+            await Profile.updateOne(
                 { userId: studentId },
                 {
                     $set: {
@@ -217,23 +224,11 @@ exports.razorpayVerify = async (req, res, next) => {
                 }
             );
 
-            const role = user.role === 'admin' ? 'admin' : 'student';
-            await User.findByIdAndUpdate(
-                { _id: studentId },
-                {
-                    $set: {
-                        profile: result._id,
-                        role: role
-                    },
-                },
-                { new: true }
-            );
-
             // <!-- Create Course Enroll -->
             const courseEnroll = await CourseEnroll.create({
                 courseId: courseId,
                 studentId: studentId,
-                profileId: profileId || profile._id,
+                profileId: profileId._id,
                 price: price / 100, //divided 100 for converting cent to dollar
                 paymentMethod: "Razorpay",
                 transactionId: razorpay_payment_id,
@@ -252,6 +247,21 @@ exports.razorpayVerify = async (req, res, next) => {
                     { new: true }
                 )
             };
+
+            const role = user.role === 'admin' ? 'admin' : 'student';
+            await User.findByIdAndUpdate(
+                { _id: studentId },
+                {
+                    $set: {
+                        profile: profileId._id,
+                        name: firstName + ' ' + lastName,
+                        contactNumber: contactNumber,
+                        role: role
+                    },
+                    $push: { courses: courseEnroll._id }
+                },
+                { new: true }
+            );
 
             res.status(200).json({ success: 'Course enrolled successfully!' });
 

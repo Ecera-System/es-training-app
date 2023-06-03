@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { NavLink } from 'react-router-dom';
-import CartIcon from './CartIcon';
 import NotificationIcon from './NotificationIcon';
 import useGetProfile from '../../../API/useGetProfile';
 import { contextProvider } from '../../../Context/ContextProvider';
@@ -16,8 +15,6 @@ const HeaderProfile = () => {
         <li className='relative flex items-center lg:justify-center justify-start lg:gap-7 pl-5'>
 
             <div className='lg:flex items-center justify-center gap-7 hidden'>
-                {/* <!-- Cart --> */}
-                <CartIcon />
 
                 {/* <!-- Notifications --> */}
                 <NotificationIcon />
@@ -30,7 +27,12 @@ const HeaderProfile = () => {
             >
                 <img
                     src={profileData?.avatar ?
-                        (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : '/Images/Nav/avatar.png'
+                        (
+                            profileData?.avatar?.includes("/images/") ?
+                                process.env.REACT_APP_API_V1_URL + profileData?.avatar
+                                : profileData?.avatar
+                        )
+                        : '/images/nav/avatar.png'
                     }
                     alt="avatar"
                     className='w-10 h-10 max-w-full object-cover'
@@ -46,7 +48,12 @@ const HeaderProfile = () => {
                     <div className='w-20 h-20 mx-auto border-2 border-violet-600 rounded-full overflow-hidden'>
                         <img
                             src={profileData?.avatar ?
-                                (process.env.REACT_APP_API_V1_URL + profileData?.avatar) : '/Images/Nav/avatar.png'
+                                (
+                                    profileData?.avatar?.includes("/images/") ?
+                                        process.env.REACT_APP_API_V1_URL + profileData?.avatar
+                                        : profileData?.avatar
+                                )
+                                : '/images/nav/avatar.png'
                             }
                             alt="avatar"
                             className='w-20 h-20 max-w-full object-cover'

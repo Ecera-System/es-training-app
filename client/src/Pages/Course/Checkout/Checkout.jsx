@@ -59,7 +59,7 @@ const Checkout = () => {
                     });
                     setRazorpayRes(null);
                     setTimeout(() => {
-                        navigate('/')
+                        navigate('/profile/course')
                     }, 3000);
                 })
                 .catch(err => {
@@ -168,7 +168,7 @@ const Checkout = () => {
                         amount: res.data.amount,
                         currency: res.data.currency,
                         description: title,
-                        image: '/Images/ecera-system-logo.png',
+                        image: '/images/ecera-system-logo.png',
                         order_id: res.data.id,
                         handler: async function (response) {
                             return setRazorpayRes({

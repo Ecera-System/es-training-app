@@ -2,6 +2,9 @@ const Jimp = require("jimp");
 const path = require("path");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
+const CourseEnroll = require("../models/CourseEnroll");
+const Course = require("../models/Course");
+const Certificate = require("../models/Certificate");
 
 exports.getProfile = async (req, res, next) => {
     try {
@@ -87,5 +90,150 @@ exports.updateProfileById = async (req, res, next) => {
         }
     } catch (error) {
         next(error);
+    }
+}
+
+
+// <== == Admin Route Controller == ==>
+// <!-- Get All Students -->
+exports.getAllStudents = async (req, res, next) => {
+    try {
+        const { page = 1, size = 15, query } = req.query;
+
+        // <!-- Get all queries student -->
+        if (query) {
+            const queriesStudent = await CourseEnroll.find({})
+                .populate({
+                    path: 'studentId', // Apply searchQuery to studentId population
+                    match: {
+                        $or: [
+                            { name: { $regex: new RegExp(query, 'i') } }, //Case sensitive
+                            { email: { $regex: new RegExp(query, 'i') } }, //Case sensitive
+                        ],
+                    },
+                })
+                .populate('profileId')
+                .populate('courseId')
+
+            const students = queriesStudent.filter(student =>
+                student.studentId !== null
+            );
+
+            return res.status(200).json({ students, count: 0 });
+        };
+
+
+        // <!-- Get all student with skip and limit -->
+        const skip = (page - 1) * parseInt(size);
+        const limit = parseInt(size);
+
+        const courseEnrollQuery = await CourseEnroll.find({})
+            .populate('studentId')
+            .populate('profileId')
+            .populate('courseId')
+            .skip(skip)
+            .limit(limit);
+
+        const count = await CourseEnroll.countDocuments();
+        res.status(200).json({ students: courseEnrollQuery, count });
+    } catch (error) {
+        next(error)
+    }
+};
+
+// <!-- Get All Users -->
+exports.getAllUsers = async (req, res, next) => {
+    try {
+        const { page = 1, size = 15, query } = req.query;
+
+        // <!-- Get all queries user -->
+        if (query) {
+            const profiles = await Profile.find({})
+                .populate({
+                    path: 'userId', // Apply searchQuery to userId population
+                    match: {
+                        $or: [
+                            { name: { $regex: new RegExp(query, 'i') } }, //Case sensitive
+                            { email: { $regex: new RegExp(query, 'i') } }, //Case sensitive
+                        ],
+                    },
+                });
+
+            const users = profiles.filter(user =>
+                user.userId !== null
+            );
+
+            return res.status(200).json({ users, count: 0 });
+        }
+
+        // <!-- Get all user with skip and limit -->
+        const skip = (page - 1) * parseInt(size);
+        const limit = parseInt(size);
+
+        const users = await Profile.find({})
+            .populate('userId')
+            .skip(skip)
+            .limit(limit)
+
+        const count = await Profile.countDocuments();
+
+        res.status(200).json({ users, count });
+    } catch (error) {
+        next(error)
+    }
+};
+
+// <!-- Update User Status By Id -->
+exports.updateUserStatusById = async (req, res, next) => {
+    try {
+        const result = await User.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                $set: {
+                    status: req.body.status
+                }
+            },
+            { runValidators: true }
+        );
+
+        if (!result) return res.status(404).json({ error: "No user founded with this id." });
+
+        res.status(200).json({ success: 'User status changed successfully!', data: result });
+    } catch (error) {
+        next(error)
+    }
+};
+
+
+// <!-- Delete User By Id -->
+exports.deleteUserById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findById({ _id: id });
+        if (user.role === 'admin') return res.status(403).json({ error: "Admin can't be deleted!" });
+        // <!-- Remove user id from Course -->
+        await Course.updateMany(
+            { students: id },
+            {
+                $pull: {
+                    students: id
+                }
+            }
+        );
+        // <!-- Delete user profile -->
+        await Profile.deleteOne({ userId: id });
+        // <!-- Delete user from Course Enroll -->
+        await CourseEnroll.deleteOne({ studentId: id });
+        // <!-- Delete user Certificate -->
+        await Certificate.deleteOne({ studentId: id });
+
+        // <!-- Delete User -->
+        const result = await User.findByIdAndDelete({ _id: id });
+
+        if (!result) return res.status(404).json({ error: "No user founded with this id." });
+
+        res.status(200).json({ success: 'User deleted successfully!', data: 'result' });
+    } catch (error) {
+        next(error)
     }
 }

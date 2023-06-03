@@ -1,42 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { contextProvider } from '../../../Context/ContextProvider';
-import CartIcon from './CartIcon';
 import HeaderProfile from './HeaderProfile';
 import NotificationIcon from './NotificationIcon';
+import { RiArrowDownSLine } from 'react-icons/ri';
 
 const MobileView = ({ openMenu }) => {
     const { isLoggedIn } = useContext(contextProvider);
+    const [openPrograms, setOpenPrograms] = useState(false);
 
     return (
         <ul
-            className={`fixed left-1/2 -translate-x-1/2 w-[94%] h-auto list-none bg-white border shadow-lg rounded-md duration-300 flex flex-col
-                ${openMenu ?
-                    'top-[74px] opacity-100 visible' :
-                    '-top-[24rem] opacity-0 invisible'
-                }`
+            className={`fixed left-1/2 -translate-x-1/2 w-[94%] h-auto list-none bg-white border shadow-lg rounded-md duration-300 flex flex-col ${openMenu ? 'top-[74px] opacity-100 visible' : '-top-[24rem] opacity-0 invisible'}`
             }
         >
             {isLoggedIn &&
                 <li className='border-b py-3'>
-                    <HeaderProfile />
+                    <ul>
+                        <HeaderProfile />
+                    </ul>
                 </li>
             }
-            <li className='border-b'>
-                <NavLink
-                    to='/#'
-                    className='block w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300'
+            <li className='border-b relative'>
+                <div
+                    onClick={() => setOpenPrograms(pre => !pre ? true : false)}
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 cursor-pointer flex items-center gap-1'
                     end
                 >
-                    Overview
-                </NavLink>
+                    Programs <RiArrowDownSLine className='text-xl' />
+                </div>
+                <ul className={`list-none overflow-hidden maxH-0 ${openPrograms ? 'maxH-full' : ''}`}>
+                    <li className='w-full'>
+                        <NavLink
+                            to='/programs/mern-stack-web-development'
+                            className='block w-full h-auto py-3 px-8 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300'
+                            end
+                        >
+                            MERN Stack Web Development
+                        </NavLink>
+                    </li>
+                </ul>
             </li>
             <li className='border-b'>
                 <NavLink
-                    to='/featured-students'
+                    to='/projects'
                     className='block w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300'
                 >
-                    Featured Students
+                    Projects
                 </NavLink>
             </li>
             <li className='border-b'>
@@ -47,21 +57,8 @@ const MobileView = ({ openMenu }) => {
                     Placements
                 </NavLink>
             </li>
-            <li className='border-b'>
-                <NavLink
-                    to='/syllabus'
-                    className='block w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300'
-                >
-                    Syllabus
-                </NavLink>
-            </li>
 
             {isLoggedIn ? <>
-                <li className='border-b'>
-                    <div className='flex justify-start px-5 py-3'>
-                        <CartIcon />
-                    </div>
-                </li>
                 <li className=''>
                     <div className='flex justify-start px-5 py-3'>
                         <NotificationIcon />
