@@ -17,7 +17,7 @@ const MyProfile = () => {
 
     return (<>
         <PageTitle title={`Profile`} />
-        <div className="mt-5 w-full bg-white text-gray-600 rounded-lg border">
+        <div className="mt-5 mb-28 w-full bg-white text-gray-600 rounded-lg border">
             <section className='p-6'>
                 <div className='flex justify-between items-center'>
                     <h3 className="font-semibold text-2xl">My Profile</h3>

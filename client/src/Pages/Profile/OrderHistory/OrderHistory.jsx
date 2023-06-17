@@ -9,7 +9,7 @@ const OrderHistory = () => {
 
     return (<>
         <PageTitle title={`Order History`} />
-        <div className="my-5 w-full bg-white text-gray-600 rounded-lg border">
+        <div className="my-5 mb-20 w-full bg-white text-gray-600 rounded-lg border">
             <div className="p-5 border-b">
                 <h1 className="text-xl text-content-secondary font-semibold">
                     Order History

@@ -57,9 +57,6 @@ exports.addCourseTitle = async (req, res, next) => {
             title,
             price
         })
-        console.log(result);
-
-
         res.status(200).json({ data: 'result', success: "Course added successfully!" });
     } catch (error) {
         next(error);

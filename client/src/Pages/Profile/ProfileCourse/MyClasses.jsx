@@ -15,7 +15,7 @@ const MyClasses = () => {
         <ClassContent content={content} setContent={setContent} />
         : <>
             <PageTitle title="Course" />
-            <div className="my-5 w-full text-gray-600">
+            <div className="my-5 mb-28 w-full text-gray-600">
                 <div className="p-5 border rounded-lg bg-white">
                     <h1 className="text-xl text-content-secondary font-semibold">
                         My Classes
