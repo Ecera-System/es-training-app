@@ -1,1 +1,1 @@
-"# es-training-app" 
+# es-training-app
