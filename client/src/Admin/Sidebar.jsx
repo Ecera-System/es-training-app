@@ -23,10 +23,10 @@ const Sidebar = () => {
                 <h1 className='text-center text-2xl font-medium text-gray-700'>Admin</h1>
                 <div className='flex justify-center mt-6'>
                     <Link
-                        to='/admin/add-new-course'
-                        className='px-5 py-2.5 text-sm bg-violet-600 hover:bg-violet-700 duration-300 text-white rounded'
+                        to='/admin/add-course'
+                        className='w-full px-5 py-2.5 text-sm text-center bg-violet-600 hover:bg-violet-700 duration-300 text-white rounded'
                     >
-                        Create New Course
+                        Add Course
                     </Link>
                 </div>
             </li>

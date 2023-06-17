@@ -10,17 +10,15 @@ import Dashboard from "./Admin/Dashboard/Dashboard";
 import AllCourses from "./Admin/AllCourses/AllCourses";
 import Students from "./Admin/Students/Students";
 import Assignments from "./Admin/Assignments/Assignments";
-import AddNewCourse from "./Admin/AddNewCourse/AddNewCourse";
-import CourseDetails from "./Pages/Course/CourseDetails";
+import AddCourses from "./Admin/AddCourses/AddCourses";
 import AssignmentDetails from "./Admin/Assignments/AssignmentDetails";
 import Certificate from "./Admin/Certificate/Certificate";
 import CouponCode from "./Admin/CouponCode/CouponCode";
 import MyProfile from "./Pages/Profile/MyProfile/MyProfile";
-import Checkout from "./Pages/Course/Checkout/Checkout";
+import Checkout from "./Pages/Checkout/Checkout";
 import NotFound from "./Pages/NotFound/NotFound";
-import StripeCheckoutMsg from "./Pages/Course/Checkout/StripeCheckoutMsg";
-import Courses from "./Pages/Course/Courses";
-import MyCourse from "./Pages/Profile/ProfileCourse/MyCourse";
+import StripeCheckoutMsg from "./Pages/Checkout/StripeCheckoutMsg";
+import MyClasses from "./Pages/Profile/ProfileCourse/MyClasses";
 import Placements from "./Pages/Placements/Placements";
 import Projects from "./Pages/Projects/Projects";
 import Programs from "./Pages/Programs/Programs";
@@ -33,6 +31,8 @@ import FrontendDetails from "./Pages/Projects/FrontendDetails";
 import BackendDetails from "./Pages/Projects/BackendDetails";
 import ReactJSDetails from "./Pages/Projects/ReactJSDetails";
 import NodeJSDetails from "./Pages/Projects/NodeJSDetails";
+import OrderHistory from "./Pages/Profile/OrderHistory/OrderHistory";
+import ProfileAssignments from "./Pages/Profile/Assignments/ProfileAssignments";
 
 const App = () => {
   return (<>
@@ -53,8 +53,6 @@ const App = () => {
       <Route path="/projects/node-js" element={<NodeJSDetails />}></Route>
 
       <Route path="/placements" element={<Placements />}></Route>
-      <Route path="/course" element={<Courses />}></Route>
-      <Route path="/course/:id" element={<CourseDetails />}></Route>
       <Route path="/course/checkout/:id" element={
         <RequireAuth>
           <Checkout />
@@ -69,7 +67,9 @@ const App = () => {
         </RequireAuth>
       }>
         <Route path="/profile" element={<MyProfile />}></Route>
-        <Route path="/profile/course" element={<MyCourse />}></Route>
+        <Route path="/profile/course" element={<MyClasses />}></Route>
+        <Route path="/profile/assignments" element={<ProfileAssignments />}></Route>
+        <Route path="/profile/order-history" element={<OrderHistory />}></Route>
       </Route>
 
 
@@ -80,7 +80,7 @@ const App = () => {
         </RequireAdmin>
       }>
         <Route path="/admin" element={<Dashboard />}></Route>
-        <Route path="/admin/add-new-course" element={<AddNewCourse />}></Route>
+        <Route path="/admin/add-course" element={<AddCourses />}></Route>
         <Route path="/admin/all-courses" element={<AllCourses />}></Route>
         <Route path="/admin/students" element={<Students />}></Route>
         <Route path="/admin/assignments" element={<Assignments />}></Route>

@@ -2,7 +2,7 @@ import React from 'react';
 import { BsCheck2Circle } from 'react-icons/bs';
 import { SlClose } from 'react-icons/sl';
 import { useNavigate } from 'react-router-dom';
-import PageTitle from '../../Shared/PageTitle';
+import PageTitle from '../Shared/PageTitle';
 
 const StripeCheckoutMsg = () => {
     const searchQuery = window.location.search;

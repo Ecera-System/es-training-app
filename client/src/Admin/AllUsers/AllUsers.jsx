@@ -159,7 +159,7 @@ const AllUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? <TableLoadingSkeleton td_count={4} /> :
+                        {loading ? <TableLoadingSkeleton td_count={5} /> :
                             profiles.map((profile) =>
                                 <tr key={profile._id} className='border-b'>
                                     <td className='py-3 px-5'>
@@ -220,7 +220,7 @@ const AllUsers = () => {
                 {
                     (!loading && profiles.length === 0) && <div className='text-center py-20'>
                         <h4 className='md:text-3xl text-xl font-medium text-gray-500'>
-                            No Students data found!
+                            No Users data found!
                         </h4>
                     </div>
                 }

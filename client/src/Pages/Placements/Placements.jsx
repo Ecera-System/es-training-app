@@ -16,9 +16,7 @@ const Placements = () => {
             .then(res => {
                 setReviews(res.data);
             })
-            .catch(err => {
-                console.log(err);
-            });
+            .catch(err => {});
     }, []);
 
     const NextArrow = ({ onClick }) => {

@@ -20,7 +20,7 @@ const ExploreProjects = ({ isTitle }) => {
                         <h2 className='text-2xl font-medium'>MERN Stack</h2>
                         <h4 className='text-base uppercase mt-3'>Projects</h4>
                     </button>
-                    <button
+                    {/* <button
                         onClick={() => navigate('/projects/frontend')}
                         className='p-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300'
                     >
@@ -47,7 +47,7 @@ const ExploreProjects = ({ isTitle }) => {
                     >
                         <h2 className='text-2xl font-medium'>Node JS</h2>
                         <h4 className='text-base uppercase mt-3'>Projects</h4>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>

@@ -9,63 +9,71 @@ import { BiMessageSquareDots } from 'react-icons/bi';
 import { VscGithubAlt } from 'react-icons/vsc';
 import { BsGraphUp } from 'react-icons/bs';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
-import Slider from 'react-slick';
+// import Slider from 'react-slick';
 import Footer from '../Shared/Footer/Footer';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import { IoCloseSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
+import useGetAllCourses from '../../API/useGetAllCourses';
 
 const MERNStackWebDevelopment = () => {
+    const [coursesData] = useGetAllCourses();
     const [indexCC, setIndexCC] = useState(0);
     const [indexFaq, setIndexFaq] = useState(0);
     const [introVideo, setIntroVideo] = useState(false);
     const navigate = useNavigate();
 
-    const settings = {
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 4000,
-        autoplaySpeed: 4000,
-        cssEase: "linear",
-        pauseOnHover: false,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 1023,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            }
-        ]
-    };
+    // <!-- Find course using title -->
+    // # Check carefully that this page course title and Database course title are the same. This is sensitive. 
+    // # If the title will not match then students might be enrolled the wrong course or can't be enrolled. 
+    const course = coursesData?.find(f => f.title === 'Full Stack Web Development Program — MERN Stack');
+
+
+    // const settings = {
+    //     infinite: true,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     autoplay: true,
+    //     speed: 4000,
+    //     autoplaySpeed: 4000,
+    //     cssEase: "linear",
+    //     pauseOnHover: false,
+    //     responsive: [
+    //         {
+    //             breakpoint: 1200,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 1,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 1023,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 1,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 768,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 1,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 600,
+    //             settings: {
+    //                 slidesToShow: 1,
+    //                 slidesToScroll: 1,
+    //             }
+    //         }
+    //     ]
+    // };
 
     return (<>
         <PageTitle title='MERN Stack Web Development Program' />
         <Header />
-        <section className='bg-violet-100 pt-16 pb-10 relative'>
+        <section className='bg-white pt-10 pb-10 relative'>
             <div className="2xl:w-[1280px] w-[90%] mx-auto grid grid-cols-2">
                 <div className='text-gray-600'>
                     <h1 className='text-[2.6rem] leading-[55px] font-semibold text-violet-600 my-5'>
@@ -75,7 +83,7 @@ const MERNStackWebDevelopment = () => {
                     <h3 className='text-xl font-medium mt-2 mb-10'>
                         for Beginners and Experienced Learners
                     </h3>
-                    <p className='text-xl font-light text-gray-700'>
+                    <p className='text-lg font-light text-gray-700'>
                         The MERN stack refers to a set of tools used to build powerful web applications from end to end. It includes MongoDB, Express, React, and Node.js, and is useful in many development roles.
                     </p>
 
@@ -91,7 +99,8 @@ const MERNStackWebDevelopment = () => {
 
                     <div className='mt-4'>
                         <button
-                            onClick={() => navigate('/course/checkout')}
+                            disabled={!course}
+                            onClick={() => navigate(`/course/checkout/${course?._id}`)}
                             className='w-max lg:mx-0 mx-auto px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md hover:shadow-[0_3px_15px_rgb(124,58,237,0.6)]'
                         >
                             Enroll Now
@@ -101,21 +110,14 @@ const MERNStackWebDevelopment = () => {
                 </div>
                 <div className='w-full h-full pl-10'>
                     <img loading='lazy'
-                        src="/images/mern-stack-web/web-dev-bg1.png"
+                        src="/images/mern-stack-web/web-dev.png"
                         alt="Rocket shape"
                         className='w-full h-auto'
                     />
                 </div>
             </div>
-            <div className=''>
-                <img loading='lazy'
-                    src="/images/mern-stack-web/cloud-shape.png"
-                    alt=""
-                    className='absolute bottom-0 left-0 w-full h-auto'
-                />
-            </div>
         </section>
-        <section className='flex items-center justify-center mt-24 mb-36'>
+        <section className='flex items-center justify-center mt-20 mb-36'>
             <div className='max-w-5xl w-4/5 flex items-start justify-center gap-px'>
                 <div
                     className='w-full p-10 shadow-[0px_10px_60px_0px_rgba(124,58,237,0.1)] relative after:duration-500 after:opacity-0 hover:after:opacity-100 after:absolute after:inset-12 after:bg-violet-400 after:-z-10 after:rounded-full after:blur-2xl'
@@ -153,10 +155,8 @@ const MERNStackWebDevelopment = () => {
                 </div>
             </div>
         </section>
-        <section className='pt-20 pb-24 bg-[#15171F]'
-        // style={{ backgroundImage: `url(/images/mern-stack-web/earth-shape.png)` }}
-        >
-            <div className='w-[85%] mx-auto'>
+        <section className='pt-20 pb-24 bg-[#15171F]'>
+            <div className='max-w-7xl w-[85%] mx-auto'>
                 <div>
                     <h1 className='text-4xl leading-[50px] font-semibold text-gray-100 text-center'>
                         Work Experience-Based Learning Approach <br /> To Master Full Stack Developer Skills
@@ -209,7 +209,7 @@ const MERNStackWebDevelopment = () => {
                 </div>
             </div>
         </section>
-        <section className='pt-20 pb-24'>
+        {/* <section className='pt-20 pb-24'>
             <div className='w-[52rem] mx-auto'>
                 <h1 className='text-4xl leading-[50px] font-semibold text-gray-800 text-center'>
                     Build Modern Work-Like Professional Projects
@@ -354,18 +354,18 @@ const MERNStackWebDevelopment = () => {
                     </div>
                 </Slider>
             </div>
-        </section>
+        </section> */}
         <section
             className='py-20 bg-violet-900 bg-cover bg-no-repeat bg-center'
             style={{ backgroundImage: `url(/images/mern-stack-web/earth-shape.png)` }}
         >
-            <div className='w-[90%] mx-auto'>
+            <div className='max-w-7xl w-[90%] mx-auto'>
                 <div>
-                    <h1 className='text-5xl font-semibold text-white'>
+                    <h1 className='text-5xl font-semibold text-white text-center'>
                         Course Curriculum
                     </h1>
                 </div>
-                <div className='flex mt-10'>
+                <div className='flex justify-center mt-10'>
                     <div className='w-4/6 bg-violet-700/50 p-5 rounded-lg'>
                         <ul className='list-none max-h-[30rem] overflow-y-auto scrollBar-sm flex flex-col gap-1'>
                             <li className='bg-violet-900 p-5'>
@@ -884,7 +884,6 @@ const MERNStackWebDevelopment = () => {
                             </li>
                         </ul>
                     </div>
-                    <div></div>
                 </div>
             </div>
         </section >
@@ -894,7 +893,7 @@ const MERNStackWebDevelopment = () => {
                     Technologies You Will Master Hands-On
                 </h1>
             </div>
-            <div className='w-4/5 mx-auto mt-16 grid grid-cols-4 gap-8'>
+            <div className='max-w-7xl w-4/5 mx-auto mt-16 grid grid-cols-4 gap-8'>
                 <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/javascript.png"
@@ -987,22 +986,12 @@ const MERNStackWebDevelopment = () => {
                 </div>
                 <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
                     <img loading='lazy'
-                        src="/images/mern-stack-web/next-js.png"
-                        alt="Next JS"
-                        className='w-[70px] h-[70px] m-auto mb-5'
-                    />
-                    <h4 className='text-sm font-semibold'>
-                        Next JS
-                    </h4>
-                </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
-                    <img loading='lazy'
-                        src="/images/mern-stack-web/redux.png"
+                        src="/images/mern-stack-web/git.png"
                         alt="Redux"
                         className='w-[70px] h-[70px] m-auto mb-5'
                     />
                     <h4 className='text-sm font-semibold'>
-                        Redux
+                        Git & GitHub
                     </h4>
                 </div>
                 <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
@@ -1086,7 +1075,7 @@ const MERNStackWebDevelopment = () => {
                             <p className='text-base text-gray-600 mt-2'>
                                 You must follow a good learning path to learn MERN stack web development. First, start with the basics, including HTML, CSS, and JavaScript. Then move to the other components of this tech stack which are MongoDB, Express, React, and Node.
                                 <br /> <br />
-                                WsCube Tech’s well-structured and practical MERN Stack courses for beginners is always a great choice to start learning every concept of this popular tech stack.
+                                Our’s well-structured and practical MERN Stack courses for beginners is always a great choice to start learning every concept of this popular tech stack.
                             </p>
                         </div>
                     </li>

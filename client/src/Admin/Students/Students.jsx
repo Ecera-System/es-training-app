@@ -40,7 +40,6 @@ const Students = () => {
         })
             .then(res => {
                 setStudentsData(res.data.students);
-                console.log(res.data.students);
                 setCount(res.data.count);
                 setLoading(false);
             })
@@ -144,7 +143,7 @@ const Students = () => {
                 </table>
 
                 {
-                    (studentsData.length === 0) && <div className='text-center py-20'>
+                    (!loading && studentsData.length === 0) && <div className='text-center py-20'>
                         <h4 className='md:text-3xl text-xl font-medium text-gray-500'>
                             No Students data found!
                         </h4>

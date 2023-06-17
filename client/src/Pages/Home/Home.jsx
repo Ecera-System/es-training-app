@@ -5,7 +5,6 @@ import HeroSection from './HeroSection';
 import TechIcon from './TechIcon';
 import { GiTrophy } from 'react-icons/gi';
 import Footer from '../Shared/Footer/Footer';
-import Courses from './Courses';
 import SuccessStories from './SuccessStories';
 
 const Home = () => {
@@ -70,9 +69,8 @@ const Home = () => {
                 </div>
             </div>
         </section>
-        <Courses />
-        <section className='mb-10 py-20 bg-[#f9f8fe] md:rounded-[8rem] rounded-[4rem]'>
-            <div className='2xl:w-[1280px] w-[90%] mx-auto'>
+        <section className='2xl:max-w-7xl w-full mx-auto my-10 pt-16 pb-20 bg-[#f9f8fe] md:rounded-[8rem] rounded-[4rem]'>
+            <div className='w-[90%] mx-auto'>
                 <div className='flex items-center justify-between'>
                     <div className='lg:text-start text-center'>
                         <h4 className='text-lg font-medium text-violet-600'>

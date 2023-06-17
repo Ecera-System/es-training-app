@@ -17,7 +17,6 @@ const SubmittedAssignments = () => {
                     className="block w-full border rounded outline-none py-2 px-3 text-sm focus:border-violet-600"
                     name="assignment"
                     id="assignment"
-                // onChange={(e) => handleAssignmentChange(e.target.value)}
                 >
                     <option value="">Select Assignment</option>
                     <option value={'_id'}> {'name'} </option>
@@ -25,15 +24,6 @@ const SubmittedAssignments = () => {
             </div>
             <div className="">
                 <table className="table-auto w-full">
-                    {/* <thead className="bg-white border text-left box-border">
-                        <tr>
-                            <th className="text-sm py-2 px-4 border-r">Student</th>
-                            <th className="text-sm py-2 px-4 border-r">Number</th>
-                            <th className="text-sm py-2 px-4 border-r">Submit Time</th>
-                            <th className="text-sm py-2 px-4 border-r">Deadline</th>
-                            <th className="text-sm py-2 px-4">Actions</th>
-                        </tr>
-                    </thead> */}
                     <thead className="bg-violet-100 text-left uppercase">
                         <tr>
                             <th className="text-sm py-3 pl-5">Student</th>

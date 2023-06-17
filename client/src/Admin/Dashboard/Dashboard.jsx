@@ -6,7 +6,7 @@ import TopSaleCourse from './TopSaleCourse';
 const Dashboard = () => {
     return (<>
         <PageTitle title="Admin Dashboard" />
-        <div className='my-5'>
+        <div className='mt-5 mb-20'>
         {/* <!-- Top Sale Courses area --> */}
             <TopSaleCourse />
 

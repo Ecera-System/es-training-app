@@ -10,7 +10,7 @@ const TopSaleCourse = () => {
     const [topSales, setTopSales] = useState([]);
     const [loading, setLoading] = useState(true);
 
-
+    // <!-- Fetch course data -->
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_API_V1_URL}/course/top-sale`, {
             method: 'GET',
@@ -48,41 +48,35 @@ const TopSaleCourse = () => {
                         <tr>
                             <th className="text-sm py-3 px-5">COURSES</th>
                             <th className="text-sm py-3 pr-5">SALES</th>
+                            <th className="text-sm py-3 pr-5">Students</th>
                             <th className="text-sm py-3 pr-5">Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? <TableLoadingSkeleton tr_count={3} td_count={3} /> :
-                            topSales?.map(({ _id, coverImage, title, sales, price }) =>
+                        {loading ? <TableLoadingSkeleton tr_count={3} td_count={4} /> :
+                            topSales?.map(({ _id, title, sales, students, price }) =>
                                 <tr key={_id} className='border-b'>
                                     <td className='py-3 px-5'>
-                                        <div className='w-max flex items-center gap-5' >
-                                            <div className='w-20 h-auto'>
-                                                <img
-                                                    src={process.env.REACT_APP_API_V1_URL + coverImage}
-                                                    alt="course"
-                                                    className="w-20 h-14 object-cover"
-                                                />
-                                            </div>
-                                            <div>
-                                                <Link
-                                                    className="inline-block text-base font-medium hover:text-violet-600 duration-300"
-                                                    to={`/course/${_id}`}
-                                                >
-                                                    {title}
-                                                </Link>
-                                            </div>
+                                        <div className='w-[28rem] text-base font-medium'>
+                                            <h2>
+                                                {title}
+                                            </h2>
                                         </div>
                                     </td>
                                     <td className='py-3 pr-5'>
-                                        <span className="w-32 inline-block text-sm">
+                                        <div className="w-32 pl-3 text-sm">
                                             {sales}
-                                        </span>
+                                        </div>
                                     </td>
                                     <td className='py-3 pr-5'>
-                                        <span className="w-32 inline-block text-sm">
+                                        <div className="w-32 text-sm pl-3">
+                                            {students.length}
+                                        </div>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <div className="w-32 text-sm">
                                             ${price}
-                                        </span>
+                                        </div>
                                     </td>
                                 </tr>
                             )

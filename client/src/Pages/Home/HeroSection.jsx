@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsFillStarFill } from 'react-icons/bs';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { CiLocationArrow1 } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import BookAFreeCounselling from './BookAFreeCounselling';
+import { contextProvider } from '../../Context/ContextProvider';
 
 const HeroSection = () => {
+    const { isLoggedIn } = useContext(contextProvider);
 
     const handleBrochure = (e) => {
         e.preventDefault();
@@ -27,7 +29,7 @@ const HeroSection = () => {
                         </span> is an intense bootcamp offering a complete suite of software development skills. Get job-ready with front end & backend development skills. Complete the course to get an assured job with an average salary of 3-6 LPA.
                     </p>
                     <Link
-                        to='/sign-up'
+                        to={isLoggedIn ? '/programs/mern-stack-web-development' : '/sign-up'}
                         className='w-max lg:mx-0 mx-auto px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md shadow-[0_3px_15px_rgb(124,58,237,0.5)]'
                     >
                         Get Started

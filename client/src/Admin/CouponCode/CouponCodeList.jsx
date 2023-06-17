@@ -7,6 +7,7 @@ import useGetAllCouponCode from '../../API/useGetAllCouponCode';
 import { contextProvider } from '../../Context/ContextProvider';
 import PageTitle from '../../Pages/Shared/PageTitle';
 import Spinner from '../../Pages/Shared/Spinner/Spinner';
+import TableLoadingSkeleton from '../../Pages/Shared/Spinner/TableLoadingSkeleton';
 
 const CouponCodeList = () => {
     const { showToast } = useContext(contextProvider);
@@ -15,8 +16,6 @@ const CouponCodeList = () => {
     const [coLoading, setCoLoading] = useState(false);
     const [dLoading, setDLoading] = useState(false);
     const [isDelete, setIsDelete] = useState('');
-
-    if (loading) return <Spinner />
 
 
     // <!-- Handle Change Status -->
@@ -81,21 +80,21 @@ const CouponCodeList = () => {
 
     return (<>
         <PageTitle title="All Coupon Code" />
-        {couponData.length !== 0 ?
-            <div className="border-b bg-white text-gray-600 rounded-lg border overflow-x-auto">
-                <table className="table-auto w-full">
-                    <thead className="bg-violet-100 text-left uppercase">
-                        <tr>
-                            <th className="text-sm py-3 px-5">Coupon Name</th>
-                            <th className="text-sm py-3 pr-5">Code</th>
-                            <th className="text-sm py-3 pr-5">Course</th>
-                            <th className="text-sm py-3 pr-5">Discount</th>
-                            <th className="text-sm py-3 pr-5">Status</th>
-                            <th className="text-sm py-3 pr-5">Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {couponData.map(({ _id, name, couponCode, courseId, discount, status }) =>
+        <div className="border-b bg-white text-gray-600 rounded-lg border overflow-x-auto">
+            <table className="table-auto w-full">
+                <thead className="bg-violet-100 text-left uppercase">
+                    <tr>
+                        <th className="text-sm py-3 px-5">Coupon Name</th>
+                        <th className="text-sm py-3 pr-5">Code</th>
+                        <th className="text-sm py-3 pr-5">Course</th>
+                        <th className="text-sm py-3 pr-5">Discount</th>
+                        <th className="text-sm py-3 pr-5">Status</th>
+                        <th className="text-sm py-3 pr-5">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {loading ? <TableLoadingSkeleton td_count={6} /> :
+                        couponData.map(({ _id, name, couponCode, courseId, discount, status }) =>
                             <tr key={_id} className="border-b">
                                 <td className='py-3 px-5'>
                                     <p className='w-40'>
@@ -143,13 +142,17 @@ const CouponCodeList = () => {
                                 </td>
                             </tr>
                         )}
-                    </tbody>
-                </table>
-            </div> :
-            <div className='mt-40 w-full grid place-items-center'>
-                <p className='md:text-3xl text-xl text-gray-400'>No Coupon code has been created yet!</p>
-            </div>
-        }
+                </tbody>
+            </table>
+            {
+                (!loading && couponData.length === 0) &&
+                <div className='text-center py-20'>
+                    <h4 className='md:text-3xl text-xl font-medium text-gray-500'>
+                        No Coupon code has been created yet!
+                    </h4>
+                </div>
+            }
+        </div>
         {
             isDelete && <div className='fixed inset-0 bg-black/60 grid place-items-center'>
                 <div className='sm:w-[30rem] w-11/12 h-auto bg-white sm:p-10 p-6 rounded-lg flex flex-col gap-5'>

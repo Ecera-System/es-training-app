@@ -67,14 +67,16 @@ const BookCounselling = () => {
                         }
                     </tbody>
                 </table>
+                {
+                    !loading && bookCData.length === 0 &&
+                    <div className='text-center py-20'>
+                        <h4 className='md:text-3xl text-xl font-medium text-gray-500'>
+                            No Book Counselling has been created yet!
+                        </h4>
+                    </div>
+                }
             </div>
         </div>
-        {
-            !loading && bookCData.length === 0 &&
-            <div className='w-full pt-20 grid place-items-center'>
-                <p className='md:text-3xl text-xl text-gray-400'>No Book Counselling has been created yet!</p>
-            </div>
-        }
         {
             isResume &&
             <ViewResume

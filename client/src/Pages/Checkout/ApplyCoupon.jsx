@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import Spinner from '../../Shared/Spinner/Spinner';
+import Spinner from '../Shared/Spinner/Spinner';
 
 const ApplyCoupon = ({ id, price, setIsDiscount }) => {
     const [state, setState] = useState('');

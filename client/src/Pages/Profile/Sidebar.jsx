@@ -2,7 +2,8 @@ import React from 'react';
 import { BsJournalCode } from 'react-icons/bs';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { MdOutlineAssignment } from 'react-icons/md';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { RiHistoryFill } from 'react-icons/ri';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useGetProfile from '../../API/useGetProfile';
 import Spinner from '../Shared/Spinner/Spinner';
 
@@ -54,7 +55,7 @@ const Sidebar = () => {
                     to='/profile/course'
                     className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
-                    <BsJournalCode className='text-lg' />Course
+                    <BsJournalCode className='text-lg' />My Classes
                 </NavLink>
             </li>
             <li>
@@ -63,6 +64,14 @@ const Sidebar = () => {
                     className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
                     <MdOutlineAssignment className='text-lg' />Assignments
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to='/profile/order-history'
+                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                >
+                    <RiHistoryFill className='text-lg' />Order History
                 </NavLink>
             </li>
             <li>

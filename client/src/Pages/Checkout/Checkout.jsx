@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { contextProvider } from '../../../Context/ContextProvider';
-import CountryList from '../../Shared/CountryList';
-import Header from '../../Shared/Header/Header';
-import PageTitle from '../../Shared/PageTitle';
-import Spinner from '../../Shared/Spinner/Spinner';
+import { contextProvider } from '../../Context/ContextProvider';
+import CountryList from '../Shared/CountryList';
+import Header from '../Shared/Header/Header';
+import PageTitle from '../Shared/PageTitle';
+import Spinner from '../Shared/Spinner/Spinner';
 import ApplyCoupon from './ApplyCoupon';
 import Summary from './Summary';
-import useGetCourseById from '../../../API/useGetCourseById';
+import useGetCourseById from '../../API/useGetCourseById';
 
 // <-- Razorpay payment API -->
 const loadRazorpay = (src) => {
@@ -223,16 +223,16 @@ const Checkout = () => {
         <PageTitle title={`Checkout for ${title}`} />
         <Header />
         <div className='w-full h-auto bg-violet-50'>
-            <div className='w-[90%] mx-auto flex justify-between items-start gap-10 py-10'>
+            <div className='2xl:w-[1280px] xl:w-4/5 lg:w-[90%] sm:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:items-start items-center gap-10 lg:py-10 pb-10'>
 
                 {/* <!-- Right Form --> */}
-                <form onSubmit={handleSubmit} className='w-3/4'>
+                <form onSubmit={handleSubmit} className='lg:w-3/4 w-full'>
                     <div className='w-full bg-white border rounded-lg'>
                         <h1 className='text-xl font-semibold text-gray-700 p-5 border-b'>
                             Billing Address
                         </h1>
                         <div className='w-full p-8 flex flex-col gap-6'>
-                            <div className='flex items-center justify-between gap-8'>
+                            <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
                                     <label htmlFor='firstName' className="px-1">First Name</label>
                                     <input
@@ -282,7 +282,7 @@ const Checkout = () => {
                                     </p>
                                 }
                             </div>
-                            <div className='flex items-start justify-between gap-8'>
+                            <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
                                     <label htmlFor='address1' className="px-1">Address Line 1</label>
                                     <input
@@ -300,7 +300,7 @@ const Checkout = () => {
                                     }
                                 </div>
                                 <div className='w-full'>
-                                    <label htmlFor='address2' className="px-1">Address Line 2 (Optional)</label>
+                                    <label htmlFor='address2' className="px-1">Address Line 2 (optional)</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -316,7 +316,7 @@ const Checkout = () => {
                                     }
                                 </div>
                             </div>
-                            <div className='flex items-start justify-between gap-8'>
+                            <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
                                     <label htmlFor='country' className="px-1">Country</label>
                                     <select
@@ -411,7 +411,7 @@ const Checkout = () => {
                 </form>
 
                 {/* <!-- Left Summary --> */}
-                <div className='w-1/4 sticky top-[74px] right-0'>
+                <div className='lg:w-1/4 w-full lg:sticky top-[74px] right-0'>
                     <Summary
                         data={courseData}
                         isDiscount={isDiscount || price}
