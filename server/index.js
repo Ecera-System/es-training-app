@@ -3,7 +3,7 @@ const app = require('./app');
 const mongoose = require('mongoose');
 
 // database connection
-mongoose.connect(process.env.DB_URL).then(() => {
+mongoose.connect(process.env.DB_LOCAL_URL).then(() => {
     console.log(`Database is connected.`);
 });
 
