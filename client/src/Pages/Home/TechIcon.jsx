@@ -92,7 +92,7 @@ const TechIcon = () => {
     }
 
     return (
-        <section className='pb-16'>
+        <section className='pt-16 pb-20'>
             <div className='2xl:w-[1280px] sm:w-11/12 w-4/5 mx-auto text-center'>
                 <div className='w-full'>
                     <Slider {...settings}>

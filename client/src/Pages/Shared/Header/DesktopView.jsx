@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { contextProvider } from '../../../Context/ContextProvider';
 import HeaderProfile from './HeaderProfile';
 
-const DesktopView = ({ profile }) => {
+const DesktopView = ({  profile }) => {
     const { isLoggedIn } = useContext(contextProvider);
 
     return (
@@ -21,7 +21,7 @@ const DesktopView = ({ profile }) => {
                             Programs <RiArrowDownSLine className='text-xl' />
                         </div>
 
-                        <ul className='w-max max-w-md py-4 list-none absolute top-12 left-0 scale-x-100 scale-y-0 group-hover/program:scale-y-100 duration-300 origin-top rounded-lg bg-white overflow-hidden shadow-[0_1px_5px_0_rgb(0,0,0,0.2)]'>
+                        <ul className={`w-max max-w-md py-4 list-none absolute top-12 left-0 scale-x-100 scale-y-0 group-hover/program:scale-y-100 duration-300 origin-top rounded-lg bg-white overflow-hidden shadow-[0_1px_5px_0_rgb(0,0,0,0.2)] text-gray-600`}>
                             <li className='w-full'>
                                 <NavLink
                                     to='/programs/mern-stack-web-development'

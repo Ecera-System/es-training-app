@@ -12,9 +12,10 @@
     transition-timing-function: cubic-bezier(1, 0, 1, 0);
 }
 
-.slick-prev{
+.slick-prev {
     left: 0 !important;
 }
-.slick-next{
+
+.slick-next {
     right: 0 !important;
 }

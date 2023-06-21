@@ -5,13 +5,13 @@ import { VscClose } from 'react-icons/vsc';
 import DesktopView from './DesktopView';
 import MobileView from './MobileView';
 
-const Header = ({ profile }) => {
+const Header = ({ profile, textColor = 'text-gray-600' }) => {
     const [scroll, setScroll] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
 
     // <!-- Navbar Scroll Effect -->
     window.addEventListener('scroll', () => {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let scrollTop = window.scrollY || document.documentElement.scrollTop;
         if (scrollTop > 48) {
             setScroll(true);
         }
@@ -21,9 +21,9 @@ const Header = ({ profile }) => {
     });
 
     return (
-        <header className={`w-full h-[76px] text-gray-600`}>
+        <header className={`w-full h-[76px]`}>
             <nav
-                className={`w-full backdrop-blur-sm bg-white/70 ${scroll ? 'fixed top-0 left-0 right-0 z-40 shadow' : 'relative z-40'}`}
+                className={`w-full ${scroll ? 'fixed top-0 left-0 right-0 backdrop-blur-sm bg-white/70 z-40 shadow' : `bg-transparent ${textColor} relative z-40`}`}
             >
                 <div className='2xl:w-[1280px] xl:w-full mx-auto flex items-center justify-between 2xl:px-0 lg:px-14 sm:px-6 px-3 py-2'>
 
@@ -40,7 +40,7 @@ const Header = ({ profile }) => {
 
                     {/* <== == == == Left Menu items == == == ==> */}
                     {/* <!-- Desktop view --> */}
-                    <DesktopView profile={profile}/>
+                    <DesktopView profile={profile} />
 
                     {/* <!-- Mobile view --> */}
                     <div className='lg:hidden relative grid place-items-center'>

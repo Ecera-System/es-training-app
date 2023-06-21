@@ -11,7 +11,7 @@ const MobileView = ({ openMenu }) => {
 
     return (
         <ul
-            className={`fixed left-1/2 -translate-x-1/2 w-[94%] h-auto list-none bg-white border shadow-lg rounded-md duration-300 flex flex-col ${openMenu ? 'top-[74px] opacity-100 visible' : '-top-[24rem] opacity-0 invisible'}`
+            className={`fixed left-1/2 -translate-x-1/2 w-[94%] h-auto list-none bg-white text-gray-600 border shadow-lg rounded-md duration-300 flex flex-col ${openMenu ? 'top-[74px] opacity-100 visible' : '-top-[24rem] opacity-0 invisible'}`
             }
         >
             {isLoggedIn &&

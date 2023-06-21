@@ -87,10 +87,10 @@ const BookAFreeCounselling = () => {
 
 
     return (<>
-        <div className='flex lg:justify-end justify-center'>
+        <div className='flex justify-center'>
             <button
                 onClick={() => setIsBooking(true)}
-                className='sm:px-8 px-3 py-3 sm:text-base text-sm font-medium bg-[#FFD500] text-black hover:shadow-[0_3px_15px_rgb(255,213,0.5)] duration-300 flex items-center gap-2 rounded-full'
+                className='sm:px-8 px-5 py-3 sm:text-base text-sm font-medium bg-[#FFD500] text-black hover:shadow-[0_3px_15px_rgb(255,213,0.5)] duration-300 flex items-center gap-2 rounded-full'
             >
                 Book a Free Counselling Session Now
                 <HiArrowNarrowRight className='text-2xl font-bold' />

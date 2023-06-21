@@ -40,7 +40,7 @@ const HeaderProfile = () => {
             </button>
 
             <ul
-                className={`list-none absolute top-12 z-50 lg:right-0 lg:left-auto left-0 w-72 h-auto p-5 bg-white rounded-md shadow-[0_8px_15px_-1px_rgb(0,0,0,0.3)] lg:origin-top-right origin-top-left duration-300
+                className={`list-none absolute top-12 z-50 lg:right-0 lg:left-auto left-0 w-72 h-auto p-5 bg-white text-gray-600 rounded-md shadow-[0_8px_15px_-1px_rgb(0,0,0,0.3)] lg:origin-top-right origin-top-left duration-300
                 ${openProfile ? 'scale-100' : 'scale-0'}
                 `}
             >

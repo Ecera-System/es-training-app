@@ -9,18 +9,14 @@ import { BiMessageSquareDots } from 'react-icons/bi';
 import { VscGithubAlt } from 'react-icons/vsc';
 import { BsGraphUp } from 'react-icons/bs';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
-// import Slider from 'react-slick';
 import Footer from '../Shared/Footer/Footer';
-import { FaRegPlayCircle } from 'react-icons/fa';
-import { IoCloseSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 import useGetAllCourses from '../../API/useGetAllCourses';
 
 const MERNStackWebDevelopment = () => {
     const [coursesData] = useGetAllCourses();
-    const [indexCC, setIndexCC] = useState(0);
+    // const [indexCC, setIndexCC] = useState(0);
     const [indexFaq, setIndexFaq] = useState(0);
-    const [introVideo, setIntroVideo] = useState(false);
     const navigate = useNavigate();
 
     // <!-- Find course using title -->
@@ -72,53 +68,36 @@ const MERNStackWebDevelopment = () => {
 
     return (<>
         <PageTitle title='MERN Stack Web Development Program' />
-        <Header />
-        <section className='bg-white pt-10 pb-10 relative'>
-            <div className="2xl:w-[1280px] w-[90%] mx-auto grid grid-cols-2">
-                <div className='text-gray-600'>
-                    <h1 className='text-[2.6rem] leading-[55px] font-semibold text-violet-600 my-5'>
-                        Full Stack Web Development Program —
-                        <span className='bg-violet-600 text-white ml-2.5'>MERN Stack</span>
-                    </h1>
-                    <h3 className='text-xl font-medium mt-2 mb-10'>
-                        for Beginners and Experienced Learners
+        <section
+            style={{ backgroundImage: 'url(/images/mern-stack-web/shapes.png)' }}
+            className="bg-violet-800 relative bg-no-repeat bg-cover lg:[backgroundSize:140%_auto] [backgroundPositionX:center] [backgroundPositionY:top]"
+        >
+            <Header textColor='text-white' />
+            <div className="max-w-4xl w-[90%] mx-auto md:pt-16 pt-12 md:pb-32 pb-20">
+                <div className='text-center'>
+                    <h3 className='text-xl font-medium mb-5'>
+                        For Beginners and Experienced Learners
                     </h3>
-                    <p className='text-lg font-light text-gray-700'>
+                    <h1 className='lg:text-5xl lg:leading-[1.2] md:text-4xl text-3xl font-semibold text-white'>
+                        Full Stack Web Development Program — MERN Stack
+                    </h1>
+                    <p className='max-w-2xl mx-auto text-lg font-light text-gray-100 md:mt-12 mt-10 mb-10'>
                         The MERN stack refers to a set of tools used to build powerful web applications from end to end. It includes MongoDB, Express, React, and Node.js, and is useful in many development roles.
                     </p>
 
-                    <div className='mt-8'>
-                        <button
-                            onClick={() => setIntroVideo(!introVideo)}
-                            className='flex gap-1 items-center text-lg font-semibold text-violet-800'
-                        >
-                            <FaRegPlayCircle className='inline-block text-xl' />
-                            Intro to Full Stack Web Development Program
-                        </button>
-                    </div>
-
-                    <div className='mt-4'>
-                        <button
-                            disabled={!course}
-                            onClick={() => navigate(`/course/checkout/${course?._id}`)}
-                            className='w-max lg:mx-0 mx-auto px-8 py-3 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded-md hover:shadow-[0_3px_15px_rgb(124,58,237,0.6)]'
-                        >
-                            Enroll Now
-                            <HiArrowNarrowRight className='text-2xl font-bold' />
-                        </button>
-                    </div>
-                </div>
-                <div className='w-full h-full pl-10'>
-                    <img loading='lazy'
-                        src="/images/mern-stack-web/web-dev.png"
-                        alt="Rocket shape"
-                        className='w-full h-auto'
-                    />
+                    <button
+                        disabled={!course}
+                        onClick={() => navigate(`/course/checkout/${course?._id}`)}
+                        className='w-max mx-auto px-12 py-3 text-base font-medium border border-white hover:bg-white duration-300 text-white hover:text-violet-800 flex items-center gap-2 rounded'
+                    >
+                        Enroll Now
+                        <HiArrowNarrowRight className='text-2xl font-bold' />
+                    </button>
                 </div>
             </div>
         </section>
-        <section className='flex items-center justify-center mt-20 mb-36'>
-            <div className='max-w-5xl w-4/5 flex items-start justify-center gap-px'>
+        <section className='lg:my-36 md:my-28 my-20'>
+            <div className='lg:max-w-5xl lg:w-11/12 w-max mx-auto flex lg:flex-row flex-col items-start justify-center gap-px'>
                 <div
                     className='w-full p-10 shadow-[0px_10px_60px_0px_rgba(124,58,237,0.1)] relative after:duration-500 after:opacity-0 hover:after:opacity-100 after:absolute after:inset-12 after:bg-violet-400 after:-z-10 after:rounded-full after:blur-2xl'
                 >
@@ -155,17 +134,17 @@ const MERNStackWebDevelopment = () => {
                 </div>
             </div>
         </section>
-        <section className='pt-20 pb-24 bg-[#15171F]'>
-            <div className='max-w-7xl w-[85%] mx-auto'>
-                <div>
-                    <h1 className='text-4xl leading-[50px] font-semibold text-gray-100 text-center'>
-                        Work Experience-Based Learning Approach <br /> To Master Full Stack Developer Skills
+        <section className='pt-20 md:pb-28 pb-20 bg-[#15171F]' >
+            <div>
+                <div className='max-w-7xl w-4/5 mx-auto'>
+                    <h1 className='md:text-4xl md:leading-[1.2] text-2xl sm:font-semibold font-medium text-gray-100 text-center'>
+                        Work Experience-Based Learning Approach <br className='lg:block hidden' /> To Master Full Stack Developer Skills
                     </h1>
-                    <p className='text-lg font-extralight text-gray-300 text-center mt-5'>
+                    <p className='md:text-lg text-base font-light text-gray-300 text-center mt-5'>
                         Build software projects like the top 1% developers and learn all the skills you need to land the best full stack developer jobs.
                     </p>
                 </div>
-                <div className='mt-16 grid items-center grid-cols-3 gap-10 rounded'>
+                <div className='max-w-7xl md:w-[85%] sm:w-3/5 w-[85%] mx-auto mt-16 grid items-center lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 rounded'>
                     <div className='bg-[#181A22] w-auto h-full p-10'>
                         <div className='border border-gray-500 rounded-lg w-max p-3.5'>
                             <HiCodeBracket className='text-[25px] text-amber-300' />
@@ -355,7 +334,7 @@ const MERNStackWebDevelopment = () => {
                 </Slider>
             </div>
         </section> */}
-        <section
+        {/* <section
             className='py-20 bg-violet-900 bg-cover bg-no-repeat bg-center'
             style={{ backgroundImage: `url(/images/mern-stack-web/earth-shape.png)` }}
         >
@@ -886,15 +865,15 @@ const MERNStackWebDevelopment = () => {
                     </div>
                 </div>
             </div>
-        </section >
-        <section className='py-24'>
+        </section > */}
+        <section className='md:py-32 py-24'>
             <div>
-                <h1 className='text-5xl font-semibold text-gray-800 text-center'>
+                <h1 className='w-4/5 mx-auto lg:text-5xl md:text-4xl lg:leading-[1.2] text-3xl font-semibold text-gray-800 text-center'>
                     Technologies You Will Master Hands-On
                 </h1>
             </div>
-            <div className='max-w-7xl w-4/5 mx-auto mt-16 grid grid-cols-4 gap-8'>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+            <div className='max-w-7xl xl:w-4/5 lg:w-[90%] w-3/4 mx-auto mt-16 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/javascript.png"
                         alt="javascript"
@@ -904,7 +883,7 @@ const MERNStackWebDevelopment = () => {
                         JavaScript
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/html-5.png"
                         alt="html5"
@@ -914,7 +893,7 @@ const MERNStackWebDevelopment = () => {
                         HTML 5
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/css-3.png"
                         alt="css3"
@@ -924,7 +903,7 @@ const MERNStackWebDevelopment = () => {
                         CSS 3
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/react-js.png"
                         alt="React JS"
@@ -934,7 +913,7 @@ const MERNStackWebDevelopment = () => {
                         React JS
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/nodejs.png"
                         alt="Node JS"
@@ -944,7 +923,7 @@ const MERNStackWebDevelopment = () => {
                         Node JS
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/express-js.png"
                         alt="Express JS"
@@ -954,7 +933,7 @@ const MERNStackWebDevelopment = () => {
                         Express JS
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/jwt.png"
                         alt="Json Web Token"
@@ -964,7 +943,7 @@ const MERNStackWebDevelopment = () => {
                         JWT
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/bootstrap.png"
                         alt="Bootstrap"
@@ -974,7 +953,7 @@ const MERNStackWebDevelopment = () => {
                         Bootstrap
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/tailwind.png"
                         alt="Tailwind"
@@ -984,7 +963,7 @@ const MERNStackWebDevelopment = () => {
                         Tailwind
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/git.png"
                         alt="Redux"
@@ -994,7 +973,7 @@ const MERNStackWebDevelopment = () => {
                         Git & GitHub
                     </h4>
                 </div>
-                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md'>
+                <div className='shadow-[0_2px_40px_rgba(124,58,237,0.1)] text-center py-12 px-4 rounded-md bg-white'>
                     <img loading='lazy'
                         src="/images/mern-stack-web/mongodb.png"
                         alt="MongoDB"
@@ -1007,11 +986,11 @@ const MERNStackWebDevelopment = () => {
             </div>
         </section>
         <section
-            className='py-24 bg-cover bg-no-repeat bg-bottom'
+            className='sm:py-24 py-20 bg-cover bg-no-repeat bg-bottom'
             style={{ backgroundImage: 'url(/images/bg_banner1.jpg)' }}
         >
             <div className='text-center text-white'>
-                <h1 className='text-5xl font-semibold mb-12'>
+                <h1 className='lg:text-5xl md:text-4xl text-2xl font-semibold mb-12'>
                     Have any further questions?
                 </h1>
                 <button
@@ -1021,9 +1000,9 @@ const MERNStackWebDevelopment = () => {
                 </button>
             </div>
         </section>
-        <section className='py-24'>
-            <div className='xl:max-w-3xl w-3/5 mx-auto'>
-                <h1 className='text-5xl font-semibold text-gray-800 text-center'>
+        <section className='md:py-32 py-20'>
+            <div className='max-w-3xl sm:w-4/5 w-[90%] mx-auto'>
+                <h1 className='lg:text-5xl md:text-4xl text-3xl font-semibold text-gray-800 text-center'>
                     FAQs
                 </h1>
                 <ul className='list-none flex flex-col gap-2 mt-10'>
@@ -1133,29 +1112,6 @@ const MERNStackWebDevelopment = () => {
             </div>
         </section>
         <Footer />
-
-        {/* <!-- Intro Video start --> */}
-        {
-            introVideo && <div className='fixed inset-0 z-50 bg-black/70 grid place-items-center'>
-                <div className='w-[800px] h-[70vh] p-12 bg-black rounded-xl relative'>
-                    <button
-                        onClick={() => setIntroVideo(false)}
-                        className='absolute top-4 right-4'
-                    >
-                        <IoCloseSharp className='inline-block text-3xl text-white' />
-                    </button>
-                    <iframe
-                        title='Intro to Full Stack Web Development Program'
-                        loading='lazy'
-                        className='w-full h-full rounded-xl'
-                        src="https://www.youtube.com/embed/2gJFTEFJTzo?autoplay=1&rel=0&enablejsapi=1&origin=https%3A%2F%2Fcrio.do"
-                        frameborder="0"
-                    ></iframe>
-                </div>
-            </div>
-        }
-        {/* <!-- Intro Video End --> */}
-
     </>);
 };
 
