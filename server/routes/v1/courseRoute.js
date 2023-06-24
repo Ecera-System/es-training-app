@@ -11,9 +11,9 @@ router.route('/top-sale').get(userAuthorize, adminAuthorize, getTopSalesCourse);
 router.route('/')
     //<!-- Get All Courses -->
     .get(getAllCourses)
-
-//<!-- Add Course -->
-router.route('/title').post(userAuthorize, adminAuthorize, addCourseTitle);
+    //<!-- Add Course -->
+    .post(userAuthorize, adminAuthorize, addCourseTitle);
+    
 router.route('/upload-video').post(userAuthorize, adminAuthorize, uploadCourseVideo);
 
 router.route('/:id')

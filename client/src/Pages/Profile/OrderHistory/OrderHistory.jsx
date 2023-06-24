@@ -6,6 +6,7 @@ import TableLoadingSkeleton from '../../Shared/Spinner/TableLoadingSkeleton';
 
 const OrderHistory = () => {
     const [enrolledData, loading] = useGetEnrolledCourse();
+    const course = enrolledData?.filter(f => f.courseId);
 
     return (<>
         <PageTitle title={`Order History`} />
@@ -28,7 +29,7 @@ const OrderHistory = () => {
                     </thead>
                     <tbody>
                         {loading ? <TableLoadingSkeleton td_count={5} /> :
-                            enrolledData?.map((data) =>
+                            course?.map((data) =>
                                 <tr className='border-b'>
                                     <td className='py-3 px-5'>
                                         <div className='w-[25rem] flex items-center gap-5'>
@@ -62,7 +63,7 @@ const OrderHistory = () => {
                     </tbody>
                 </table>
                 {
-                    (!loading && enrolledData.length === 0) &&
+                    (!loading && course.length === 0) &&
                     <div className='text-center py-20'>
                         <h4 className='md:text-3xl text-xl font-medium text-gray-500'>
                             No course has been created yet!

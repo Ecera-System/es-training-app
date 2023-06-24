@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './programs.css'
-import PageTitle from '../Shared/PageTitle';
-import Header from '../Shared/Header/Header';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { HiCodeBracket } from 'react-icons/hi2';
 import { TfiInfinite } from 'react-icons/tfi';
@@ -12,18 +10,22 @@ import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import Footer from '../Shared/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import useGetAllCourses from '../../API/useGetAllCourses';
+import PageTitle from '../Shared/PageTitle';
+import Header from '../Shared/Header/Header';
 
 const MERNStackWebDevelopment = () => {
     const [coursesData] = useGetAllCourses();
+    const { pathname } = window.location;
     // const [indexCC, setIndexCC] = useState(0);
     const [indexFaq, setIndexFaq] = useState(0);
     const navigate = useNavigate();
 
-    // <!-- Find course using title -->
-    // # Check carefully that this page course title and Database course title are the same. This is sensitive. 
-    // # If the title will not match then students might be enrolled the wrong course or can't be enrolled. 
-    const course = coursesData?.find(f => f.title === 'Full Stack Web Development Program — MERN Stack');
-
+    // <!-- Find url path name of course page -->
+    const course = coursesData?.find(f =>
+        f.src_path === pathname ||
+        f.src_path === '"' + pathname + '"' ||
+        f.src_path === "'" + pathname + "'"
+    );
 
     // const settings = {
     //     infinite: true,

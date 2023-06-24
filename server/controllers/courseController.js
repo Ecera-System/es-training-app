@@ -1,3 +1,5 @@
+const Jimp = require("jimp");
+const path = require("path");
 const Course = require("../models/Course");
 const User = require("../models/User");
 const CouponCode = require("../models/CouponCode");
@@ -51,13 +53,36 @@ exports.deleteCourseById = async (req, res, next) => {
 // <!-- Add a new course -->
 exports.addCourseTitle = async (req, res, next) => {
     try {
-        const { title, price } = req.body;
+        const { title, price, src_path, cover_photo } = req.body;
+        let photoPath;
+
+        // <!-- Image processing -->
+        if (cover_photo) {
+            const buffer = Buffer.from(
+                cover_photo.replace(/^data:image\/(png|jpg|jpeg);base64,/, ""),
+                "base64"
+            );
+
+            photoPath = `${Date.now()}-${Math.round(Math.random() * 1e9)}.png`;
+            try {
+                const jimpResp = await Jimp.read(buffer);
+                jimpResp.resize(300, Jimp.AUTO)
+                    .write(
+                        path.resolve(__dirname, `../public/images/course/${photoPath}`)
+                    );
+            } catch (err) {
+                return res.status(500).json({ error: err.message });
+            };
+        };
+        if (!photoPath) return res.status(406).json({ error: 'Please provide a valid cover photo!' })
 
         const result = await Course.create({
             title,
-            price
+            price,
+            src_path,
+            cover_photo: `/images/course/${photoPath}`
         })
-        res.status(200).json({ data: 'result', success: "Course added successfully!" });
+        res.status(200).json({ data: result, success: "Course added successfully!" });
     } catch (error) {
         next(error);
     }

@@ -36,6 +36,14 @@ const courseSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    src_path: {
+        type: String,
+        required: [true, "Please provide a path name of course page!"],
+    },
+    cover_photo: {
+        type: String,
+        required: [true, "Please provide a cover photo!"],
+    },
     modules: [moduleSchema],
     sales: {
         type: Number,
