@@ -70,7 +70,7 @@ const BookAFreeCounselling = () => {
         if (Object.keys(errors).length === 0) {
             setFormErrors({});
             setLoading(true);
-            await axios.post(`${process.env.REACT_APP_API_V1_URL}/book-counselling`, formData)
+            await axios.post(`${import.meta.env.VITE_API_V1_URL}/book-counselling`, formData)
                 .then(res => {
                     res?.data?.success && setIsSuccess(true);
                 })

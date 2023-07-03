@@ -28,7 +28,7 @@ const UserDetails = ({ userDetails, setUserDetails }) => {
                             src={userDetails?.avatar ?
                                 (
                                     userDetails?.avatar?.includes("/images/") ?
-                                        process.env.REACT_APP_API_V1_URL + userDetails?.avatar
+                                        import.meta.env.VITE_API_V1_URL + userDetails?.avatar
                                         : userDetails?.avatar
                                 )
                                 : '/images/nav/avatar.png'

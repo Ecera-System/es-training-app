@@ -87,7 +87,7 @@ const SignUp = () => {
         if (Object.keys(errors).length === 0) {
             setFormErrors({});
             setLoading(true);
-            await axios.post(`${process.env.REACT_APP_API_V1_URL}/user/sign-up`, {
+            await axios.post(`${import.meta.env.VITE_API_V1_URL}/user/sign-up`, {
                 name: formData.name,
                 contactNumber: formData.contactNumber,
                 email: formData.email,

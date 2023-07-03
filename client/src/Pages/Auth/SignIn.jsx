@@ -62,7 +62,7 @@ const SignIn = () => {
         if (Object.keys(errors).length === 0) {
             setLoading(true);
             setFormErrors({});
-            await axios.post(`${process.env.REACT_APP_API_V1_URL}/user/sign-in`, {
+            await axios.post(`${import.meta.env.VITE_API_V1_URL}/user/sign-in`, {
                 email: formData.email,
                 password: formData.password,
             })
@@ -75,7 +75,7 @@ const SignIn = () => {
                         setIsLoggedIn(true);
                         navigate(res.data.redirect)
                         // navigate(from, { replace: true });
-                    };
+                    }
                 })
                 .catch(err => {
                     showToast({

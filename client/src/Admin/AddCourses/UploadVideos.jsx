@@ -76,7 +76,7 @@ const UploadVideos = () => {
             setFormErrors({});
             setBtnLoading(true);
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/course/upload-video`, {
+                const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/course/upload-video`, {
                     ...formData,
                     video: videoUrl,
                 }, {

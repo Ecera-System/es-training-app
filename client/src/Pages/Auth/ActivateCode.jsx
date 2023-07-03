@@ -38,7 +38,7 @@ const ActivateCode = ({ openModal, setOpenModal }) => {
 
         if (code) {
             setLoading(true);
-            await axios.post(`${process.env.REACT_APP_API_V1_URL}/user/activate-account`, { code, email })
+            await axios.post(`${import.meta.env.VITE_API_V1_URL}/user/activate-account`, { code, email })
                 .then(res => {
                     setSuccess(res.data.success)
                 })
@@ -55,7 +55,7 @@ const ActivateCode = ({ openModal, setOpenModal }) => {
         if (resendLoad) return;
         if (email) {
             setResendLoad(true);
-            await axios.post(`${process.env.REACT_APP_API_V1_URL}/user/resend-code`, { email })
+            await axios.post(`${import.meta.env.VITE_API_V1_URL}/user/resend-code`, { email })
                 .then(res => {
                     if (res.data.acknowledged) {
                         setResendSuccess('Code has been sent!')

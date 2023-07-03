@@ -16,7 +16,7 @@ const ViewResume = ({ isResume, setIsResume }) => {
 
             </div>
             <object
-                data={process.env.REACT_APP_API_V1_URL + isResume}
+                data={import.meta.env.VITE_API_V1_URL + isResume}
                 className='2xl:w-[1280px] xl:w-[80%] w-11/12 h-full'
                 download=''
             >

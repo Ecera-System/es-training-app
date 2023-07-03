@@ -86,7 +86,7 @@ const CreateACourse = ({ setUpload }) => {
         setError('');
         setLoading(true);
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/course`, {
+            const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/course`, {
                 title, price, src_path, cover_photo: coverPhoto
             }, {
                 method: 'POST',

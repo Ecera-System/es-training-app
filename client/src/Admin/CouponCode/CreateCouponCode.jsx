@@ -57,7 +57,7 @@ const CreateCouponCode = ({ setState }) => {
             setFormErrors({});
             setLoading(true);
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/coupon-code`, {
+                const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/coupon-code`, {
                     name: formData.name,
                     courseId: formData.courseId,
                     couponCode: formData.couponCode,

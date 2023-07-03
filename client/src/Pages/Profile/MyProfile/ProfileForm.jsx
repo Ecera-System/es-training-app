@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { contextProvider } from '../../../Context/ContextProvider';
 import Spinner from '../../Shared/Spinner/Spinner';
@@ -63,7 +63,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
             setFormErrors({});
             setLoading(true);
 
-            await axios.patch(`${process.env.REACT_APP_API_V1_URL}/profile/${_id}`, {
+            await axios.patch(`${import.meta.env.VITE_API_V1_URL}/profile/${_id}`, {
                 ...formData,
                 avatar: profilePhoto || avatar,
                 update: 'info',
@@ -91,15 +91,15 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
     };
 
     return (<>
-        <form onSubmit={handleSubmit} className='flex justify-between items-start gap-5 my-10'>
-            <div className='w-2/5 flex flex-col items-center gap-5 pt-5'>
+        <form onSubmit={handleSubmit} className='flex md:flex-row flex-col justify-between md:items-start items-center gap-5 my-10'>
+            <div className='md:w-2/5 w-full flex flex-col items-center gap-5 pt-5'>
                 <div>
                     <img
                         src={profilePhoto || (
                             avatar ?
                                 (
                                     avatar.includes("/images/") ?
-                                        process.env.REACT_APP_API_V1_URL + avatar
+                                        import.meta.env.VITE_API_V1_URL + avatar
                                         : avatar
                                 )
                                 : '/images/nav/avatar.png'
@@ -123,7 +123,7 @@ const ProfileForm = ({ profileData, setEditProfile }) => {
                     />
                 </div>
             </div>
-            <ul className='list-none w-3/5 flex flex-col gap-5'>
+            <ul className='list-none md:w-3/5 w-full flex flex-col gap-5'>
                 <li>
                     <label htmlFor='name' className='text-sm text-gray-500'>Full Name</label>
                     <input

@@ -23,7 +23,7 @@ const AllCourses = () => {
     const handleDelete = async (id) => {
         try {
             setDLoading(true);
-            const res = await axios.delete(`${process.env.REACT_APP_API_V1_URL}/course/${id}`, {
+            const res = await axios.delete(`${import.meta.env.VITE_API_V1_URL}/course/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': localStorage.getItem('auth_token')

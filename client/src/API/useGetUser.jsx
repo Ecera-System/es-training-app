@@ -10,7 +10,7 @@ const useGetUser = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_V1_URL}/user/single`, {
+        axios.get(`${import.meta.env.VITE_API_V1_URL}/user/single`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('auth_token')

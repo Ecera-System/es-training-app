@@ -1,4 +1,3 @@
-import React from 'react';
 import PageTitle from '../Shared/PageTitle';
 import HeroSection from './HeroSection';
 import TechIcon from './TechIcon';
@@ -65,7 +64,7 @@ const Home = () => {
                                 Collaborate and Network with Industry Professionals
                             </h1>
                             <p className='text-base text-gray-500 group-hover/card:text-white'>
-                                Networking is a key aspect of professional growth. You'll have the opportunity to collaborate and network with industry professionals, including fellow developers, mentors, and guest speakers.
+                                Networking is a key aspect of professional growth. You&apos;ll have the opportunity to collaborate and network with industry professionals, including fellow developers, mentors, and guest speakers.
                             </p>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../Shared/Header/Header';
 import PageTitle from '../Shared/PageTitle';
 // import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
@@ -11,11 +10,11 @@ const Projects = () => {
         <PageTitle title="Projects" />
         <Header />
         <section
-            className='bg-violet-100 py-32 bg-no-repeat bg-cover bg-center'
+            className='bg-violet-100 md:py-32 py-24 bg-no-repeat bg-cover bg-center'
             style={{ backgroundImage: 'url(/images/projects/banner.png)' }}
         >
             <div className='w-max mx-auto px-10 py-5 bg-white/80 text-center rounded-lg backdrop-blur-sm'>
-                <h1 className='text-5xl font-semibold text-violet-600'>
+                <h1 className='lg:text-5xl md:text-4xl text-3xl font-semibold text-violet-600'>
                     Explore our Projects
                 </h1>
             </div>

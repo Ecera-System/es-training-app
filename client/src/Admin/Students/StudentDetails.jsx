@@ -33,7 +33,7 @@ const StudentDetails = ({ studentDetails, setStudentDetails }) => {
                             src={studentDetails?.profileId?.avatar ?
                                 (
                                     studentDetails?.profileId?.avatar?.includes("/images/") ?
-                                        process.env.REACT_APP_API_V1_URL + studentDetails?.profileId?.avatar
+                                        import.meta.env.VITE_API_V1_URL + studentDetails?.profileId?.avatar
                                         : studentDetails?.profileId?.avatar
                                 )
                                 : '/images/nav/avatar.png'

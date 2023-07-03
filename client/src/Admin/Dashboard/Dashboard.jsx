@@ -1,4 +1,3 @@
-import React from 'react';
 import PageTitle from '../../Pages/Shared/PageTitle';
 import OrderList from './OrderList';
 import TopSaleCourse from './TopSaleCourse';

@@ -29,7 +29,7 @@ const HeaderProfile = () => {
                     src={profileData?.avatar ?
                         (
                             profileData?.avatar?.includes("/images/") ?
-                                process.env.REACT_APP_API_V1_URL + profileData?.avatar
+                                import.meta.env.VITE_API_V1_URL + profileData?.avatar
                                 : profileData?.avatar
                         )
                         : '/images/nav/avatar.png'
@@ -50,7 +50,7 @@ const HeaderProfile = () => {
                             src={profileData?.avatar ?
                                 (
                                     profileData?.avatar?.includes("/images/") ?
-                                        process.env.REACT_APP_API_V1_URL + profileData?.avatar
+                                        import.meta.env.VITE_API_V1_URL + profileData?.avatar
                                         : profileData?.avatar
                                 )
                                 : '/images/nav/avatar.png'

@@ -1,4 +1,3 @@
-import React from 'react';
 import { BsJournalCode } from 'react-icons/bs';
 import { FiLogOut, FiUser } from 'react-icons/fi';
 import { MdOutlineAssignment } from 'react-icons/md';
@@ -22,12 +21,12 @@ const Sidebar = () => {
     };
 
     return (<>
-        <ul className='list-none h-screen max-h-full overflow-y-auto scrollBar-sm p-6 text-gray-600'>
-            <li className='pt-2 pb-6 border-b mb-4'>
+        <ul className='list-none h-screen max-h-full overflow-y-auto scrollBar-sm lg:p-6 p-2 text-gray-600'>
+            <li className='lg:block hidden pt-2 pb-6 border-b mb-4'>
                 <div className='flex justify-center'>
                     <img
                         src={avatar ?
-                            (avatar.includes("/images/") ? process.env.REACT_APP_API_V1_URL + avatar : avatar)
+                            (avatar.includes("/images/") ? import.meta.env.VITE_API_V1_URL + avatar : avatar)
                             : '/images/nav/avatar.png'
                         }
                         alt="Avatar"
@@ -44,42 +43,47 @@ const Sidebar = () => {
             <li>
                 <NavLink
                     to='/profile'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                     end
                 >
-                    <FiUser className='text-lg' />My Profile
+                    <FiUser className='text-lg' />
+                    <span className='lg:block hidden'>My Profile</span>
                 </NavLink>
             </li>
             <li>
                 <NavLink
                     to='/profile/course'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
-                    <BsJournalCode className='text-lg' />My Classes
+                    <BsJournalCode className='text-lg' />
+                    <span className='lg:block hidden'>My Classes</span>
                 </NavLink>
             </li>
             <li>
                 <NavLink
                     to='/profile/assignments'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
-                    <MdOutlineAssignment className='text-lg' />Assignments
+                    <MdOutlineAssignment className='text-lg' />
+                    <span className='lg:block hidden'>Assignments</span>
                 </NavLink>
             </li>
             <li>
                 <NavLink
                     to='/profile/order-history'
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
-                    <RiHistoryFill className='text-lg' />Order History
+                    <RiHistoryFill className='text-lg' />
+                    <span className='lg:block hidden'>Order History</span>
                 </NavLink>
             </li>
             <li>
                 <button
                     onClick={handleSignOut}
-                    className='w-full h-auto py-3 px-5 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
                 >
-                    <FiLogOut className='text-lg' />Sign Out
+                    <FiLogOut className='text-lg' />
+                    <span className='lg:block hidden'>Sign Out</span>
                 </button>
             </li>
         </ul>

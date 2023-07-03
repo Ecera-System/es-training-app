@@ -1,4 +1,3 @@
-import React from 'react';
 import PageTitle from '../../Shared/PageTitle';
 
 const ProfileAssignments = () => {
@@ -9,7 +8,7 @@ const ProfileAssignments = () => {
                 <h4 className='text-sm tracking-widest mb-8'>
                     Site under construction
                 </h4>
-                <h1 className='text-6xl tracking-[2rem]'>
+                <h1 className='lg:text-6xl leading-[1.3] text-4xl tracking-[2rem]'>
                     Coming soon
                 </h1>
             </div>

@@ -17,7 +17,7 @@ const Assignments = () => {
                     mollitia, molestiae quas vel sint commodi repudiandae consequuntur
                     voluptatum laborum
                 </p>
-                <div className="flex items-center gap-5 mt-5">
+                <div className="flex flex-wrap items-center gap-5 mt-5">
                     <button
                         className={`py-3 px-4 border hover:bg-violet-100 ${state === "show" && "bg-violet-100"}`}
                         onClick={() => setState("show")}

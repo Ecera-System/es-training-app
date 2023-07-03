@@ -66,7 +66,7 @@ const AddAssignment = ({ setState }) => {
             setFormErrors({});
             setLoading(true);
             try {
-                const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/assignment`, {
+                const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/assignment`, {
                     ...formData,
                     brief: editorRef.current.getContent()
                 }, {

@@ -15,7 +15,7 @@ const ApplyCoupon = ({ id, price, setIsDiscount }) => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/coupon-code/apply`, {
+            const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/coupon-code/apply`, {
                 courseId: id,
                 couponCode: state
             }, {

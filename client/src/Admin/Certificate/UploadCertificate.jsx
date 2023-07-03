@@ -49,7 +49,7 @@ const UploadCertificate = ({ setState }) => {
             try {
                 setFormErrors({});
                 setLoading(true);
-                const res = await axios.patch(`${process.env.REACT_APP_API_V1_URL}/certificate`, {
+                const res = await axios.patch(`${import.meta.env.VITE_API_V1_URL}/certificate`, {
                     courseId,
                     certificate: certificateImage,
                 }, {

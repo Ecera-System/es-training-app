@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { contextProvider } from '../../../Context/ContextProvider';
 import CountryList from '../../Shared/CountryList';
@@ -56,7 +56,7 @@ const AddressForm = ({ profileData, setEditAddress }) => {
             setFormErrors({});
             setLoading(true);
 
-            await axios.patch(`${process.env.REACT_APP_API_V1_URL}/profile/${_id}`, {
+            await axios.patch(`${import.meta.env.VITE_API_V1_URL}/profile/${_id}`, {
                 ...formData,
                 update: 'address',
             }, {
@@ -84,7 +84,7 @@ const AddressForm = ({ profileData, setEditAddress }) => {
 
     return (<>
         <form onSubmit={handleSubmit}>
-            <ul className='list-none grid grid-cols-2 gap-8 my-10'>
+            <ul className='list-none grid md:grid-cols-2 grid-cols-1 gap-8 my-10'>
                 <li>
                     <label htmlFor='country' className='text-sm text-gray-500'>Country</label>
                     <select

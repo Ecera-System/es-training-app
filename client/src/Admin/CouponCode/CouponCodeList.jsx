@@ -24,7 +24,7 @@ const CouponCodeList = () => {
         if (!data) return;
         try {
             setCoLoading(true);
-            const res = await axios.patch(`${process.env.REACT_APP_API_V1_URL}/coupon-code/${id}`, {
+            const res = await axios.patch(`${import.meta.env.VITE_API_V1_URL}/coupon-code/${id}`, {
                 status: data
             }, {
                 method: 'PATCH',
@@ -54,7 +54,7 @@ const CouponCodeList = () => {
     const handleDelete = async (id) => {
         try {
             setDLoading(true);
-            const res = await axios.delete(`${process.env.REACT_APP_API_V1_URL}/coupon-code/${id}`, {
+            const res = await axios.delete(`${import.meta.env.VITE_API_V1_URL}/coupon-code/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': localStorage.getItem('auth_token')

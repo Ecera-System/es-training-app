@@ -10,7 +10,7 @@ const useGetCourseById = (id) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_V1_URL}/course/${id}`, {
+        axios.get(`${import.meta.env.VITE_API_V1_URL}/course/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('auth_token')

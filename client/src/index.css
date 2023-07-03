@@ -35,7 +35,25 @@ code {
   border-radius: 0.5rem;
 }
 
+/* <!-- Keep title in line 1 */
+.title_line_1 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
 
+/* <!-- Keep title in line 2 */
+.title_line_2 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
 
 /* <!-- Nav items hover effect Start --> */
 .hover-border::after {

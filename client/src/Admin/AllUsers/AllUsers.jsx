@@ -37,7 +37,7 @@ const AllUsers = () => {
 
     // <!-- Fetch data as a pagination -->
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_V1_URL}/profile/all-users?page=${page}&size=${size}&query=${inputValue}`, {
+        axios.get(`${import.meta.env.VITE_API_V1_URL}/profile/all-users?page=${page}&size=${size}&query=${inputValue}`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('auth_token')
@@ -67,7 +67,7 @@ const AllUsers = () => {
         if (!data) return;
         try {
             setStatusLoading(true);
-            const res = await axios.patch(`${process.env.REACT_APP_API_V1_URL}/profile/status/${id}`, {
+            const res = await axios.patch(`${import.meta.env.VITE_API_V1_URL}/profile/status/${id}`, {
                 status: data,
             }, {
                 method: 'PATCH',
@@ -96,7 +96,7 @@ const AllUsers = () => {
     const handleDelete = async (id) => {
         try {
             setDLoading(true);
-            const res = await axios.delete(`${process.env.REACT_APP_API_V1_URL}/profile/delete/${id}`, {
+            const res = await axios.delete(`${import.meta.env.VITE_API_V1_URL}/profile/delete/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': localStorage.getItem('auth_token')

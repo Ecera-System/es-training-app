@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaRegEdit } from 'react-icons/fa';
 import PageTitle from '../../Shared/PageTitle';
 import useGetProfile from '../../../API/useGetProfile';
@@ -34,14 +34,14 @@ const MyProfile = () => {
                             profileData={profileData}
                             setEditProfile={setEditProfile}
                         /> :
-                        <div className='flex justify-between items-center gap-5 my-10'>
-                            <div className='w-2/5 flex flex-col items-center gap-5'>
+                        <div className='flex md:flex-row flex-col justify-between items-center gap-5 my-10'>
+                            <div className='md:w-2/5 w-full flex flex-col items-center gap-5'>
                                 <div>
                                     <img
                                         src={avatar ?
                                             (
                                                 avatar.includes("/images/") ?
-                                                    process.env.REACT_APP_API_V1_URL + avatar
+                                                    import.meta.env.VITE_API_V1_URL + avatar
                                                     : avatar
                                             )
                                             : '/images/nav/avatar.png'
@@ -58,7 +58,7 @@ const MyProfile = () => {
                                     Change Photo
                                 </button>
                             </div>
-                            <ul className='list-none w-3/5 flex flex-col gap-5'>
+                            <ul className='list-none md:w-3/5 w-full flex flex-col gap-5'>
                                 <li>
                                     <span className='text-sm text-gray-500'>Full Name</span>
                                     <p className='font-semibold'>
@@ -104,7 +104,7 @@ const MyProfile = () => {
                             profileData={profileData}
                             setEditAddress={setEditAddress}
                         /> :
-                        <ul className='list-none grid grid-cols-2 gap-y-5 my-10'>
+                        <ul className='list-none grid md:grid-cols-2 grid-cols-1 gap-y-5 my-10'>
                             <li>
                                 <span className='text-sm text-gray-500'>Country</span>
                                 <p className='font-semibold'>

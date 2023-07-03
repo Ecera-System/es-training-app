@@ -16,7 +16,7 @@ const OrderList = () => {
 
     // <!-- Fetch recent orders data --> 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_V1_URL}/course-enroll/recent-orders`, {
+        axios.get(`${import.meta.env.VITE_API_V1_URL}/course-enroll/recent-orders`, {
             method: 'GET',
             headers: {
                 'Authorization': localStorage.getItem('auth_token')

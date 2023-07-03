@@ -6,7 +6,7 @@ const RequestedCertificate = () => {
 
     // const handleDownload = async () => {
     //     try {
-    //         const res = await axios.get(`${process.env.REACT_APP_API_V1_URL}/certificate/64042c7ff861b5f1d8bf619e`, {
+    //         const res = await axios.get(`${import.meta.env.VITE_API_V1_URL}/certificate/64042c7ff861b5f1d8bf619e`, {
     //             method: 'GET',
     //             headers: {
     //                 'Authorization': localStorage.getItem('auth_token')

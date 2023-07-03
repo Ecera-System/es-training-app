@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { gapi } from 'gapi-script';
 import axios from 'axios';
 import { useContext } from 'react';
@@ -27,7 +27,7 @@ const GoogleSignIn = () => {
         // <!-- Load the Google Sign-In API -->
         gapi.load('auth2', () => {
             gapi.auth2.init({
-                client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+                client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
             })
                 .then(() => {
                     const auth2 = gapi.auth2.getAuthInstance();
@@ -36,7 +36,7 @@ const GoogleSignIn = () => {
                             const { id_token } = googleUser.getAuthResponse();
                             // === === === === ===
                             setLoading(true);
-                            await axios.post(`${process.env.REACT_APP_API_V1_URL}/user/google-sign-in`, {
+                            await axios.post(`${import.meta.env.VITE_API_V1_URL}/user/google-sign-in`, {
                                 id_token
                             })
                                 .then(res => {

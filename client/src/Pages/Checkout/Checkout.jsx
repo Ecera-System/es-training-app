@@ -47,7 +47,7 @@ const Checkout = () => {
     // <-- Razorpay payment verify api -->
     useEffect(() => {
         if (razorpayRes?.razorpay_payment_id) {
-            axios.post(`${process.env.REACT_APP_API_V1_URL}/course-enroll/razorpay-verify`, razorpayRes, {
+            axios.post(`${import.meta.env.VITE_API_V1_URL}/course-enroll/razorpay-verify`, razorpayRes, {
                 method: 'POST',
                 headers: {
                     'Authorization': localStorage.getItem('auth_token')
@@ -130,7 +130,7 @@ const Checkout = () => {
             try {
                 // <!-- Checkout with Stripe -->
                 if (btnState.button === 'usd') {
-                    const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/course-enroll/enroll-in-usd`, {
+                    const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/course-enroll/enroll-in-usd`, {
                         ...formData,
                         courseId: _id,
                         title: title,
@@ -151,7 +151,7 @@ const Checkout = () => {
                     const load = await loadRazorpay("https://checkout.razorpay.com/v1/checkout.js");
                     if (!load) return alert("Razorpay SDK failed to load. Are you online?");
 
-                    const res = await axios.post(`${process.env.REACT_APP_API_V1_URL}/course-enroll/enroll-in-inr`, {
+                    const res = await axios.post(`${import.meta.env.VITE_API_V1_URL}/course-enroll/enroll-in-inr`, {
                         ...formData,
                         courseId: _id,
                         title: title,
@@ -163,7 +163,7 @@ const Checkout = () => {
                         }
                     });
                     const options = {
-                        key: process.env.REACT_APP_RAZORPAY_KEY_ID,
+                        key: import.meta.env.VITE_RAZORPAY_KEY_ID,
                         name: 'Ecera System Training Center',
                         amount: res.data.amount,
                         currency: res.data.currency,
