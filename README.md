@@ -68,6 +68,18 @@ Explanation of how users can use this project.
 
 **Admin:** 
 
+- Add Course: First create a course then upload videos by selecting course.
 - Dashboard: Best selling courses and Recent selling courses.
 - All Courses: All Courses data.
-- Students: All enrollment student's data.
+- Students: All enrollment students data.
+- Assignments: All created assignments list, Create Assignments, Students submitted assignments list.
+- Coupon Code: All coupon code list, Create coupon code.
+- Certificate: Certificate functionality not created. **(development needed)**
+- Book Counselling: Book Counselling data.
+- Users: All Users data.
+- Settings: **(development needed)**
+## Color Reference
+
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Primary Color violet| ![#7c3aed](https://via.placeholder.com/10/7c3aed?text=+) #7c3aed |
