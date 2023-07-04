@@ -83,3 +83,51 @@ Explanation of how users can use this project.
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | Primary Color violet| ![#7c3aed](https://via.placeholder.com/10/7c3aed?text=+) #7c3aed |
+
+
+
+## Additional Information
+
+**Client :**
+
+- To upload course videos, here used third-party services such [Cloudinary](https://cloudinary.com/users/login). Here the free plan service is being used so the video size cannot be uploaded if it is more than 100 MB.
+ 
+    Cloudinary login credentials :
+    
+    ```
+    Email : jportal.web@gmail.com
+    Password : @Jobportal123
+    ```
+
+
+**Server :** 
+
+- For sending emails, the [Smtp2go](https://www.smtp2go.com/) service is used here.
+    
+    Smtp2go login credentials :
+    
+    ```
+    Email : development@ecerasystem.com
+    Password : #Welcome@12
+    ```
+- Razorpay used for handling payment method of `INR` currency. Razorpay login credentials are under the Company or you can use your own account for development. For the production you have to use Company account.
+
+- Stripe used for handling payment method of `USD` currency. Stripe login credentials are under the Company or you can use your own account for development. For the production you have to use Company account.
+
+- Google used for google authentication/signi. For getting google `client id`, `api key` and `client secret`, go to [Google Console](https://console.cloud.google.com/)
+
+    Google login credentials :    
+    ```
+    Email : jportal.web@gmail.com
+    Password : Jobportal123
+    ```
+
+**Database :** 
+- MongoDB is used for the database. 
+
+    MongoDB login credentials :
+    
+    ```
+    Email : development@ecerasystem.com
+    Password : Welcome@12345
+    ```
