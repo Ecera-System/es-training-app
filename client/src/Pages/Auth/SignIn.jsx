@@ -104,7 +104,7 @@ const SignIn = () => {
                 </button>
             </div>
             <div className='w-full h-auto p-16 lg:block hidden'>
-                <img src="/Images/Auth/login-img.png" alt="" className='' />
+                <img src="/images/auth/login-img.png" alt="" className='' />
             </div>
             <div className='w-full lg:h-screen h-full overflow-y-auto backdrop-blur-sm bg-violet-100/10 grid place-items-center'>
                 <form
