@@ -27,10 +27,6 @@ import BookCounselling from "./Admin/BookCounselling/BookCounselling";
 import MERNStackWebDevelopment from "./Pages/Programs/MERNStackWebDevelopment";
 import AllUsers from "./Admin/AllUsers/AllUsers";
 import MernStackDetails from "./Pages/Projects/MernStackDetails";
-import FrontendDetails from "./Pages/Projects/FrontendDetails";
-import BackendDetails from "./Pages/Projects/BackendDetails";
-import ReactJSDetails from "./Pages/Projects/ReactJSDetails";
-import NodeJSDetails from "./Pages/Projects/NodeJSDetails";
 import OrderHistory from "./Pages/Profile/OrderHistory/OrderHistory";
 import ProfileAssignments from "./Pages/Profile/Assignments/ProfileAssignments";
 
@@ -47,10 +43,10 @@ const App = () => {
 
       <Route path="/projects" element={<Projects />}></Route>
       <Route path="/projects/mern-stack" element={<MernStackDetails />}></Route>
-      <Route path="/projects/frontend" element={<FrontendDetails />}></Route>
+      {/* <Route path="/projects/frontend" element={<FrontendDetails />}></Route>
       <Route path="/projects/backend" element={<BackendDetails />}></Route>
       <Route path="/projects/react-js" element={<ReactJSDetails />}></Route>
-      <Route path="/projects/node-js" element={<NodeJSDetails />}></Route>
+      <Route path="/projects/node-js" element={<NodeJSDetails />}></Route> */}
 
       <Route path="/placements" element={<Placements />}></Route>
       <Route path="/course/checkout/:id" element={

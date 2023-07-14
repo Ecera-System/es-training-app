@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { BsExclamationCircleFill } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { contextProvider } from '../../Context/ContextProvider';
@@ -10,6 +10,7 @@ import Spinner from '../Shared/Spinner/Spinner';
 import ApplyCoupon from './ApplyCoupon';
 import Summary from './Summary';
 import useGetCourseById from '../../API/useGetCourseById';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 // <-- Razorpay payment API -->
 const loadRazorpay = (src) => {
@@ -42,7 +43,8 @@ const Checkout = () => {
     const [btnLoading, setBtnLoading] = useState(false);
     const navigate = useNavigate();
     const [razorpayRes, setRazorpayRes] = useState(null);
-
+    const captchaRef = useRef(null);
+    const captchaToken = captchaRef?.current?.getValue();
 
     // <-- Razorpay payment verify api -->
     useEffect(() => {
@@ -112,6 +114,9 @@ const Checkout = () => {
         if (!data.zip) {
             errors.zip = 'Zip is required!';
         }
+        if (!captchaToken) {
+            errors.captcha = 'Error verifying reCAPTCHA, please try again!';
+        }
 
         return errors;
     };
@@ -135,6 +140,7 @@ const Checkout = () => {
                         courseId: _id,
                         title: title,
                         price: isDiscount || parseFloat(courseData.price),
+                        captchaToken,
                     }, {
                         method: 'POST',
                         headers: {
@@ -143,8 +149,8 @@ const Checkout = () => {
                     });
                     if (res.data?.url) {
                         window.location = res.data?.url;
-                    };
-                };
+                    }
+                }
 
                 // <!-- Checkout with Razorpay -->
                 if (btnState.button === 'inr') {
@@ -156,6 +162,7 @@ const Checkout = () => {
                         courseId: _id,
                         title: title,
                         price: isDiscount || parseFloat(courseData.price),
+                        captchaToken
                     }, {
                         method: 'POST',
                         headers: {
@@ -200,7 +207,7 @@ const Checkout = () => {
 
                     const paymentObject = new window.Razorpay(options);
                     paymentObject.open();
-                };
+                }
 
             } catch (err) {
                 showToast({
@@ -210,9 +217,9 @@ const Checkout = () => {
                     localStorage.removeItem('auth_token');
                     return navigate('/sign-in');
                 }
-            };
+            }
             setBtnLoading(false);
-
+            captchaRef.current.reset();
         } else {
             setFormErrors(errors);
         }
@@ -223,10 +230,10 @@ const Checkout = () => {
         <PageTitle title={`Checkout for ${title}`} />
         <Header />
         <div className='w-full h-auto bg-violet-50'>
-            <div className='2xl:w-[1280px] xl:w-4/5 lg:w-[90%] sm:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:items-start items-center gap-10 lg:py-10 pb-10'>
+            <div className='2xl:w-[1280px] xl:w-4/5 lg:w-[90%] sm:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:items-start items-center gap-10 lg:py-10 pb-20'>
 
                 {/* <!-- Right Form --> */}
-                <form onSubmit={handleSubmit} className='lg:w-3/4 w-full'>
+                <form onSubmit={handleSubmit} className='lg:w-3/4 w-full mb-10'>
                     <div className='w-full bg-white border rounded-lg'>
                         <h1 className='text-xl font-semibold text-gray-700 p-5 border-b'>
                             Billing Address
@@ -391,8 +398,20 @@ const Checkout = () => {
                             />
                         }
                     </div>
-
-                    <div className='w-full flex items-center gap-6 my-10'>
+                    <div className='my-5'>
+                        <ReCAPTCHA
+                            sitekey={import.meta.env.VITE_GOOGLE_RECAPTCHA_SITE_KEY}
+                            ref={captchaRef}
+                        />
+                        {
+                            formErrors?.captcha &&
+                            <p className='mt-2 text-sm text-red-500 flex gap-2 items-start'>
+                                <BsExclamationCircleFill className="mt-0.5" />
+                                {formErrors?.captcha}
+                            </p>
+                        }
+                    </div>
+                    <div className='w-full flex items-center gap-6'>
                         <button
                             type="submit"
                             onClick={() => btnState.button = 'usd'}
