@@ -11,15 +11,15 @@ const ExploreProjects = ({ isTitle }) => {
                         Explore Our Projects
                     </h1>
                 }
-                <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5'>
+                <div className='grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 grid-cols-1 gap-5'>
                     <button
                         onClick={() => navigate('/projects/mern-stack')}
                         className='xl:p-10 px-8 py-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300'
                     >
-                        <h2 className='text-2xl font-medium'>MERN Stack</h2>
+                        <h2 className='text-2xl font-medium'>MERN Stack Development</h2>
                         <h4 className='text-base uppercase mt-3'>Projects</h4>
                     </button>
-                    <button
+                    {/* <button
                         onClick={() => navigate('/projects/frontend')}
                         className='xl:p-10 px-8 py-10 bg-indigo-900 text-white text-center rounded-md hover:-translate-y-1.5 duration-300'
                     >
@@ -46,7 +46,7 @@ const ExploreProjects = ({ isTitle }) => {
                     >
                         <h2 className='text-2xl font-medium'>Node JS</h2>
                         <h4 className='text-base uppercase mt-3'>Projects</h4>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>

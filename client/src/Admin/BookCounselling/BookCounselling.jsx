@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import useGetAllBookCounselling from '../../API/useGetAllBookCounselling';
 import PageTitle from '../../Pages/Shared/PageTitle';
-import ViewResume from './ViewResume';
+// import ViewResume from './ViewResume';
 import TableLoadingSkeleton from '../../Pages/Shared/Spinner/TableLoadingSkeleton';
 
 const BookCounselling = () => {
     const [bookCData, loading] = useGetAllBookCounselling();
-    const [isResume, setIsResume] = useState(null);
-
+    // const [isResume, setIsResume] = useState(null);
+    console.log(bookCData)
 
     return (<>
         <PageTitle title='Book Counselling' />
@@ -31,14 +31,20 @@ const BookCounselling = () => {
                                 <h2 className='w-max'>Contact Number</h2>
                             </th>
                             <th className="text-sm py-3 pr-5">
-                                <h2 className='w-max'>Resume</h2>
+                                <h2 className='w-max'>Date</h2>
                             </th>
+                            <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Time</h2>
+                            </th>
+                            {/* <th className="text-sm py-3 pr-5">
+                                <h2 className='w-max'>Resume</h2>
+                            </th> */}
                         </tr>
                     </thead>
                     <tbody>
                         {loading ? <TableLoadingSkeleton td_count={4} /> :
-                            bookCData.map((data) =>
-                                <tr key={data._id} className='border-b'>
+                            bookCData?.map((data) =>
+                                <tr key={data?._id} className='border-b'>
                                     <td className='py-3 px-5'>
                                         <div className="w-max text-base">
                                             {data?.name}
@@ -55,13 +61,29 @@ const BookCounselling = () => {
                                         </div>
                                     </td>
                                     <td className='py-3 pr-5'>
+                                        <div className="w-max text-sm">
+                                            {data?.slots?.map(slot =>
+                                                <ul className='list-none' key={slot._id}>
+                                                    <li>{slot.date}</li>
+                                                </ul>)}
+                                        </div>
+                                    </td>
+                                    <td className='py-3 pr-5'>
+                                        <div className="w-max text-sm">
+                                            {data?.slots?.map(slot =>
+                                                <ul className='list-none' key={slot._id}>
+                                                    <li>{slot.time}</li>
+                                                </ul>)}
+                                        </div>
+                                    </td>
+                                    {/* <td className='py-3 pr-5'>
                                         <button
                                             onClick={() => setIsResume(data?.resume)}
                                             className='w-max py-0.5 px-4 rounded font-medium bg-emerald-50 text-emerald-500 hover:text-emerald-600 duration-300'
                                         >
                                             View
                                         </button>
-                                    </td>
+                                    </td> */}
                                 </tr>
                             )
                         }
@@ -77,13 +99,13 @@ const BookCounselling = () => {
                 }
             </div>
         </div>
-        {
+        {/* {
             isResume &&
             <ViewResume
                 isResume={isResume}
                 setIsResume={setIsResume}
             />
-        }
+        } */}
     </>);
 };
 

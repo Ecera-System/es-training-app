@@ -5,7 +5,7 @@ import { RiHistoryFill } from 'react-icons/ri';
 import { NavLink, useNavigate } from 'react-router-dom';
 import useGetProfile from '../../API/useGetProfile';
 import Spinner from '../Shared/Spinner/Spinner';
-
+import { BsCurrencyDollar } from 'react-icons/bs';
 const Sidebar = () => {
     const [profileData, loading] = useGetProfile();
     const navigate = useNavigate();
@@ -68,6 +68,15 @@ const Sidebar = () => {
                     <span className='lg:block hidden'>Assignments</span>
                 </NavLink>
             </li>
+            {/* <li>
+                <NavLink
+                    to='/profile/billing-address'
+                    className='lg:w-full w-max h-auto py-3 lg:px-5 px-3 text-base hover:text-violet-600 side-nav hover:bg-violet-100 duration-300 relative rounded flex items-center gap-3'
+                >
+                    <BsCurrencyDollar  className='text-lg' />
+                    <span className='lg:block hidden'>Billing Address</span>
+                </NavLink>
+            </li> */}
             <li>
                 <NavLink
                     to='/profile/order-history'

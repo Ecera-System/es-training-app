@@ -5,6 +5,7 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import { contextProvider } from '../../Context/ContextProvider';
 import SpinnerBtn from '../Shared/Spinner/SpinnerBtn';
+import { format } from 'date-fns';
 
 const BookAFreeCounselling = () => {
     const { showToast } = useContext(contextProvider);
@@ -15,7 +16,7 @@ const BookAFreeCounselling = () => {
         name: '',
         email: '',
         contactNumber: '',
-        resume: ''
+        slots: [{ date: '', time: '' }], // An array of slots, initially one empty slot
     });
     const [formErrors, setFormErrors] = useState({});
 
@@ -28,13 +29,22 @@ const BookAFreeCounselling = () => {
         }, 8000);
     }, [isSuccess]);
 
+    // Function to add more slots for date and time selection
+    const addSlot = () => {
+        setFormData(prevState => ({
+            ...prevState,
+            slots: [...prevState.slots, { date: '', time: '' }],
+        }));
+    };
 
-    // <!-- onChange input -->
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormData({
-            ...formData,
-            [name]: value
+    // Function to remove a slot for date and time selection
+    const removeSlot = (index) => {
+        setFormData(prevState => {
+            const updatedSlots = prevState.slots.filter((_, i) => i !== index);
+            return {
+                ...prevState,
+                slots: updatedSlots,
+            };
         });
     };
 
@@ -55,13 +65,20 @@ const BookAFreeCounselling = () => {
         } else if (!/^-?\d+\.?\d*$/.test(data.contactNumber)) {
             errors.contactNumber = 'Contact Number is invalid!';
         }
-        if (!data.resume) {
-            errors.resume = 'Resume is required!';
+        if (data.slots.length === 0) {
+            errors.slots = 'Please select at least one date and time slot!';
+        } else {
+            // Check if all slots are selected
+            for (const slot of data.slots) {
+                if (!slot.date || !slot.time) {
+                    errors.slots = 'Please select a date and time for all slots!';
+                    break;
+                }
+            }
         }
 
         return errors;
     };
-
 
     // <!-- Submit Form Data -->
     const handleSubmit = async (event) => {
@@ -85,7 +102,6 @@ const BookAFreeCounselling = () => {
         }
     };
 
-
     return (<>
         <div className='flex justify-center'>
             <button
@@ -99,9 +115,9 @@ const BookAFreeCounselling = () => {
 
         {isBooking &&
             <div className='fixed inset-0 z-50 bg-black/60 grid place-items-center overflow-y-auto py-5'>
-                <div className='md:w-[35rem] w-11/12 bg-white md:p-10 p-6 rounded-lg relative'>
+                <div className='md:w-[35rem] w-11/12 bg-black md:p-10 p-6 rounded-lg relative'>
 
-                    {/* <!-- Close btn --> */}
+                    {/* Close btn */}
                     <div
                         onClick={() => setIsBooking(false)}
                         className='absolute top-5 right-5 z-50 rounded-full hover:bg-violet-100 duration-300 p-1 cursor-pointer'
@@ -117,7 +133,7 @@ const BookAFreeCounselling = () => {
                                         <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                                     </svg>
                                 </div>
-                                <p className='text-base text-center mt-5 text-gray-600'>
+                                <p className='text-base text-center mt-5 text-white'>
                                     The request has been submitted. Someone from the team will contact you shortly.
                                 </p>
                             </div> :
@@ -126,91 +142,140 @@ const BookAFreeCounselling = () => {
                                 className='w-full h-full flex flex-col gap-6'
                             >
 
+                                <div>
+                                    <h className='text-2xl font-semibold text-yellow-400'>
+                                        Book a Free Counselling Session
+                                    </h>
+                                </div>
 
                                 <div>
-                                    <h1 className='text-2xl font-semibold text-violet-600'>
-                                        Book a Free Counselling Session
-                                    </h1>
-                                </div>
-                                <div>
-                                    <label htmlFor='name' className="px-1">Full Name</label>
+                                    <label htmlFor='name' className="px-1 text-white">Full Name</label>
                                     <input
-                                        onChange={handleChange}
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                        value={formData.name}
                                         placeholder=""
                                         type="text" name='name' id='name'
-                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-gray-600 border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-black border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                     />
-                                    {
-                                        formErrors?.name &&
+                                    {formErrors?.name &&
                                         <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
                                             <RiErrorWarningFill className="text-base mt-0.5" />
                                             {formErrors?.name}
                                         </p>
                                     }
                                 </div>
+
                                 <div>
-                                    <label htmlFor='email' className="px-1">Email</label>
+                                    <label htmlFor='email' className="px-1 text-white">Email</label>
                                     <input
-                                        onChange={handleChange}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                        value={formData.email}
                                         placeholder=""
                                         type="text" name='email' id='email'
-                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-gray-600 border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-black border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                     />
-                                    {
-                                        formErrors?.email &&
+                                    {formErrors?.email &&
                                         <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
                                             <RiErrorWarningFill className="text-base mt-0.5" />
                                             {formErrors?.email}
                                         </p>
                                     }
                                 </div>
+
                                 <div>
-                                    <label htmlFor='contactNumber' className="px-1">Contact Number</label>
+                                    <label htmlFor='contactNumber' className="px-1 text-white">Contact Number</label>
                                     <input
-                                        onChange={handleChange}
+                                        onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
+                                        value={formData.contactNumber}
                                         placeholder=""
                                         type="text" name='contactNumber' id='contactNumber'
-                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-gray-600 border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
+                                        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-black border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
                                     />
-                                    {
-                                        formErrors?.contactNumber &&
+                                    {formErrors?.contactNumber &&
                                         <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
                                             <RiErrorWarningFill className="text-base mt-0.5" />
                                             {formErrors?.contactNumber}
                                         </p>
                                     }
                                 </div>
-                                <div>
-                                    <label htmlFor='resume' className="px-1">Resume</label>
-                                    <input
-                                        onChange={(e) => {
-                                            const file = e.target.files[0];
-                                            const reader = new FileReader();
-                                            reader.readAsDataURL(file);
-                                            reader.onloadend = () => {
-                                                setFormData({
-                                                    ...formData,
-                                                    resume: {
-                                                        data: reader.result,
-                                                        type: file.type,
-                                                        size: file.size
-                                                    }
-                                                });
-                                            };
-                                        }}
-                                        placeholder=""
-                                        type="file" name='resume' id='resume'
-                                        className="block mt-2 px-3 py-1.5 rounded-lg w-full bg-white text-gray-600 border border-violet-300 placeholder-violet-600 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:placeholder-violet-500 focus:bg-white focus:border-violet-600 focus:outline-none"
-                                    />
-                                    {
-                                        formErrors?.resume &&
-                                        <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
-                                            <RiErrorWarningFill className="text-base mt-0.5" />
-                                            {formErrors?.resume}
-                                        </p>
-                                    }
-                                </div>
-                                <div>
+
+                                {/* Rendering slots for date and time selection */}
+                                {formData.slots.map((slot, index) => (
+                                    <div key={index} className="flex items-center gap-2">
+                                        <div>
+                                            <label htmlFor={`date-${index}`} className="px-1">Date</label>
+                                            <select
+                                                id={`date-${index}`}
+                                                value={slot.date}
+                                                onChange={(e) => setFormData(prevState => {
+                                                    const updatedSlots = [...prevState.slots];
+                                                    updatedSlots[index].date = e.target.value;
+                                                    return {
+                                                        ...prevState,
+                                                        slots: updatedSlots,
+                                                    };
+                                                })}
+                                                className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-black border border-violet-300 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:bg-white focus:border-violet-600 focus:outline-none"
+                                            >
+                                                <option value="">Select a date</option>
+                                                {/* Add available date options here */}
+                                                <option value="2023-08-20">August 20, 2023</option>
+                                                <option value="2023-08-25">August 25, 2023</option>
+                                                <option value="2023-08-30">August 30, 2023</option>
+                                            </select>
+                                            {formErrors?.slots?.[index]?.date &&
+                                                <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
+                                                    <RiErrorWarningFill className="text-base mt-0.5" />
+                                                    {formErrors?.slots[index]?.date}
+                                                </p>
+                                            }
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor={`time-${index}`} className="px-1">Time</label>
+                                            <select
+                                                id={`time-${index}`}
+                                                value={slot.time}
+                                                onChange={(e) => setFormData(prevState => {
+                                                    const updatedSlots = [...prevState.slots];
+                                                    updatedSlots[index].time = e.target.value;
+                                                    return {
+                                                        ...prevState,
+                                                        slots: updatedSlots,
+                                                    };
+                                                })}
+                                                className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-black border border-violet-300 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:bg-white focus:border-violet-600 focus:outline-none"
+                                            >
+                                                <option value="">Select a time</option>
+                                                {/* Add available time options here */}
+                                                <option value="04:00 AM">4:00 PM</option>
+                                                <option value="06:00 PM">6:00 PM</option>
+                                                <option value="08:00 PM">8:00 PM</option>
+                                            </select>
+                                            {formErrors?.slots?.[index]?.time &&
+                                                <p className='mt-1 text-sm text-red-500 flex gap-1 items-start'>
+                                                    <RiErrorWarningFill className="text-base mt-0.5" />
+                                                    {formErrors?.slots[index]?.time}
+                                                </p>
+                                            }
+                                        </div>
+
+                                        {/* Render add slot button for all slots except the last one */}
+                                        {index < formData.slots.length - 1 && (
+                                            <button
+                                                type="button"
+                                                onClick={() => removeSlot(index)}
+                                                className="px-2 py-1.5 text-sm font-medium text-red-600 border border-red-600 rounded-md hover:bg-red-600 hover:text-white"
+                                            >
+                                                Remove
+                                            </button>
+                                        )}
+                                    </div>
+                                ))}
+
+                            
+
+                                <div className='flex flex-col items-center justify-center'>
                                     <button
                                         type='submit'
                                         disabled={loading}
@@ -225,6 +290,7 @@ const BookAFreeCounselling = () => {
                                         }
                                     </button>
                                 </div>
+
                             </form>
                     }
                 </div>

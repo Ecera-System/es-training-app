@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HiArrowNarrowRight } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import BookAFreeCounselling from './BookAFreeCounselling';
 import { contextProvider } from '../../Context/ContextProvider';
 import Header from '../Shared/Header/Header';
+import SignUp from '../Auth/SignUp';
+// import Chatbot from './Chatbot';
 
 const HeroSection = () => {
     const { isLoggedIn } = useContext(contextProvider);
-
+    const [signUpPopUp, setSignUpPopUp] = useState(false);
     useEffect(() => {
         const gradient = document.querySelector(".hero_gradient");
         function onMouseMove(event) {
@@ -39,18 +41,26 @@ const HeroSection = () => {
                         Learn, Create, Innovate, and Unleash Your Creativity and Technical Expertise in the World of Web Development with Our Programs.
                     </p>
                     <Link
-                        to={isLoggedIn ? '/programs/mern-stack-web-development' : '/sign-up'}
+                        onClick={() => setSignUpPopUp(true)}
                         className='w-max mx-auto px-10 py-3 mb-8 text-base font-medium border border-white hover:bg-white duration-300 text-white hover:text-violet-800 flex items-center gap-2 rounded'
                     >
-                        Get Started
+                        Enroll Now
                         <HiArrowNarrowRight className='text-2xl font-bold' />
                     </Link>
+                    {
+                        signUpPopUp && <SignUp signUpPopUp={signUpPopUp} setSignUpPopUp={setSignUpPopUp} />
+                    }
                 </div>
             </div>
         </section>
         <div className='relative -top-6'>
             <BookAFreeCounselling />
         </div>
+
+        {/* <div>
+            <Chatbot/>
+        </div> */}
+
     </>);
 };
 

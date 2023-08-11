@@ -1,7 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home/Home";
-import SignIn from "./Pages/Auth/SignIn";
-import SignUp from "./Pages/Auth/SignUp";
 import RequireAuth from "./AuthHook/RequireAuth";
 import Profile from "./Pages/Profile/Profile";
 import RequireAdmin from "./AuthHook/RequireAdmin";
@@ -33,14 +31,16 @@ import ReactJSDetails from "./Pages/Projects/ReactJSDetails";
 import NodeJSDetails from "./Pages/Projects/NodeJSDetails";
 import OrderHistory from "./Pages/Profile/OrderHistory/OrderHistory";
 import ProfileAssignments from "./Pages/Profile/Assignments/ProfileAssignments";
+import '@fortawesome/fontawesome-free/css/all.css';
+// import BillingAddress from "./Pages/Profile/BillingAddress/BillingAddress";
 
 const App = () => {
   return (<>
     <Routes>
       <Route path="/" element={<Home />}></Route>
 
-      <Route path="/sign-in" element={<SignIn />}></Route>
-      <Route path="/sign-up" element={<SignUp />}></Route>
+      
+    
 
       <Route path="/programs" element={<Programs />}></Route>
       <Route path="/programs/mern-stack-web-development" element={<MERNStackWebDevelopment />}></Route>
@@ -69,6 +69,7 @@ const App = () => {
         <Route path="/profile" element={<MyProfile />}></Route>
         <Route path="/profile/course" element={<MyClasses />}></Route>
         <Route path="/profile/assignments" element={<ProfileAssignments />}></Route>
+        {/* <Route path="/profile/billing-address" element={<BillingAddress />}></Route> */}
         <Route path="/profile/order-history" element={<OrderHistory />}></Route>
       </Route>
 

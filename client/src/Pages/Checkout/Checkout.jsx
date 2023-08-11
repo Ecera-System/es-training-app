@@ -37,6 +37,7 @@ const Checkout = () => {
         country: '',
         city: '',
         zip: '',
+        startDate: '', 
     });
     const [formErrors, setFormErrors] = useState({});
     const [btnLoading, setBtnLoading] = useState(false);
@@ -195,6 +196,7 @@ const Checkout = () => {
                             name: formData.firstName + ' ' + formData.lastName,
                             email: res.data.email,
                             contact: formData.contactNumber,
+                            startDate: formData.startDate,
                         },
                     };
 
@@ -227,14 +229,14 @@ const Checkout = () => {
 
                 {/* <!-- Right Form --> */}
                 <form onSubmit={handleSubmit} className='lg:w-3/4 w-full'>
-                    <div className='w-full bg-white border rounded-lg'>
-                        <h1 className='text-xl font-semibold text-gray-700 p-5 border-b'>
+                    <div className='w-full bg-violet-500 border rounded-lg'>
+                        <h1 className='text-xl font-bold text-black-700 p-5 border-b'>
                             Billing Address
                         </h1>
                         <div className='w-full p-8 flex flex-col gap-6'>
                             <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
-                                    <label htmlFor='firstName' className="px-1">First Name</label>
+                                    <label htmlFor='firstName' className="px-1 font-semibold">First Name</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -250,7 +252,7 @@ const Checkout = () => {
                                     }
                                 </div>
                                 <div className='w-full'>
-                                    <label htmlFor='lastName' className="px-1">Last Name</label>
+                                    <label htmlFor='lastName' className="px-1 font-semibold">Last Name</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -267,10 +269,11 @@ const Checkout = () => {
                                 </div>
                             </div>
                             <div className='w-full'>
-                                <label htmlFor='contactNumber' className="px-1">Contact Number</label>
+                                <label htmlFor='contactNumber' className="px-1 font-semibold">Contact Number</label>
                                 <input
                                     onChange={handleChange}
                                     placeholder=""
+                                    maxLength={10}
                                     type="text" name='contactNumber' id='contactNumber'
                                     className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-gray-600 border border-violet-300 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:bg-white focus:border-violet-600 focus:outline-none"
                                 />
@@ -284,7 +287,7 @@ const Checkout = () => {
                             </div>
                             <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
-                                    <label htmlFor='address1' className="px-1">Address Line 1</label>
+                                    <label htmlFor='address1' className="px-1 font-semibold">Address Line 1</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -300,7 +303,7 @@ const Checkout = () => {
                                     }
                                 </div>
                                 <div className='w-full'>
-                                    <label htmlFor='address2' className="px-1">Address Line 2 (optional)</label>
+                                    <label htmlFor='address2' className="px-1 font-semibold">Address Line 2 (optional)</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -318,7 +321,7 @@ const Checkout = () => {
                             </div>
                             <div className='flex flex-col md:flex-row items-center justify-between md:gap-8 gap-6'>
                                 <div className='w-full'>
-                                    <label htmlFor='country' className="px-1">Country</label>
+                                    <label htmlFor='country' className="px-1 font-semibold">Country</label>
                                     <select
                                         name="country" id="country"
                                         onChange={handleChange}
@@ -336,7 +339,7 @@ const Checkout = () => {
                                     }
                                 </div>
                                 <div className='w-full'>
-                                    <label htmlFor='city' className="px-1">City/State</label>
+                                    <label htmlFor='city' className="px-1 font-semibold">City/State</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -352,7 +355,7 @@ const Checkout = () => {
                                     }
                                 </div>
                                 <div className='w-full'>
-                                    <label htmlFor='zip' className="px-1">Zip/Postal Code</label>
+                                    <label htmlFor='zip' className="px-1 font-semibold">Zip/Postal Code</label>
                                     <input
                                         onChange={handleChange}
                                         placeholder=""
@@ -367,6 +370,15 @@ const Checkout = () => {
                                         </p>
                                     }
                                 </div>
+                                <div className='w-full'>
+    <label htmlFor='startDate' className="px-1 font-semibold">Start Date</label>
+    <input
+        onChange={handleChange}
+        type="date" name='startDate' id='startDate'
+        className="block mt-2 px-3 py-2 rounded-lg w-full bg-white text-gray-600 border border-violet-300 shadow-[5px_5px_0px_rgb(124,58,237,0.5)] focus:shadow-[5px_5px_0px_rgb(124,58,237)] focus:bg-white focus:border-violet-600 focus:outline-none"
+    />
+    {/* You can add error handling for this field similar to other fields */}
+</div>
                             </div>
                         </div>
                     </div>
@@ -379,7 +391,7 @@ const Checkout = () => {
                                 id='checkbox'
                                 className="w-4 h-4 accent-violet-600 cursor-pointer"
                             />
-                            <label htmlFor='checkbox' className='cursor-pointer'>
+                            <label htmlFor='checkbox' className='cursor-pointer font-semibold'>
                                 I have a Coupon Code
                             </label>
                         </div>

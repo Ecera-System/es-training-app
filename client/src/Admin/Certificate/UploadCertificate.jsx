@@ -32,10 +32,10 @@ const UploadCertificate = ({ setState }) => {
         let errors = {};
         if (!courseId) {
             errors.courseId = 'Please select a course!';
-        };
+        }
         if (!certificateImage) {
             errors.certificateImage = 'Please upload certificate image!';
-        };
+        }
         return errors;
     };
 
@@ -73,7 +73,7 @@ const UploadCertificate = ({ setState }) => {
                     localStorage.removeItem('auth_token');
                     return navigate('/sign-in');
                 }
-            };
+            }
             setLoading(false);
 
         }
@@ -110,6 +110,7 @@ const UploadCertificate = ({ setState }) => {
                         <p className='relative top-0 mt-1 text-sm text-red-400 flex gap-2 items-start'>
                             <AiOutlineWarning className="text-base mt-0.5" />
                             {formErrors?.courseId}
+                            
                         </p>
                     }
                 </div>

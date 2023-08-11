@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 // const { ObjectId } = mongoose.Schema.Types;
-
 // Schema design
 const bookCounsellingSchema = mongoose.Schema({
     name: {
@@ -20,14 +19,14 @@ const bookCounsellingSchema = mongoose.Schema({
         required: true,
         validate: [validator.isMobilePhone, "Please provide a valid contact number."],
     },
-    resume: {
-        type: String,
-        required: [true, 'Resume is required!']
-    }
+    slots: [{ date: String, time: String }],
+    // resume: {
+    //     type: String,
+    //     required: [true, 'Resume is required!']
+    // }
 }, {
     timestamps: true,
 });
-
 const BookCounselling = mongoose.model('BookCounselling', bookCounsellingSchema);
-
 module.exports = BookCounselling;
+

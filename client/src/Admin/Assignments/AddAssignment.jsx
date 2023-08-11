@@ -263,10 +263,11 @@ const AddAssignment = ({ setState }) => {
                     }
                 </div>
                 <div className="mt-5">
-                    <button
+                    <button 
                         type="submit"
                         className='px-8 py-2.5 text-base font-medium bg-violet-600 hover:bg-violet-700 duration-300 text-white flex items-center gap-2 rounded'
                     >
+                        
                         Create Assignment
                     </button>
                 </div>

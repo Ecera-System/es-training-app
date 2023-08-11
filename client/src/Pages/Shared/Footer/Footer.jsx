@@ -1,6 +1,9 @@
 import React from 'react';
+import './Footer.css';
+
 
 const Footer = () => {
+    
     return (<>
         <footer className='w-full bg-slate-900'>
             <div className='2xl:w-[1280px] w-11/12 mx-auto'>
@@ -13,7 +16,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                href="/overview"
+                                href="/programs/mern-stack-web-development"
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 MERN Stack
@@ -21,15 +24,17 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                href="/featured-students"
+                                href="/Placements" 
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 Students
                             </a>
+                            
                         </li>
                         <li>
-                            <a
-                                href="/syllabus"
+                            <a 
+
+                                href="public/MERN Stack/MERN_STACK_Curriculum.pdf" target="_blank"
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 Syllabus
@@ -45,7 +50,7 @@ const Footer = () => {
                         <li>
                             <a
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
-                                href={'/'}
+                                href={'https://ecerasystem.com/about'}
                             >
                                 About Us
                             </a>
@@ -53,7 +58,8 @@ const Footer = () => {
                         <li>
                             <a
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
-                                href={'/success-stories'}
+                                href={'/placements'}
+
                             >
                                 Success Stories
                             </a>
@@ -67,29 +73,29 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                href={'/contact'}
+                                href={'https://ecerasystem.com/contact'}
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >Contact Us</a>
                         </li>
                         <li>
-                            <a href="/" className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'>
+                            <a href="https://ecerasystem.com/" className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'>
                                 Privacy Policy
                             </a>
                         </li>
                         <li>
-                            <a href="/" className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'>
+                            <a href="https://ecerasystem.com/" className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'>
                                 Cookies Policy
                             </a>
                         </li>
                         <li>
                             <a
-                                href={'/faq'}
+                                href={'/programs/mern-stack-web-development'}
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >FAQ</a>
                         </li>
                         <li>
                             <a
-                                href="/terms-of-services"
+                                href="https://ecerasystem.com/terms-of-services"
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 Terms of Services
@@ -104,7 +110,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                href="/remote-employees"
+                                href="https://ecerasystem.com/remote-employees"
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 Hire Developers
@@ -112,7 +118,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                href="/testimonial"
+                                href="https://ecerasystem.com/testimonial"
                                 className='text-gray-300 text-sm hover:underline hover:text-gray-400 duration-300'
                             >
                                 Testimonial
@@ -125,6 +131,9 @@ const Footer = () => {
                     <div>
                         <p className='text-sm text-gray-300'>&copy; {new Date().getFullYear()} Ecera System™. All Rights Reserved.</p>
                     </div>
+
+
+
                     <ul className='list-none flex items-center gap-x-6'>
                         <li>
                             <a
@@ -155,8 +164,8 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                // target={'blank'}
-                                href="/"
+                                target={'blank'}
+                                href="https://www.linkedin.com/company/ecera/mycompany/"
                                 className='text-xl text-gray-300 hover:text-gray-50 duration-300 cursor-pointer'
                             >
                                 <i className="fa-brands fa-linkedin"></i>
@@ -164,8 +173,8 @@ const Footer = () => {
                         </li>
                         <li>
                             <a
-                                // target={'blank'}
-                                href="/"
+                                target={'blank'}
+                                href="https://github.com/Ecera-System"
                                 className='text-xl text-gray-300 hover:text-gray-50 duration-300 cursor-pointer'
                             >
                                 <i className="fa-brands fa-github"></i>
@@ -174,6 +183,8 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
+            
+
         </footer>
     </>);
 };

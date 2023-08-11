@@ -1,12 +1,15 @@
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { RiArrowDownSLine } from 'react-icons/ri';
 import { Link, NavLink } from 'react-router-dom';
 import { contextProvider } from '../../../Context/ContextProvider';
 import HeaderProfile from './HeaderProfile';
+import SignIn from '../../Auth/SignIn';
+import SignUp from '../../Auth/SignUp';
 
-const DesktopView = ({  profile }) => {
+const DesktopView = ({ profile }) => {
     const { isLoggedIn } = useContext(contextProvider);
-
+    const [signInPopUp, setSignInPopUp] = useState(false);
+    const [signUpPopUp, setSignUpPopUp] = useState(false);
     return (
         <ul className='list-none hidden lg:flex items-center justify-between gap-10 text-lg font-normal'>
             {
@@ -56,18 +59,26 @@ const DesktopView = ({  profile }) => {
                     <HeaderProfile />
                     :
                     <li className='flex items-center justify-between gap-5'>
-                        <Link
-                            to='/sign-in'
+                        <button
+                            onClick={() => setSignInPopUp(true)}
                             className='text-base font-medium py-1.5 px-6 bg-transparent hover:bg-violet-600 duration-300 text-violet-600 hover:text-white border-2 border-violet-600 rounded-full'
                         >
                             Sign in
-                        </Link>
-                        <Link
-                            to='/sign-up'
-                            className='text-base font-medium py-1.5 px-6 bg-violet-600 hover:bg-violet-500 border-2 border-violet-600 duration-300 text-white rounded-full'
+                        </button>
+                        {
+                            signInPopUp && <SignIn signInPopUp={signInPopUp} setSignInPopUp={setSignInPopUp} />
+                        }
+
+                        <button
+                            onClick={() => setSignUpPopUp(true)}
+                            className='text-base font-medium py-1.5 px-6 bg-transparent hover:bg-violet-600 duration-300 text-violet-600 hover:text-white border-2 border-violet-600 rounded-full'
                         >
-                            Sign Up
-                        </Link>
+                            Sign up
+                        </button>
+                        {
+                            signUpPopUp && <SignUp signUpPopUp={signUpPopUp} setSignUpPopUp={setSignUpPopUp} />
+                        }
+
                     </li>
 
             }

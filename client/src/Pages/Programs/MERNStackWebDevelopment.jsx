@@ -8,7 +8,7 @@ import { VscGithubAlt } from 'react-icons/vsc';
 import { BsGraphUp } from 'react-icons/bs';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import Footer from '../Shared/Footer/Footer';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useGetAllCourses from '../../API/useGetAllCourses';
 import PageTitle from '../Shared/PageTitle';
 import Header from '../Shared/Header/Header';
@@ -46,14 +46,14 @@ const MERNStackWebDevelopment = () => {
                         The MERN stack refers to a set of tools used to build powerful web applications from end to end. It includes MongoDB, Express, React, and Node.js, and is useful in many development roles.
                     </p>
 
-                    <button
+                    {/* <button
                         disabled={!course}
                         onClick={() => navigate(`/course/checkout/${course?._id}`)}
                         className='w-max mx-auto px-12 py-3 text-base font-medium border border-white hover:bg-white duration-300 text-white hover:text-violet-800 flex items-center gap-2 rounded'
                     >
                         Enroll Now
                         <HiArrowNarrowRight className='text-2xl font-bold' />
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </section>
@@ -276,11 +276,13 @@ const MERNStackWebDevelopment = () => {
                 <h1 className='lg:text-5xl md:text-4xl text-2xl font-semibold mb-12'>
                     Have any further questions?
                 </h1>
+                <Link to={'https://ecerasystem.com/contact'}>
                 <button
                     className='border border-white py-3 px-10 text-base hover:bg-white hover:text-violet-600 duration-500'
                 >
                     Contact Us
                 </button>
+                </Link>
             </div>
         </section>
         <section className='md:py-32 py-20'>
