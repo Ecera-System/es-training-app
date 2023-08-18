@@ -27,7 +27,6 @@ import AllUsers from "./Admin/AllUsers/AllUsers";
 import MernStackDetails from "./Pages/Projects/MernStackDetails";
 import OrderHistory from "./Pages/Profile/OrderHistory/OrderHistory";
 import ProfileAssignments from "./Pages/Profile/Assignments/ProfileAssignments";
-import '@fortawesome/fontawesome-free/css/all.css';
 // import BillingAddress from "./Pages/Profile/BillingAddress/BillingAddress";
 
 const App = () => {

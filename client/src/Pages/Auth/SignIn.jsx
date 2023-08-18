@@ -285,7 +285,7 @@ const SignIn = ({setSignInPopUp}) => {
                             </p>
                         }
                     </div>
-                    {/* <div>
+                    <div>
                         <div className='flex items-center justify-between'>
                             <label htmlFor='password' className="px-1">Password</label>
                             <span className='text-base font-light text-yellow-400 cursor-pointer hover:underline'>
@@ -305,7 +305,7 @@ const SignIn = ({setSignInPopUp}) => {
                                 {formErrors?.password}
                             </p>
                         }
-                    </div> */}
+                    </div>
                    
                     <div className='flex justify-start'>
                         <button
