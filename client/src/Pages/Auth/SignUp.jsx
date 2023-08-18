@@ -365,7 +365,6 @@ const SignUp = ({ setSignUpPopUp }) => {
 
 
     return (<>
-<<<<<<< HEAD
         {/* <PageTitle title="Sign Up" /> */}
         <div>
             <div className='fixed inset-0 z-50 bg-black/60 grid place-items-center overflow-y-auto py-5'>
@@ -377,35 +376,6 @@ const SignUp = ({ setSignUpPopUp }) => {
                         className='absolute top-5 right-5 z-50 rounded-full hover:bg-violet-100 duration-300 p-1 cursor-pointer'
                     >
                         <IoCloseSharp className='text-3xl text-gray-700' />
-=======
-        <PageTitle title="Sign Up" />
-        <div
-            style={{ backgroundImage: `url(/images/auth/auth_bg.jpg)` }}
-            className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'
-        >
-            <div className='absolute top-10 left-5 z-50 lg:block hidden'>
-                <button
-                    onClick={() => navigate(-1)}
-                    className='flex items-center gap-2 border rounded px-3 py-1 text-white hover:bg-white hover:text-gray-700 duration-300'
-                >
-                    <MdOutlineArrowBackIosNew />
-                    Back
-                </button>
-            </div>
-            <div className='w-full h-auto p-16 lg:block hidden'>
-                <img src="/images/auth/login-img.png" alt="" className='' />
-            </div>
-            <div className='w-full lg:h-screen h-full overflow-y-auto backdrop-blur-sm bg-violet-100/10 grid place-items-center'>
-                <form
-                    onSubmit={handleSubmit}
-                    style={{ textShadow: '1px 1px 1px rgb(0,0,0,0.3)' }}
-                    className='w-full h-auto lg:p-16 md:px-32 md:py-16 sm:p-10 p-7 text-base text-white flex flex-col gap-6'
-                >
-                    <div>
-                        <h1 className='text-3xl font-semibold'>
-                            Sign up to ES Training
-                        </h1>
->>>>>>> eb509c10fc10f4c498244fdd66b35e3f4607b233
                     </div>
                     <form
                         onSubmit={handleSubmit}

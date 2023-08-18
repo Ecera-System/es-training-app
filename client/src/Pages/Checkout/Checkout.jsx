@@ -235,15 +235,9 @@ const Checkout = () => {
             <div className='2xl:w-[1280px] xl:w-4/5 lg:w-[90%] sm:w-4/5 w-11/12 mx-auto flex lg:flex-row flex-col-reverse justify-between lg:items-start items-center gap-10 lg:py-10 pb-20'>
 
                 {/* <!-- Right Form --> */}
-<<<<<<< HEAD
-                <form onSubmit={handleSubmit} className='lg:w-3/4 w-full'>
-                    <div className='w-full bg-violet-500 border rounded-lg'>
-                        <h1 className='text-xl font-bold text-black-700 p-5 border-b'>
-=======
                 <form onSubmit={handleSubmit} className='lg:w-3/4 w-full mb-10'>
                     <div className='w-full bg-white border rounded-lg'>
                         <h1 className='text-xl font-semibold text-gray-700 p-5 border-b'>
->>>>>>> eb509c10fc10f4c498244fdd66b35e3f4607b233
                             Billing Address
                         </h1>
                         <div className='w-full p-8 flex flex-col gap-6'>

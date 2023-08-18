@@ -5,7 +5,6 @@ import { IoCloseSharp } from 'react-icons/io5';
 import { RiErrorWarningFill } from 'react-icons/ri';
 import { contextProvider } from '../../Context/ContextProvider';
 import SpinnerBtn from '../Shared/Spinner/SpinnerBtn';
-import { format } from 'date-fns';
 
 const BookAFreeCounselling = () => {
     const { showToast } = useContext(contextProvider);

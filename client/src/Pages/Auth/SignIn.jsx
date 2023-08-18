@@ -6,7 +6,6 @@
 // import { AiOutlineWarning } from 'react-icons/ai';
 // import Spinner from '../Shared/Spinner/Spinner';
 // import GoogleSignIn from './GoogleSignIn';
-
 // const SignIn = () => {
 //     const { showToast, setIsLoggedIn } = useContext(contextProvider);
 //     const [loading, setLoading] = useState(false);
@@ -15,8 +14,6 @@
 //     const navigate = useNavigate();
 //     const location = useLocation();
 //     let from = location.state?.from?.pathname || "/";
-
-
 //     useEffect(() => {
 //         const token = localStorage.getItem('auth_token');
 //         if (token) {
@@ -24,9 +21,6 @@
             
 //         }
 //     }, [navigate, from]);
-
-
-
 //     // <!-- onChange input -->
 //     const handleChange = (event) => {
 //         const { name, value } = event.target;
@@ -35,8 +29,6 @@
 //             [name]: value
 //         });
 //     };
-
-
 //     // <!-- Validate form function -->
 //     const validateForm = (data) => {
 //         let errors = {};
@@ -50,11 +42,8 @@
 //         } else if (data.password.length < 6) {
 //             errors.password = 'Password must be at least 6 characters!';
 //         }
-
 //         return errors;
 //     };
-
-
 //     // <!-- Submit Form Data -->
 //     const handleSubmit = async (event) => {
 //         event.preventDefault();
@@ -87,7 +76,6 @@
 //             setFormErrors(errors);
 //         }
 //     };
-
 //     return (<>
         
 //         <div
@@ -178,7 +166,6 @@
 //         }
 //     </>);
 // };
-
 //  export default SignIn;
 import { useContext, useEffect, useState } from 'react';
 import GoogleSignIn from './GoogleSignIn';
@@ -199,7 +186,6 @@ const SignIn = ({setSignInPopUp}) => {
     
       
     let from = location.state?.from?.pathname || "/";
-
     useEffect(() => {
         const token = localStorage.getItem('auth_token');
         if (token) {
@@ -207,9 +193,6 @@ const SignIn = ({setSignInPopUp}) => {
             
         }
     }, [navigate, from]);
-
-
-
     // <!-- onChange input -->
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -218,8 +201,6 @@ const SignIn = ({setSignInPopUp}) => {
             [name]: value
         });
     };
-
-
     // <!-- Validate form function -->
     const validateForm = (data) => {
         let errors = {};
@@ -233,11 +214,8 @@ const SignIn = ({setSignInPopUp}) => {
         } else if (data.password.length < 6) {
             errors.password = 'Password must be at least 6 characters!';
         }
-
         return errors;
     };
-
-
     // <!-- Submit Form Data -->
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -270,13 +248,10 @@ const SignIn = ({setSignInPopUp}) => {
             setFormErrors(errors);
         }
     };
-
-<<<<<<< HEAD
     return (
         <div>
             <div className='fixed inset-0 z-50 bg-black/60 grid place-items-center overflow-y-auto py-5'>
                 <div className='md:w-[35rem] w-11/12 bg-black md:p-10 p-6 rounded-lg relative'>
-
                     {/* Close btn */}
                     <div
                         onClick={() => setSignInPopUp(false)}
@@ -285,28 +260,6 @@ const SignIn = ({setSignInPopUp}) => {
                         <IoCloseSharp className='text-3xl text-gray-700' />
                     </div>
                     <form
-=======
-    return (<>
-        <PageTitle title="Sign In" />
-        <div
-            style={{ backgroundImage: `url(/images/auth/auth_bg.jpg)` }}
-            className='w-screen max-w-full h-screen overflow-y-auto bg-no-repeat bg-center bg-cover grid lg:grid-cols-2 grid-cols-1 items-center relative'
-        >
-            <div className='absolute top-10 left-5 z-50 lg:block hidden'>
-                <button
-                    onClick={() => navigate(-1)}
-                    className='flex items-center gap-2 border rounded px-3 py-1 text-white hover:bg-white hover:text-gray-700 duration-300'
-                >
-                    <MdOutlineArrowBackIosNew />
-                    Back
-                </button>
-            </div>
-            <div className='w-full h-auto p-16 lg:block hidden'>
-                <img src="/images/auth/login-img.png" alt="" className='' />
-            </div>
-            <div className='w-full lg:h-screen h-full overflow-y-auto backdrop-blur-sm bg-violet-100/10 grid place-items-center'>
-                <form
->>>>>>> eb509c10fc10f4c498244fdd66b35e3f4607b233
                     onSubmit={handleSubmit}
                     style={{ textShadow: '1px 1px 1px rgb(0,0,0,0.3)' }}
                     className='w-full h-auto lg:p-16 md:px-32 md:py-16 sm:p-10 p-7 text-base text-white flex flex-col gap-6'
@@ -332,7 +285,7 @@ const SignIn = ({setSignInPopUp}) => {
                             </p>
                         }
                     </div>
-                    <div>
+                    {/* <div>
                         <div className='flex items-center justify-between'>
                             <label htmlFor='password' className="px-1">Password</label>
                             <span className='text-base font-light text-yellow-400 cursor-pointer hover:underline'>
@@ -352,7 +305,7 @@ const SignIn = ({setSignInPopUp}) => {
                                 {formErrors?.password}
                             </p>
                         }
-                    </div>
+                    </div> */}
                    
                     <div className='flex justify-start'>
                         <button
@@ -379,5 +332,4 @@ const SignIn = ({setSignInPopUp}) => {
         </div>
     );
 };
-
 export default SignIn;
